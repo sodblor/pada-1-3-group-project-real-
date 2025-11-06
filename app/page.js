@@ -47,7 +47,10 @@ export default function HomePage() {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={handleKey}
         />
-        <button className="px-4" onClick={handleSearch}>
+        <button
+          className="px-5 bg-gray-700 rounded-xl py-1"
+          onClick={handleSearch}
+        >
           Search
         </button>
       </div>

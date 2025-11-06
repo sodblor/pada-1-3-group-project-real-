@@ -12,7 +12,7 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
     // Аймаг бүр id="MNXXX" гэсэн format-тай байх ёстой.
     // Бидний жишээнд зөвхөн hover event-ийг харуулахын тулд загварчилсан SVG-г ашиглана.
 
-    const handleOver = (e) => {
+    const handleOver = (e) => { 
         const path = e.target.closest('path');
         if (path && path.id) onAimagHover(path.id);
     };      
@@ -23,7 +23,7 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
     };
 
     return (
-        <svg className={styles.mapContainer} baseProfile="tiny" fill="#6f9c76" height="481" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round" strokeWidth=".5" version="1.2" viewBox="0 0 1000 481" width="1000" xmlns="http://www.w3.org/2000/svg">
+        <svg className={styles.mapContainer} baseProfile="tiny" fill="#6f9c76" stroke="#333333" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" version="1.2" viewBox="0 0 1000 481" width="100%" xmlns="http://www.w3.org/2000/svg">
             <style>{`
                 #features path { fill: #e0e0e0; cursor: pointer; transition: fill 0.15s ease }
                 ${hoveredAimagId ? `#features path#${hoveredAimagId} { fill: #ff6347 !important }` : ''}
@@ -148,24 +148,34 @@ const MongoliaMap = () => {
         : "Хулганаа зургийн дээгүүр явуулна уу";
 
     return (
-        <div className={styles.wrapper}>
+        <div className={ styles.wrapper} style={{ display: "flex" }} >
+        
         <br/>
         <br />
         <br/>
+        <p className='text-4xl '  > MONGOLIA</p>
         <br />
         <br/>
         <br />
         <br />
+
             <div className={styles.infoBox} >
                 Одоогийн аймаг/хот: 
                 <span className={styles.aimagName}>{currentAimagName}</span>
             </div>
-
-            <MongoliaSVG
+            <div>
+                <p>
+                ᠮᠣᠩᠭᠣᠯ ᠤᠯᠤᠰ
+            </p>
+            </div>
+           <div>
+               <MongoliaSVG 
                 onAimagHover={handleAimagHover}
                 onAimagLeave={handleAimagLeave}
                 hoveredAimagId={hoveredAimagId}
             />
+           </div>
+
         </div>
     );
 };

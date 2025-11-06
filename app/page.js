@@ -24,7 +24,7 @@ export default function HomePage() {
   const handleSearch = () => {
     if (!search.trim()) return;
     const destination = search.trim().toLowerCase();
-    router.push(`/destination/${destination}`);
+    router.push(`/map`);
   };
 
   const handleKey = (e) => {

@@ -1,0 +1,56 @@
+/* styles/Map.module.css */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.mapContainer {
+    width: 100%;
+    max-width: 800px; /* Зургийн хэмжээ */
+    height: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.aimagPath {
+    /* SVG дээрх аймаг бүрийн үндсэн загвар */
+    fill: #e0e0e0;
+    stroke: #333;
+    stroke-width: 0.5;
+    cursor: pointer;
+    transition: fill 0.2s ease-in-out;
+}
+
+/* * NOTE: Hover-ийг inline style-аар 'fill' утгыг өөрчилж хийсэн тул, 
+ * CSS-ийн :hover pseudo-class-ийг ашиглахгүй.
+ * Хэрвээ та зөвхөн CSS-ээр хийхийг хүсвэл:
+ * .aimagPath:hover {
+ * fill: #ff6347;
+ * }
+ * гэж бичих боломжтой ч, React state ашигласан нь илүү уян хатан байдаг.
+*/
+
+.infoBox {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border: 1px solid #0070f3;
+    border-radius: 5px;
+    background-color: #f0f8ff;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.aimagName {
+    font-weight: bold;
+    color: #d84315; /* Улаан өнгөөр тодотгох */
+    margin-left: 8px;
+}

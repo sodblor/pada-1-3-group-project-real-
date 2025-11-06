@@ -21,6 +21,9 @@ export default function Header() {
         >
           Resources
         </Link>
+        <Link href="/blog" className="hover:text-blue-300 transition-colors">
+          Blog
+        </Link>
         <Link
           href="/travelresource"
           className="hover:text-blue-300 transition-colors"

@@ -6,6 +6,7 @@
     align-items: center;
     padding: 20px;
     font-family: Arial, sans-serif;
+    
 }
 
 .title {
@@ -13,12 +14,12 @@
     margin-bottom: 20px;
 }
 
-.mapContainer {
+.mapContainer { 
     width: 100%;
     max-width: 800px; /* Зургийн хэмжээ */
     height: auto;
     border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
 }
 
 .aimagPath {

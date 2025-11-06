@@ -15,7 +15,7 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
     const handleOver = (e) => {
         const path = e.target.closest('path');
         if (path && path.id) onAimagHover(path.id);
-    };
+    };      
     const handleLeave = (e) => {
         const related = e.relatedTarget;
         const stillInPaths = related && (related.closest && related.closest('#features'));
@@ -149,8 +149,14 @@ const MongoliaMap = () => {
 
     return (
         <div className={styles.wrapper}>
-            <h1 className={styles.title}>Монгол Улсын Аймаг/Нийслэлийн Газрын Зураг (Next.js/React)</h1>
-            <div className={styles.infoBox}>
+        <br/>
+        <br />
+        <br/>
+        <br />
+        <br/>
+        <br />
+        <br />
+            <div className={styles.infoBox} >
                 Одоогийн аймаг/хот: 
                 <span className={styles.aimagName}>{currentAimagName}</span>
             </div>
@@ -164,4 +170,4 @@ const MongoliaMap = () => {
     );
 };
 
-export default MongoliaMap;
+export default MongoliaMap;     

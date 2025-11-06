@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 
-// Travel resources data
 const travelResources = [
   {
     category: "Visa & Entry",
@@ -46,7 +45,6 @@ const travelResources = [
   },
 ];
 
-// Group resources by category
 const groupByCategory = (resources = []) => {
   return resources.reduce((acc, resource) => {
     if (!acc[resource.category]) acc[resource.category] = [];

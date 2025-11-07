@@ -84,11 +84,13 @@ export default function TravelResourcesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-10 px-4 md:px-8">
+    <div className="min-h-screen bg-black py-10 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Travel Resources</h1>
-          <p className="mt-2 text-slate-600">Essential links and tools for planning your trip to Mongolia.</p>
+        <div className="text-center mb-8">  
+        <br/>
+        <br/>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white">Travel Resources</h1>
+          <p className="mt-2 text-white">Essential links and tools for planning your trip to Mongolia.</p>
         </div>
 
         <div className="flex flex-col md:flex-row gap-3 md:items-center md:justify-between mb-6">
@@ -105,7 +107,7 @@ export default function TravelResourcesPage() {
           </div>
 
           <div className="relative max-w-md w-full">
-            <input
+            <input      
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Хайх: visa, insurance, maps..."
@@ -121,7 +123,7 @@ export default function TravelResourcesPage() {
               <section key={category}>
                 <div className="flex items-center gap-2 mb-4">
                   <div className="p-2 rounded-lg bg-blue-50 text-blue-700"><Icon size={18} /></div>
-                  <h2 className="text-xl md:text-2xl font-semibold text-slate-900">{category}</h2>
+                  <h2 className="text-xl md:text-2xl font-semibold text-white">{category}</h2>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {resources.map((r, i) => (
@@ -129,16 +131,16 @@ export default function TravelResourcesPage() {
                       key={`${r.name}-${i}`}
                       className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-lg transition-all"
                     >
-                      <h3 className="text-lg font-semibold text-slate-900 group-hover:text-slate-950">{r.name}</h3>
+                      <h3 className="text-lg font-semibold text-black">{r.name}</h3>
                       <p className="mt-1.5 text-sm text-slate-600 min-h-[48px]">{r.description}</p>
                       {r.link !== "#" && (
                         <a
                           href={r.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-700 hover:text-blue-800"
+                          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-black hover:text-blue-800"
                         >
-                          Visit <ExternalLink size={16} />
+                          Visit <ExternalLink className="text-black" size={16} />
                         </a>
                       )}
                     </article>

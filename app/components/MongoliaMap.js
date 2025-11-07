@@ -243,12 +243,14 @@ const MongoliaMap = () => {
 
   return (
     <div className={styles.wrapper}>
-      {/* <h1 className={styles.title}>Монгол Улсын Аймаг/Нийслэлийн Газрын Зураг (Next.js/React)</h1> */}
+      <h1 className={styles.title}>
+        Монгол Улсын Аймаг/Нийслэлийн Газрын Зураг (Next.js/React)
+      </h1>
+      z
       <div className={styles.infoBox}>
         Одоогийн аймаг/хот:
         <span className={styles.aimagName}>{currentAimagName}</span>
       </div>
-
       <MongoliaSVG
         onAimagHover={handleAimagHover}
         onAimagLeave={handleAimagLeave}

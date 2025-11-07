@@ -41,7 +41,7 @@ export default function HomePage() {
 
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-3 bg-white p-3 rounded-full w-[400px]">
         <input
-          className="flex-1 outline-none"
+          className="flex-1 outline-none  "
           placeholder="Search destination..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -54,6 +54,6 @@ export default function HomePage() {
           Search
         </button>
       </div>
-    </div>
+    </div>  
   );
 }

@@ -13,12 +13,10 @@
     margin-bottom: 20px;
 }
 
-.mapContainer {
-    width: 100%;
-    max-width: 800px; /* Зургийн хэмжээ */
+.mapContainer { 
+    width: 1200px; 
     height: auto;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
 }
 
 .aimagPath {
@@ -46,7 +44,7 @@
     border-radius: 5px;
     background-color: #f0f8ff;
     color: #333;
-    font-size: 1.1em;
+    font-size: 1.1em;   
 }
 
 .aimagName {

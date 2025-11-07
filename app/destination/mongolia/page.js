@@ -9,5 +9,5 @@ export default function DestinationPage() {
 
   const displayName = name.charAt(0).toUpperCase() + name.slice(1);
 
-  return <div></div>;
+  return <div>heo</div>;
 }

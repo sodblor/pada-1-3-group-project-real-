@@ -8,7 +8,7 @@ export default function Header() {
   const [dark, setDark] = useState(false);
 
   return (
-    <header className="absolute top-0 left-0 w-full px-10 py-4 flex items-center justify-between text-white z-50 bg-transparent">
+    <header className="absolute bg-[#F5F5DC]/50  top-0 left-0 w-full px-10 py-4 flex items-center justify-between text-white z-50 ">
       <div className="text-2xl font-bold tracking-wide">TRAVELII</div>
 
       <nav className="flex gap-10 text-lg font-medium">

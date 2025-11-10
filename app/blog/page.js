@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-
 export default function Blog() {
   const [dark, setDark] = useState(false);
 

@@ -15,7 +15,10 @@ export default function Header() {
         <Link href="/" className="hover:text-blue-300 transition-colors">
           Home
         </Link>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c2fc1cafff32886903dc80ad59fc3d70846467ca
         <Link href="/blog" className="hover:text-blue-300 transition-colors">
           Blog
         </Link>
@@ -23,7 +26,7 @@ export default function Header() {
           href="/travelresource"
           className="hover:text-blue-300 transition-colors"
         >
-          Travel Resources
+          Resources
         </Link>
         <Link href="/contact" className="hover:text-blue-300 transition-colors">
           Contact

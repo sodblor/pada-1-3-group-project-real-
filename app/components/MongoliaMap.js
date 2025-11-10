@@ -263,8 +263,8 @@ const MongoliaMap = () => {
   };
 
   const currentAimagName = hoveredAimagId
-    ? AIMAG_ID_TO_NAME[hoveredAimagId] || "Аймаг/Хот"
-    : "Хулганаа зургийн дээгүүр явуулна уу";
+    ? AIMAG_ID_TO_NAME[hoveredAimagId]
+    : "";
 
   return (
     <div className={styles.wrapper}>
@@ -274,7 +274,7 @@ const MongoliaMap = () => {
       <br />
       <br />
       <div className={styles.infoBox}>
-        Одоогийн аймаг/хот:
+        аймаг/хот:
         <span className={styles.aimagName}>{currentAimagName}</span>
       </div>
       <MongoliaSVG

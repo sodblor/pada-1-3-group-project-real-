@@ -1,6 +1,14 @@
 "use client";
-import React, { useMemo, useState } from "react";
-import { ShieldCheck, Globe, Plane, Map, HeartPulse, ExternalLink } from "lucide-react";
+
+import { useMemo, useState, useEffect } from "react";
+import {
+  ShieldCheck,
+  Globe,
+  Plane,
+  Map,
+  HeartPulse,
+  ExternalLink,
+} from "lucide-react";
 
 const travelResources = [
   {
@@ -18,6 +26,13 @@ const travelResources = [
     link: "https://evisa.mn/",
   },
   {
+    category: "Visa & Entry",
+    name: "Consular Visa Portal",
+    description:
+      "General Visa information for tourists, including requirements and applications.",
+    link: "https://en.consul.mn/visa/c/82",
+  },
+  {
     category: "Healthcare & Safety",
     name: "CDC Travelers’ Health – Mongolia",
     description:
@@ -32,6 +47,13 @@ const travelResources = [
     link: "https://www.worldnomads.com/",
   },
   {
+    category: "Healthcare & Safety",
+    name: "Healthcare Tips",
+    description:
+      "Official healthcare tips from the Embassy of the United Kingdom.",
+    link: "https://www.gov.uk/foreign-travel-advice/mongolia/health",
+  },
+  {
     category: "Transportation",
     name: "MIAT Mongolian Airlines",
     description:
@@ -39,17 +61,43 @@ const travelResources = [
     link: "https://www.miat.com/",
   },
   {
+    category: "Transportation",
+    name: "Bus & Train Info",
+    description: "National online ticketing system for easy use.",
+    link: "https://eticket.transdep.mn/?language=en",
+  },
+  {
+    category: "Transportation",
+    name: "Car Rentals",
+    description:
+      "Reliable cars and experienced drivers are essential for your Mongolian adventure.",
+    link: "https://www.discovermongolia.mn/car-rental",
+  },
+  {
     category: "Travel Tools & Planning",
     name: "Maps.me",
     description: "Offline maps for Mongolia, useful for rural travel.",
     link: "https://maps.me/",
   },
+  {
+    category: "Travel Tools & Planning",
+    name: "Trip Planner",
+    description: "A travel planning website specialized for Mongolia.",
+    link: "https://visitmongolia.com/",
+  },
+  {
+    category: "Travel Tools & Planning",
+    name: "Currency Converter",
+    description:
+      "Official daily foreign exchange rates tracker maintained by Mongolbank.",
+    link: "https://www.mongolbank.mn/en/currency-rates",
+  },
 ];
 
 const groupByCategory = (resources = []) => {
-  return resources.reduce((acc, resource) => {
-    if (!acc[resource.category]) acc[resource.category] = [];
-    acc[resource.category].push(resource);
+  return resources.reduce((acc, r) => {
+    if (!acc[r.category]) acc[r.category] = [];
+    acc[r.category].push(r);
     return acc;
   }, {});
 };
@@ -57,23 +105,28 @@ const groupByCategory = (resources = []) => {
 export default function TravelResourcesPage() {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState("All");
+  const [ready, setReady] = useState(false);
 
-  const categories = useMemo(() => [
-    "All",
-    ...Array.from(new Set(travelResources.map(r => r.category)))
-  ], []);
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 100);
+    return () => clearTimeout(t);
+  }, []);
+
+  const categories = useMemo(() => {
+    return ["All", ...new Set(travelResources.map((r) => r.category))];
+  }, []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return travelResources.filter(r => {
-      const okCat = active === "All" || r.category === active;
-      if (!q) return okCat;
+    return travelResources.filter((r) => {
+      const validCategory = active === "All" || r.category === active;
+      if (!q) return validCategory;
       const text = `${r.name} ${r.description} ${r.category}`.toLowerCase();
-      return okCat && text.includes(q);
+      return validCategory && text.includes(q);
     });
   }, [query, active]);
 
-  const groupedFiltered = useMemo(() => groupByCategory(filtered), [filtered]);
+  const grouped = useMemo(() => groupByCategory(filtered), [filtered]);
 
   const iconFor = (category) => {
     if (category.includes("Visa")) return Globe;
@@ -84,65 +137,100 @@ export default function TravelResourcesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black py-10 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">  
-        <br/>
-        <br/>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white">Travel Resources</h1>
-          <p className="mt-2 text-white">Essential links and tools for planning your trip to Mongolia.</p>
-        </div>
+    <div
+      className="relative min-h-screen w-full bg-black bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/service1.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
-        <div className="flex flex-col md:flex-row gap-3 md:items-center md:justify-between mb-6">
+      {/* PAGE FADE-IN */}
+      <div
+        className={`relative max-w-6xl mx-auto pt-28 pb-16 px-4 md:px-6 transition-all duration-700 ease-out ${
+          ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
+        <h1 className="text-4xl font-bold text-white text-center mb-2">
+          Travel Resources
+        </h1>
+        <p className="text-white text-center mb-10">
+          Essential links and tools for planning your trip to Mongolia.
+        </p>
+
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
           <div className="flex gap-2 overflow-x-auto pb-1">
             {categories.map((c) => (
               <button
                 key={c}
                 onClick={() => setActive(c)}
-                className={`px-3 py-1.5 rounded-full border text-sm transition-all ${active === c ? "bg-slate-900 text-white border-slate-900" : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"}`}
+                className={`px-3 py-1.5 rounded-full border text-sm ${
+                  active === c
+                    ? "bg-slate-900 text-white border-slate-900"
+                    : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                }`}
               >
                 {c}
               </button>
             ))}
           </div>
 
-          <div className="relative max-w-md w-full">
-            <input      
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Хайх: visa, insurance, maps..."
-              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500"
-            />
-          </div>
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Хайх: visa, insurance, maps..."
+            className="w-full md:max-w-md px-4 py-2.5 bg-white border rounded-xl text-sm outline-none focus:ring-4 focus:ring-blue-100"
+          />
         </div>
 
-        <div className="space-y-10">
-          {Object.entries(groupedFiltered).map(([category, resources]) => {
+        <div className="space-y-12">
+          {Object.entries(grouped).map(([category, list], idx) => {
             const Icon = iconFor(category);
+
             return (
-              <section key={category}>
+              <section
+                key={category}
+                className={`transition-all duration-700 ease-out ${
+                  ready
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: `${150 + idx * 150}ms` }} // stagger section
+              >
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="p-2 rounded-lg bg-blue-50 text-blue-700"><Icon size={18} /></div>
-                  <h2 className="text-xl md:text-2xl font-semibold text-white">{category}</h2>
+                  <div className="p-2 bg-blue-50 text-blue-700 rounded-lg">
+                    <Icon size={18} />
+                  </div>
+                  <h2 className="text-2xl font-semibold text-white">
+                    {category}
+                  </h2>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {resources.map((r, i) => (
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {list.map((r, i) => (
                     <article
-                      key={`${r.name}-${i}`}
-                      className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-lg transition-all"
+                      key={i}
+                      className={`rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-lg transition-all duration-700 ease-out ${
+                        ready
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-6"
+                      }`}
+                      style={{ transitionDelay: `${250 + i * 100}ms` }} // stagger cards
                     >
-                      <h3 className="text-lg font-semibold text-black">{r.name}</h3>
-                      <p className="mt-1.5 text-sm text-slate-600 min-h-[48px]">{r.description}</p>
-                      {r.link !== "#" && (
-                        <a
-                          href={r.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-black hover:text-blue-800"
-                        >
-                          Visit <ExternalLink className="text-black" size={16} />
-                        </a>
-                      )}
+                      <h3 className="text-lg font-semibold text-black">
+                        {r.name}
+                      </h3>
+
+                      <p className="text-sm text-slate-600 mt-2 min-h-[48px]">
+                        {r.description}
+                      </p>
+
+                      <a
+                        href={r.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-black hover:text-blue-800"
+                      >
+                        Visit <ExternalLink size={16} />
+                      </a>
                     </article>
                   ))}
                 </div>

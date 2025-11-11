@@ -23,7 +23,6 @@ export default function HomePage() {
 
   const handleSearch = () => {
     if (!search.trim()) return;
-    const destination = search.trim().toLowerCase();
     router.push(`/map`);
   };
 
@@ -31,13 +30,28 @@ export default function HomePage() {
     if (e.key === "Enter") handleSearch();
   };
 
+  const warm =
+    "bg-gradient-to-b from-stone-900/50 via-stone-800/30 to-stone-900/60";
+  const cool =
+    "bg-gradient-to-b from-neutral-800/45 via-neutral-700/25 to-neutral-900/65";
+  const dark = "bg-gradient-to-b from-black/20 via-black/30 to-black/70";
+
+  const img = images[index];
+  const gradient =
+    img.includes("snow") || img.includes("lake") || img.includes("blue")
+      ? cool
+      : img.includes("night") || img.includes("dark")
+      ? dark
+      : warm;
+
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <img
-        src={images[index]}
-        className="absolute inset-0 w-full h-full object-cover"
+        src={img}
+        className="absolute inset-0 w-full h-full object-cover brightness-[.92] contrast-[1.05]"
       />
-      <div className="absolute inset-0 bg-black/40" />
+
+      <div className={`absolute inset-0 ${gradient}`} />
 
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-3 bg-white p-3 rounded-full w-[400px]">
         <input
@@ -47,9 +61,8 @@ export default function HomePage() {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={handleKey}
         />
-
         <button
-          className="px-5 bg-gray-700 rounded-xl py-1"
+          className="px-5 bg-gray-700 rounded-xl py-1 text-white"
           onClick={handleSearch}
         >
           Search

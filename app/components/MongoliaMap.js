@@ -28,10 +28,9 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
 
   return (
     <svg
-      className={styles.mapContainer} 
+      className={styles.mapContainer}
       baseProfile="tiny"
       fill="#6f9c76"
-      height="481"
       stroke="#ffffff"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -39,6 +38,7 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
       version="1.2"
       viewBox="0 0 1000 481"
       width="1000"
+      height="481"
       xmlns="http://www.w3.org/2000/svg"
   
     >
@@ -289,37 +289,42 @@ const MongoliaMap = () => {
       <br />
       <br />
       <br />
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-        <p style={{ fontWeight: 'bold' }}>MONGOLIA</p>
+      <div className={styles.headerBar}>
+        <p className={styles.headerTitle}>MONGOLIA</p>
       </div>
       <div className={styles.headerRow}>
-        <div className={styles.verticalLabel}>ᠮᠣᠩᠭᠣᠯ</div>
-        <img
-          className={styles.headerImage}
-          src="https://cdn.uc.assets.prezly.com/ed47736a-d2cd-4f0b-85a3-9e4f9c3115ab/-/preview/2048x2048/-/quality/best/-/format/auto/"
-        />
+        <div className={styles.headerImageWrap}>
+          <img
+            className={styles.headerImage}
+            src="https://cdn.uc.assets.prezly.com/ed47736a-d2cd-4f0b-85a3-9e4f9c3115ab/-/preview/2048x2048/-/quality/best/-/format/auto/"
+          />
+          <div className={styles.headerOverlay}>
+            <div className={styles.verticalLabel}>ᠮᠣᠩᠭᠣᠯ</div>
+          </div>
+        </div>
       </div>
       <div className={styles.infoBox}>
         аймаг/хот:
         <span className={styles.aimagName}>{currentAimagName}</span>
       </div>
-      <MongoliaSVG  
-        onAimagHover={handleAimagHover}
-        onAimagLeave={handleAimagLeave}
-        hoveredAimagId={hoveredAimagId}
-      />
-      <div className={styles.contentGrid}>
-        {carduud.map((c, idx) => (
-          <div className={styles.gridItem} key={idx}>
-            <div className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={c.img} alt={c.title} />
-              <div className={styles.gridDesc}>{c.title}</div>
+      <div className={styles.mapContainerBox}>
+        <MongoliaSVG  
+          onAimagHover={handleAimagHover}
+          onAimagLeave={handleAimagLeave}
+          hoveredAimagId={hoveredAimagId}
+        />
+        <div className={styles.contentGrid}>
+          {carduud.map((c, idx) => (
+            <div className={styles.gridItem} key={idx}>
+              <div className={styles.gridItemInner}>
+                <img className={styles.gridImage} src={c.img} alt={c.title} />
+                <div className={styles.gridDesc}>{c.title}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
 };
-
 export default MongoliaMap;

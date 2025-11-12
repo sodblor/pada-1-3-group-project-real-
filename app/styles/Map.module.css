@@ -9,7 +9,7 @@
 .headerTitle {
     font-weight: 800;
     font-size: 70px;
-    color: #111827;
+    color: #000000;
     font-size: bold;
 }
 .mapContainerBox {
@@ -59,7 +59,7 @@
 
 .verticalLabel {
         writing-mode: vertical-rl;
-        font-size: 40px;
+        font-size: 50px;
         font-family: "ClassicalMongolianDashtseden", sans-serif;
         color: white;
 }
@@ -78,12 +78,10 @@
 
 .headerOverlay {
     position: absolute;
-    top: 12px;
-    left: 12px;
-    font-weight: 800;
-    font-size: 28px;
-    color: #ffffff;
-    letter-spacing: 2px;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
 }
 
 .aimagPath {

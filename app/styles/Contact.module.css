@@ -23,12 +23,21 @@
   margin: 0;
   color: #111827;
 }
+<<<<<<< HEAD
 .mapContainer { 
     width: 1600px; /* Илүү том өргөн */
     max-width: 100%; /* Жижиг дэлгэц дээр багтах */
     height: auto;
     border: 1px solid #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+=======
+.mapContainer {
+  width: 1600px;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+>>>>>>> 75afcf83623e144af377c7a1c40b7b16e7e006c5
 }
 
 .subtitle {
@@ -104,7 +113,8 @@
   }
 }
 
-.input, .textarea {
+.input,
+.textarea {
   width: 100%;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
@@ -116,7 +126,8 @@
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.input:focus, .textarea:focus {
+.input:focus,
+.textarea:focus {
   border-color: #3b82f6;
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
 }

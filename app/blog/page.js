@@ -1,64 +1,89 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 export default function Blog() {
-  const [dark, setDark] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  const bgImage =
+    "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1";
+
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 100);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <div
-      className={`${
-        dark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-      } min-h-screen p-8`}
-    >
-      <button
-        onClick={() => setDark(!dark)}
-        className="mb-6 px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600"
+    <div className="relative min-h-screen w-full overflow-hidden">
+      {/* Background */}
+      <img
+        src={bgImage}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* Content */}
+      <div
+        className={`relative max-w-3xl mx-auto pt-28 pb-16 px-6 text-white transition-all duration-700 ease-out ${
+          ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
       >
-        Toggle {dark ? "Light" : "Dark"} Mode
-      </button>
+        <h1 className="text-4xl font-bold mb-4">Travel Agency Blog</h1>
+        <p className="text-lg mb-10 opacity-90">
+          Welcome to our travel insights, tips, and destination highlights.
+        </p>
 
-      <h1 className="text-4xl font-bold mb-4">Travel Agency Blog</h1>
-      <p className="text-lg mb-6">
-        Welcome to our travel insights, tips, and destination highlights!
-      </p>
+        <div className="space-y-12">
+          {/* Post 1 */}
+          <article
+            className={`bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg transition-all duration-700 ease-out ${
+              ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+            style={{ transitionDelay: "150ms" }}
+          >
+            <h2 className="text-2xl font-semibold mb-2">
+              Exploring Hidden Gems Around the World
+            </h2>
+            <p className="opacity-90">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae
+              justo risus. Vivamus suscipit urna sit amet ultricies placerat.
+            </p>
+          </article>
 
-      <div className="space-y-8">
-        {/* Post 1 */}
-        <article>
-          <h2 className="text-2xl font-semibold mb-2">
-            Exploring Hidden Gems Around the World
-          </h2>
-          <p className="opacity-90">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae
-            justo risus. Vivamus suscipit, urna sit amet ultricies placerat,
-            ipsum velit molestie arcu, ut facilisis libero odio nec nisi.
-            Aliquam erat volutpat.
-          </p>
-        </article>
+          {/* Post 2 */}
+          <article
+            className={`bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg transition-all duration-700 ease-out ${
+              ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+            style={{ transitionDelay: "250ms" }}
+          >
+            <h2 className="text-2xl font-semibold mb-2">
+              Top 10 Destinations for Adventure Lovers
+            </h2>
+            <p className="opacity-90">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum fringilla lorem id feugiat ornare.
+            </p>
+          </article>
 
-        {/* Post 2 */}
-        <article>
-          <h2 className="text-2xl font-semibold mb-2">
-            Top 10 Destinations for Adventure Lovers
-          </h2>
-          <p className="opacity-90">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-            fringilla, lorem id feugiat ornare, turpis odio cursus mi, eu
-            consequat eros justo non ligula. Suspendisse potenti.
-          </p>
-        </article>
-
-        {/* Post 3 */}
-        <article>
-          <h2 className="text-2xl font-semibold mb-2">
-            How to Travel Smart on a Budget
-          </h2>
-          <p className="opacity-90">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            maximus turpis at mi efficitur, vel sodales massa feugiat. Aenean
-            euismod nulla et nisl porttitor, eget consequat purus luctus.
-          </p>
-        </article>
+          {/* Post 3 */}
+          <article
+            className={`bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg transition-all duration-700 ease-out ${
+              ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+            style={{ transitionDelay: "350ms" }}
+          >
+            <h2 className="text-2xl font-semibold mb-2">
+              How to Travel Smart on a Budget
+            </h2>
+            <p className="opacity-90">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              maximus turpis at mi efficitur.
+            </p>
+          </article>
+        </div>
       </div>
     </div>
   );

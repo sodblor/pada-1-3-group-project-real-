@@ -1,4 +1,4 @@
-const AIMAG_DATA = {
+export const AIMAG_DATA = {
   MN073: {
     name: "arkhangai",
     shortDescription:
@@ -555,7 +555,7 @@ const AIMAG_DATA = {
     hotels: [
       {
         name: "DariGanga Hotel",
-        link: "https://www.google.com/maps/search/?api=1&query=DariGanga+Hotel+Baruun-%20Urt+Mongolia",
+        link: "https://www.google.com/maps/search/?api=1&query=DariGanga+Hotel+Baruun-+Urt+Mongolia",
       },
     ],
     transportOptions: [
@@ -786,6 +786,7 @@ const AIMAG_DATA = {
     transportOptions: [{ mode: "By bus" }, { mode: "Self drive" }],
     tips: [],
   },
+
   MN1: {
     name: "ulaanbaatar",
     restaurants: [],
@@ -793,14 +794,6 @@ const AIMAG_DATA = {
     transportOptions: [],
     tips: [],
   },
-
-  // MN043_extra: {
-  //   name: "Misc (additional / duplicate entries)",
-  //   restaurants: [],
-  //   hotels: [],
-  //   transportOptions: [],
-  //   tips: [],
-  // },
 
   MN999_PLACEHOLDER: {
     name: "Placeholder",
@@ -811,4 +804,18 @@ const AIMAG_DATA = {
   },
 };
 
-export default AIMAG_DATA;
+export const SLUG_TO_AIMAG_ID = {};
+export const AIMAG_ID_TO_NAME = {};
+
+function capitalize(s) {
+  return s
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+for (const [id, data] of Object.entries(AIMAG_DATA)) {
+  const slug = data.name;
+  SLUG_TO_AIMAG_ID[slug] = id;
+  AIMAG_ID_TO_NAME[id] = capitalize(slug);
+}

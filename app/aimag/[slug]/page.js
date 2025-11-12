@@ -1,13 +1,17 @@
 "use client";
 
+import React, { useState } from "react";
 import { FileOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import { AirVent, Hotel, Utensils } from "lucide-react";
-import Link from "next/link";
+import { SLUG_TO_AIMAG_ID, AIMAG_ID_TO_NAME } from "../../components/AimagData";
 import { notFound } from "next/navigation";
-import { use, useState } from "react";
-import { AIMAG_ID_TO_NAME, SLUG_TO_AIMAG_ID } from "../../components/AimagData";
+import { use } from "react";
+import { AirVent } from "lucide-react";
+import { Utensils } from "lucide-react";
+import { Hotel } from "lucide-react";
 import AIMAG_DATA from "../../components/data/data";
+import Link from "next/link";
+// import { log } from "console";
 
 const { Header, Content, Sider } = Layout;
 
@@ -37,6 +41,7 @@ const Placeholder = ({ title }) => (
 export default function Page(props) {
   const [selectedTab, setSelectedTab] = useState("fun");
   const params = use(props.params);
+
   const { slug } = params;
 
   const aimagId = SLUG_TO_AIMAG_ID[slug];
@@ -44,7 +49,7 @@ export default function Page(props) {
 
   const name = AIMAG_ID_TO_NAME[aimagId] || slug;
   const aimag = Object.values(AIMAG_DATA).find(
-    (data) => data.name.toLowerCase() === slug
+    (data) => data?.name?.toLowerCase() === slug?.toLowerCase()
   );
 
   const menuItems = [

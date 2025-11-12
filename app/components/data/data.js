@@ -35,18 +35,18 @@ export const AIMAG_DATA = {
     ],
     hotels: [
       { name: "Ashid Bekhi Hotel", link: "https://mapcarta.com/W1195988055" },
-      { name: "Malchin Hotel", link: "jnj" },
+      { name: "Malchin Hotel", link: "/jnj" },
       {
         name: "Fairfield Guesthouse & Café (Fairfield Arkhangai)",
         link: "https://www.google.com/maps/search/Tuslah+Zam+Rd,+Tsetserleg,+Arkhangai+65030",
       },
       { name: "Artkhan Hotel", link: "https://mapcarta.com/N9946931153" },
-      { name: "Mongolian Falcon Hotel (Tsetserleg)", link: "jnj" },
+      { name: "Mongolian Falcon Hotel (Tsetserleg)", link: "/jnj" },
       {
         name: "Khangain Tugul Hotel & Event Hall",
         link: "https://www.google.com/maps?q=Khangain+tugul+hotel+%26+Event+hall,+Tsetserleg,+Arkhangai,+Mongolia",
       },
-      { name: "Tungalag Tamir Lodge (Ikh Tamir)", link: "jnj" },
+      { name: "Tungalag Tamir Lodge (Ikh Tamir)", link: "/jnj" },
     ],
     attractions: [
       "Shiveet Mankhan Resort & Hot Spring (Tsenkher)",
@@ -819,3 +819,29 @@ for (const [id, data] of Object.entries(AIMAG_DATA)) {
   SLUG_TO_AIMAG_ID[slug] = id;
   AIMAG_ID_TO_NAME[id] = capitalize(slug);
 }
+
+export const CATEGORIES = [
+  "restaurants",
+  "hotels",
+  "attractions",
+  "transportOptions",
+  "tips",
+];
+
+export function getAimagIdBySlug(slug) {
+  return SLUG_TO_AIMAG_ID[slug];
+}
+
+export function getAimagBySlug(slug) {
+  const id = getAimagIdBySlug(slug);
+  return id ? AIMAG_DATA[id] : undefined;
+}
+
+export function getCategoryBySlug(slug, categoryKey) {
+  const aimag = getAimagBySlug(slug);
+  if (!aimag) return undefined;
+  if (!CATEGORIES.includes(categoryKey)) return undefined;
+  return aimag[categoryKey] ?? [];
+}
+
+export default AIMAG_DATA;

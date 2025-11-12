@@ -2,22 +2,184 @@
 
 import React, { useState } from "react";
 import { FileOutlined } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme, List, Tag } from "antd";
 import { SLUG_TO_AIMAG_ID, AIMAG_ID_TO_NAME } from "../../components/AimagData";
 import { notFound } from "next/navigation";
 import { use } from "react";
 import { AirVent } from "lucide-react";
 import { Utensils } from "lucide-react";
 import { Hotel } from "lucide-react";
-import AIMAG_DATA from "../../components/data/data";
+import { Bus, Car, Plane } from "lucide-react";
+import AIMAG_DATA, { getAimagBySlug, getCategoryBySlug } from "../../components/data/data";
+
 import Link from "next/link";
-// import { log } from "console";
 
 const { Header, Content, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
   return { key, icon, children, label };
 }
+export const CafeContent = ({ borderRadiusLG, name, items = [] }) => {
+  return (
+    <Content style={{ margin: "24px" }}>
+      <section className="relative w-full h-72 md:h-80 rounded-3xl overflow-hidden shadow-lg mb-10">
+        <img
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+          className="w-full h-full object-cover"
+          alt="Cafes"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-8 md:p-10 text-white">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 drop-shadow-md">
+            Cafes in {name}
+          </h1>
+          <p className="text-base md:text-lg max-w-2xl drop-shadow">
+            Coffee, tea and quick bites.
+          </p>
+        </div>
+      </section>
+
+      <div
+        style={{
+          padding: 24,
+          background: "#FFFFFF",
+          borderRadius: borderRadiusLG,
+          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+        }}
+      >
+        {items && items.length > 0 ? (
+          <List
+            itemLayout="horizontal"
+            dataSource={items}
+            renderItem={(c) => (
+              <List.Item
+                actions={[
+                  c.link ? (
+                    <Link href={c.link} className="text-blue-600 hover:underline font-medium">
+                      View
+                    </Link>
+                  ) : null,
+                ]}
+              >
+                <List.Item.Meta title={c.name} description={c.address} />
+              </List.Item>
+            )}
+          />
+        ) : (
+          <p className="text-gray-500 text-center py-8">No cafes listed for {name} yet.</p>
+        )}
+      </div>
+    </Content>
+  );
+};
+
+export const YurtContent = ({ borderRadiusLG, name, items = [] }) => {
+  return (
+    <Content style={{ margin: "24px" }}>
+      <section className="relative w-full h-72 md:h-80 rounded-3xl overflow-hidden shadow-lg mb-10">
+        <img
+          src="https://images.unsplash.com/photo-1552849393-cd6826f6c1b0"
+          className="w-full h-full object-cover"
+          alt="Yurt"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-8 md:p-10 text-white">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 drop-shadow-md">
+            Yurt stays in {name}
+          </h1>
+          <p className="text-base md:text-lg max-w-2xl drop-shadow">
+            Traditional ger camps, lodges and resorts.
+          </p>
+        </div>
+      </section>
+
+      <div
+        style={{
+          padding: 24,
+          background: "#FFFFFF",
+          borderRadius: borderRadiusLG,
+          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+        }}
+      >
+        {items && items.length > 0 ? (
+          <List
+            itemLayout="horizontal"
+            dataSource={items}
+            renderItem={(y) => (
+              <List.Item
+                actions={[
+                  y.link ? (
+                    <Link href={y.link} className="text-blue-600 hover:underline font-medium">
+                      View
+                    </Link>
+                  ) : null,
+                ]}
+              >
+                <List.Item.Meta title={y.name} description={y.address} />
+              </List.Item>
+            )}
+          />
+        ) : (
+          <p className="text-gray-500 text-center py-8">No yurt stays listed for {name} yet.</p>
+        )}
+      </div>
+    </Content>
+  );
+};
+
+export const RestaurantsContent = ({ borderRadiusLG, name, items = [] }) => {
+  return (
+    <Content style={{ margin: "24px" }}>
+      <section className="relative w-full h-72 md:h-80 rounded-3xl overflow-hidden shadow-lg mb-10">
+        <img
+          src="https://images.unsplash.com/photo-1559339352-11d035aa65de"
+          className="w-full h-full object-cover"
+          alt="Restaurants"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-8 md:p-10 text-white">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 drop-shadow-md">
+            Restaurants in {name}
+          </h1>
+          <p className="text-base md:text-lg max-w-2xl drop-shadow">
+            Places to eat and drink.
+          </p>
+        </div>
+      </section>
+
+      <div
+        style={{
+          padding: 24,
+          background: "#FFFFFF",
+          borderRadius: borderRadiusLG,
+          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+        }}
+      >
+        {items && items.length > 0 ? (
+          <List
+            itemLayout="horizontal"
+            dataSource={items}
+            renderItem={(r) => (
+              <List.Item
+                actions={[
+                  r.link ? (
+                    <Link href={r.link} className="text-blue-600 hover:underline font-medium">
+                      View
+                    </Link>
+                  ) : null,
+                ]}
+              >
+                <List.Item.Meta title={r.name} description={r.address} />
+              </List.Item>
+            )}
+          />
+        ) : (
+          <p className="text-gray-500 text-center py-8">No restaurants listed for {name} yet.</p>
+        )}
+      </div>
+    </Content>
+  );
+};
 
 const Placeholder = ({ title }) => (
   <Content style={{ margin: "24px" }}>
@@ -48,9 +210,7 @@ export default function Page(props) {
   if (!aimagId) return notFound();
 
   const name = AIMAG_ID_TO_NAME[aimagId] || slug;
-  const aimag = Object.values(AIMAG_DATA).find(
-    (data) => data?.name?.toLowerCase() === slug?.toLowerCase()
-  );
+  const aimag = getAimagBySlug(slug);
 
   const menuItems = [
     getItem("Fun things to do ", "fun", <AirVent className="w-2.5" />),
@@ -62,13 +222,39 @@ export default function Page(props) {
       getItem("Restaurant", "food-1"),
       getItem("Cafe", "food-2"),
     ]),
-    getItem("Files", "files", <FileOutlined className="w-2.5" />),
+    getItem("Transport", "transport", <FileOutlined className="w-2.5" />, [
+      getItem("Bus", "transport-bus", <Bus className="w-2.5" />),
+      getItem("Car", "transport-car", <Car className="w-2.5" />),
+      getItem("Air", "transport-air", <Plane className="w-2.5" />),
+    ]),
   ];
 
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const filterTransport = (items = [], kind) => {
+    const q = (s) => (s || "").toLowerCase();
+    switch (kind) {
+      case "bus":
+        return items.filter((i) => q(i.mode).includes("bus"));
+      case "car":
+        return items.filter((i) => q(i.mode).includes("car") || q(i.mode).includes("self"));
+    }
+  };
+
+  const filterYurts = (items = []) => {
+    const q = (s) => (s || "").toLowerCase();
+    return items.filter(
+      (i) =>
+        q(i.name).includes("yurt") ||
+        q(i.name).includes("ger") ||
+        q(i.name).includes("camp") ||
+        q(i.name).includes("lodge") ||
+        q(i.name).includes("resort")
+    );
+  };
 
   const render = () => {
     switch (selectedTab) {
@@ -83,13 +269,54 @@ export default function Page(props) {
           />
         );
       case "accom-2":
-        return <Placeholder title="Yurt Accommodation" />;
+        return (
+          <YurtContent
+            borderRadiusLG={borderRadiusLG}
+            aimag={aimag}
+            name={name}
+            items={filterYurts(aimag?.hotels || [])}
+          />
+        );
       case "food-1":
-        return <Placeholder title="Restaurants" />;
+        return (
+          <RestaurantsContent
+            borderRadiusLG={borderRadiusLG}
+            name={name}
+            items={getCategoryBySlug(slug, "restaurants")}
+          />
+        );
       case "food-2":
-        return <Placeholder title="Cafes" />;
-      case "files":
-        return <Placeholder title="Files & Documents" />;
+        return (
+          <CafeContent
+            borderRadiusLG={borderRadiusLG}
+            name={name}
+            items={filterCafes(getCategoryBySlug(slug, "restaurants"))}
+          />
+        );
+      case "transport-bus":
+        return (
+          <TransportContent
+            borderRadiusLG={borderRadiusLG}
+            name={name}
+            items={filterTransport(getCategoryBySlug(slug, "transportOptions"), "bus")}
+          />
+        );
+      case "transport-car":
+        return (
+          <TransportContent
+            borderRadiusLG={borderRadiusLG}
+            name={name}
+            items={filterTransport(getCategoryBySlug(slug, "transportOptions"), "car")}
+          />
+        );
+      case "transport-air":
+        return (
+          <TransportContent
+            borderRadiusLG={borderRadiusLG}
+            name={name}
+            items={filterTransport(getCategoryBySlug(slug, "transportOptions"), "air")}
+          />
+        );
       default:
         return <FunContent borderRadiusLG={borderRadiusLG} name={name} />;
     }
@@ -181,6 +408,60 @@ export const FunContent = ({ borderRadiusLG, name }) => {
   );
 };
 
+export const TransportContent = ({ borderRadiusLG, name, items = [] }) => {
+  return (
+    <Content style={{ margin: "24px" }}>
+      <section className="relative w-full h-72 md:h-80 rounded-3xl overflow-hidden shadow-lg mb-10">
+        <img
+          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+          className="w-full h-full object-cover"
+          alt="Transport"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-8 md:p-10 text-white">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 drop-shadow-md">
+            Transport in {name}
+          </h1>
+          <p className="text-base md:text-lg max-w-2xl drop-shadow">
+            Options to get in and around the province.
+          </p>
+        </div>
+      </section>
+
+      <div
+        style={{
+          padding: 24,
+          background: "#FFFFFF",
+          borderRadius: borderRadiusLG,
+          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+        }}
+      >
+        {items && items.length > 0 ? (
+          <List
+            itemLayout="horizontal"
+            dataSource={items}
+            renderItem={(opt, idx) => (
+              <List.Item>
+                <List.Item.Meta
+                  title={
+                    <span className="flex items-center gap-2">
+                      {opt.mode}
+                      {opt.mode && <Tag color="blue">Option</Tag>}
+                    </span>
+                  }
+                  description={opt.note}
+                />
+              </List.Item>
+            )}
+          />
+        ) : (
+          <p className="text-gray-500 text-center py-8">No transport information for {name} yet.</p>
+        )}
+      </div>
+    </Content>
+  );
+};
+
 export const AccomodationContent = ({ borderRadiusLG, aimag, name }) => {
   return (
     <Content style={{ margin: "24px" }}>
@@ -228,7 +509,7 @@ export const AccomodationContent = ({ borderRadiusLG, aimag, name }) => {
                 </div>
                 <Link
                   href={hotel.link}
-                  // target="_blank"
+                 
                   className="text-blue-600 hover:underline font-medium"
                 >
                   Visit

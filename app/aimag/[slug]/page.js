@@ -30,7 +30,7 @@ export default function Page(props) {
             </p>
           </div>
         </section>
-
+    
         <div className="rounded-lg border p-4">
           <p>Эндээс {name} аймагтай холбоотой контентээ filter-ээр харуулна.</p>
         </div>

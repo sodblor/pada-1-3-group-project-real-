@@ -241,7 +241,18 @@ export default function Page(props) {
         return items.filter((i) => q(i.mode).includes("bus"));
       case "car":
         return items.filter((i) => q(i.mode).includes("car") || q(i.mode).includes("self"));
+      case "air":
+        return items.filter((i) => q(i.mode).includes("air") || q(i.mode).includes("flight"));
+      default:
+        return items;
     }
+  };
+
+  const filterCafes = (items = []) => {
+    const q = (s) => (s || "").toLowerCase();
+    return items.filter(
+      (i) => q(i.name).includes("cafe") || q(i.name).includes("coffee") || q(i.name).includes("tea")
+    );
   };
 
   const filterYurts = (items = []) => {

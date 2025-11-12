@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Header() {
   const [dark, setDark] = useState(false);
-
+  const [signedIn, setSignedIn] = useState(false);
   return (
     <header
       className="
@@ -40,7 +40,11 @@ export default function Header() {
 
       <div className="flex items-center gap-4">
         <button className="px-4 py-1 rounded-full border border-white/30 hover:bg-white hover:text-black transition">
-          Sign in
+          {signedIn === true ? (
+            <Link href="/signin">Sign in</Link>
+          ) : (
+            <Link href="/login">Log in</Link>
+          )}
         </button>
         <button className="px-3 py-1 rounded-full border border-white/30 hover:bg-white hover:text-black transition">
           Lang

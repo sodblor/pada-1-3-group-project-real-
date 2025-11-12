@@ -10,7 +10,10 @@ import { AirVent } from "lucide-react";
 import { Utensils } from "lucide-react";
 import { Hotel } from "lucide-react";
 import { Bus, Car, Plane } from "lucide-react";
-import AIMAG_DATA, { getAimagBySlug, getCategoryBySlug } from "../../components/data/data";
+import AIMAG_DATA, {
+  getAimagBySlug,
+  getCategoryBySlug,
+} from "../../components/data/data";
 
 import Link from "next/link";
 
@@ -55,7 +58,10 @@ export const CafeContent = ({ borderRadiusLG, name, items = [] }) => {
               <List.Item
                 actions={[
                   c.link ? (
-                    <Link href={c.link} className="text-blue-600 hover:underline font-medium">
+                    <Link
+                      href={c.link}
+                      className="text-blue-600 hover:underline font-medium"
+                    >
                       View
                     </Link>
                   ) : null,
@@ -66,7 +72,9 @@ export const CafeContent = ({ borderRadiusLG, name, items = [] }) => {
             )}
           />
         ) : (
-          <p className="text-gray-500 text-center py-8">No cafes listed for {name} yet.</p>
+          <p className="text-gray-500 text-center py-8">
+            No cafes listed for {name} yet.
+          </p>
         )}
       </div>
     </Content>
@@ -109,7 +117,10 @@ export const YurtContent = ({ borderRadiusLG, name, items = [] }) => {
               <List.Item
                 actions={[
                   y.link ? (
-                    <Link href={y.link} className="text-blue-600 hover:underline font-medium">
+                    <Link
+                      href={y.link}
+                      className="text-blue-600 hover:underline font-medium"
+                    >
                       View
                     </Link>
                   ) : null,
@@ -120,7 +131,9 @@ export const YurtContent = ({ borderRadiusLG, name, items = [] }) => {
             )}
           />
         ) : (
-          <p className="text-gray-500 text-center py-8">No yurt stays listed for {name} yet.</p>
+          <p className="text-gray-500 text-center py-8">
+            No yurt stays listed for {name} yet.
+          </p>
         )}
       </div>
     </Content>
@@ -163,7 +176,10 @@ export const RestaurantsContent = ({ borderRadiusLG, name, items = [] }) => {
               <List.Item
                 actions={[
                   r.link ? (
-                    <Link href={r.link} className="text-blue-600 hover:underline font-medium">
+                    <Link
+                      href={r.link}
+                      className="text-blue-600 hover:underline font-medium"
+                    >
                       View
                     </Link>
                   ) : null,
@@ -174,7 +190,9 @@ export const RestaurantsContent = ({ borderRadiusLG, name, items = [] }) => {
             )}
           />
         ) : (
-          <p className="text-gray-500 text-center py-8">No restaurants listed for {name} yet.</p>
+          <p className="text-gray-500 text-center py-8">
+            No restaurants listed for {name} yet.
+          </p>
         )}
       </div>
     </Content>
@@ -240,9 +258,13 @@ export default function Page(props) {
       case "bus":
         return items.filter((i) => q(i.mode).includes("bus"));
       case "car":
-        return items.filter((i) => q(i.mode).includes("car") || q(i.mode).includes("self"));
+        return items.filter(
+          (i) => q(i.mode).includes("car") || q(i.mode).includes("self")
+        );
       case "air":
-        return items.filter((i) => q(i.mode).includes("air") || q(i.mode).includes("flight"));
+        return items.filter(
+          (i) => q(i.mode).includes("air") || q(i.mode).includes("flight")
+        );
       default:
         return items;
     }
@@ -251,7 +273,10 @@ export default function Page(props) {
   const filterCafes = (items = []) => {
     const q = (s) => (s || "").toLowerCase();
     return items.filter(
-      (i) => q(i.name).includes("cafe") || q(i.name).includes("coffee") || q(i.name).includes("tea")
+      (i) =>
+        q(i.name).includes("cafe") ||
+        q(i.name).includes("coffee") ||
+        q(i.name).includes("tea")
     );
   };
 
@@ -309,7 +334,10 @@ export default function Page(props) {
           <TransportContent
             borderRadiusLG={borderRadiusLG}
             name={name}
-            items={filterTransport(getCategoryBySlug(slug, "transportOptions"), "bus")}
+            items={filterTransport(
+              getCategoryBySlug(slug, "transportOptions"),
+              "bus"
+            )}
           />
         );
       case "transport-car":
@@ -317,7 +345,10 @@ export default function Page(props) {
           <TransportContent
             borderRadiusLG={borderRadiusLG}
             name={name}
-            items={filterTransport(getCategoryBySlug(slug, "transportOptions"), "car")}
+            items={filterTransport(
+              getCategoryBySlug(slug, "transportOptions"),
+              "car"
+            )}
           />
         );
       case "transport-air":
@@ -325,7 +356,10 @@ export default function Page(props) {
           <TransportContent
             borderRadiusLG={borderRadiusLG}
             name={name}
-            items={filterTransport(getCategoryBySlug(slug, "transportOptions"), "air")}
+            items={filterTransport(
+              getCategoryBySlug(slug, "transportOptions"),
+              "air"
+            )}
           />
         );
       default:
@@ -372,9 +406,7 @@ export default function Page(props) {
             height: "70px",
             zIndex: 10,
           }}
-        >
-          <h1 className="text-xl font-medium text-gray-800">{name}</h1>
-        </Header>
+        ></Header>
 
         {render()}
       </Layout>
@@ -466,7 +498,9 @@ export const TransportContent = ({ borderRadiusLG, name, items = [] }) => {
             )}
           />
         ) : (
-          <p className="text-gray-500 text-center py-8">No transport information for {name} yet.</p>
+          <p className="text-gray-500 text-center py-8">
+            No transport information for {name} yet.
+          </p>
         )}
       </div>
     </Content>
@@ -520,7 +554,6 @@ export const AccomodationContent = ({ borderRadiusLG, aimag, name }) => {
                 </div>
                 <Link
                   href={hotel.link}
-                 
                   className="text-blue-600 hover:underline font-medium"
                 >
                   Visit

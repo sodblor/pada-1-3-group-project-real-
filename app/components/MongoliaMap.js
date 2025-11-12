@@ -6,12 +6,9 @@ import styles from "../styles/Map.module.css"; // CSS модулиа оруул�
 import { AIMAG_ID_TO_NAME, AIMAG_IDS } from "./AimagData";
 import { useRouter } from "next/navigation";
 
-// Simplemaps-ийн SVG-г React Component болгон ашиглах жишээ
-// ЖИЧ: Та mn.svg доторх бүх <path> элементүүдийг ЭНД оруулах ёстой.
+
 const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
-  // Simplemaps-ийн SVG-ийн үндсэн viewBox болон бүх path элементүүдийг энд хуулж оруулаарай.
-  // Аймаг бүр id="MNXXX" гэсэн format-тай байх ёстой.
-  // Бидний жишээнд зөвхөн hover event-ийг харуулахын тулд загварчилсан SVG-г ашиглана.
+  
 
   const router = useRouter();
 

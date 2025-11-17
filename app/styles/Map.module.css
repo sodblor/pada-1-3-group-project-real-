@@ -8,9 +8,14 @@
 
 .headerTitle {
     font-weight: 800;
-    font-size: 70px;
-    color: #000000;
-    font-size: bold;
+    font-size: 90px;
+    color: #ffffff;
+    position: absolute;
+    top: calc(50% - 170px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 .mapContainerBox {
     background: #ffffff;
@@ -66,7 +71,7 @@
 .headerImage {  
     flex: 1 1 auto;
     width: 1500px;
-    height: 500px;
+    height: 700px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     border-radius: 8px; 
 }

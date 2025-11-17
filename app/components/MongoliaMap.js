@@ -289,14 +289,12 @@ const MongoliaMap = () => {
       <br />
       <br />
       <br />
-      <div className={styles.headerBar}>
-        <p className={styles.headerTitle}>MONGOLIA</p>
-      </div>
       <div className={styles.headerRow}>
         <div className={styles.headerImageWrap}>
+          <p className={styles.headerTitle}>MONGOLIA</p>
           <img
             className={styles.headerImage}
-            src="https://cdn.uc.assets.prezly.com/ed47736a-d2cd-4f0b-85a3-9e4f9c3115ab/-/preview/2048x2048/-/quality/best/-/format/auto/"
+           src="https://images.fineartamerica.com/images-medium-large-5/yurt-the-traditional-mongolian-yurt-panoramic-images.jpg"
           />
           <div className={styles.headerOverlay}>
             <div className={styles.verticalLabel}>ᠮᠣᠩᠭᠣᠯ</div>

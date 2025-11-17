@@ -12,7 +12,7 @@ export default function Header() {
       className="
       absolute top-0 left-0 w-full px-12 py-4.5
       flex items-center justify-between z-50
-       bg-stone-900/40 text-white
+       bg-black text-white
     "
     >
       <div className="text-2xl font-bold tracking-wide">TRAVELII</div>

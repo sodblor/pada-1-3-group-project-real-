@@ -2,12 +2,24 @@
 
 import Link from "next/link";
 import { Sun, Moon } from "lucide-react";
-import { useState } from "react";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
+import LanguageToggle from "./LanguageToggle";
+import { messages } from "../messages";
 
 export default function Header() {
-  const [dark, setDark] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    const storedLang = localStorage.getItem("lang");
+    if (storedLang) setLang(storedLang);
+  }, []);
+
+  const t = messages[lang];
 
   return (
+<<<<<<< HEAD
     <header
       className="
       absolute top-0 left-0 w-full px-12 py-4.5
@@ -15,42 +27,30 @@ export default function Header() {
        bg-black text-white
     "
     >
+=======
+    <header className="absolute top-0 left-0 w-full px-12 py-4.5 flex items-center justify-between z-50 bg-stone-900/40 text-white">
+>>>>>>> f9e77620632c5be012823102548ebb5f44f49399
       <div className="text-2xl font-bold tracking-wide">TRAVELII</div>
 
       <nav className="flex gap-12 text-base font-medium">
-        <Link href="/" className="hover:text-stone-300 transition-colors">
-          Home
-        </Link>
-        <Link href="/blog" className="hover:text-stone-300 transition-colors">
-          Blog
-        </Link>
-        <Link
-          href="/travelresource"
-          className="hover:text-stone-300 transition-colors"
-        >
-          Resources
-        </Link>
-        <Link
-          href="/contact"
-          className="hover:text-stone-300 transition-colors"
-        >
-          Contact
-        </Link>
+        <Link href="/">{t.home}</Link>
+        <Link href="/blog">{t.blog}</Link>
+        <Link href="/travelresource">{t.resources}</Link>
+        <Link href="/contact">{t.contact}</Link>
       </nav>
 
       <div className="flex items-center gap-4">
         <button className="px-4 py-1 rounded-full border border-white/30 hover:bg-white hover:text-black transition">
-          Sign in
-        </button>
-        <button className="px-3 py-1 rounded-full border border-white/30 hover:bg-white hover:text-black transition">
-          Lang
+          {t.signin}
         </button>
 
+        <LanguageToggle onChange={setLang} />
+
         <button
-          onClick={() => setDark(!dark)}
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
           className="p-2 rounded-full border border-white/30 hover:bg-white hover:text-black transition"
         >
-          {dark ? <Sun size={18} /> : <Moon size={18} />}
+          {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
         </button>
       </div>
     </header>

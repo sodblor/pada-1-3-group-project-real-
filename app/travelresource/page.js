@@ -169,7 +169,17 @@ export default function TravelResourcesPage() {
             <img
               src="/oneinfo.jpg"
               alt="Mongolia info"
-              className="rounded-2xl shadow-2xl max-w-full h-auto border-4 border-white dark:border-gray-200"
+              className="
+    w-full             
+    max-w-none         
+    h-[420px]           
+    object-cover       
+    rounded-2xl 
+    shadow-2xl 
+    border-4 
+    border-white 
+    dark:border-gray-200
+  "
             />
           </div>
 
@@ -193,10 +203,60 @@ export default function TravelResourcesPage() {
             </div>
           </div>
 
+          {/* Ulaanbaatar Weather Widget */}
+          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 mb-10">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              Current Weather
+            </h2>
+
+            <div className="rounded-xl overflow-hidden">
+              <a
+                className="weatherwidget-io block w-full"
+                href="https://forecast7.com/en/47d89106d91/ulaanbaatar/"
+                data-label_1="ULAANBAATAR"
+                data-label_2="WEATHER"
+                data-theme="sky"
+              >
+                ULAANBAATAR WEATHER
+              </a>
+            </div>
+
+            <script>
+              {`
+      !function(d,s,id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+          js = d.createElement(s);
+          js.id = id;
+          js.src = 'https://weatherwidget.io/js/widget.min.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document,'script','weatherwidget-io-js');
+    `}
+            </script>
+          </div>
+
           {/* Weather Section */}
           <section className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 space-y-6 transition-colors duration-500">
+            <div className="flex justify-center relative z-10">
+              <img
+                src="/temphero.png"
+                alt="Mongolia info"
+                className="
+    w-full             
+    max-w-none         
+    h-[420px]           
+    object-cover       
+    rounded-2xl 
+    shadow-2xl 
+    border-4 
+    border-white 
+    dark:border-gray-200
+  "
+              />
+            </div>
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-              Weather and Holidays
+              Seasons and Holidays
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {weatherData.map(
@@ -229,35 +289,68 @@ export default function TravelResourcesPage() {
           </section>
 
           {/* Currency & Payment */}
-          <section className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 space-y-4 transition-colors duration-500">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-              Currency & Payment
-            </h2>
-            <p>
-              <strong>Official Currency:</strong> Mongolian Tögrög (MNT)
-            </p>
-            <p>
-              <strong>Tax-Free Shopping:</strong> Foreign visitors can enjoy
-              tax-free shopping under Mongolia’s VAT refund system.{" "}
-              <a
-                href="https://en.ulaanbaatar-airport.mn/tax-refund"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 underline"
-              >
-                Learn more
-              </a>
-            </p>
-            <p>
-              <strong>Payment Methods:</strong> Credit cards are widely accepted
-              in Ulaanbaatar, but cash is needed in remote areas. Apple Pay
-              works; other mobile payments may be limited.
-            </p>
-            <p>
-              <strong>Tipping Culture:</strong> Tipping isn’t expected but
-              appreciated. Small gifts like food or souvenirs are thoughtful in
-              rural areas.
-            </p>
+          <section className="space-y-8">
+            {/* Bank image + currency container + heading */}
+            <div className="flex items-end gap-6">
+              {/* Left: bank2.jpeg */}
+              <img
+                src="bank2.jpeg"
+                alt="Bank"
+                className="h-[120%] max-h-96 w-auto object-cover rounded-xl shadow-lg"
+              />
+
+              {/* Right: currency container + H2 at top of container */}
+              <div className="flex flex-col">
+                {/* Heading slightly moved to the right */}
+                <h2 className="text-3xl font-semibold text-gray-100 dark:text-gray-100 mb-4 ml-[25%]">
+                  Currency & Payment
+                </h2>
+
+                {/* Currency container */}
+                <div className="bg-yellow-50 dark:bg-gray-900 rounded-2xl shadow-xl p-8 space-y-4 flex gap-8">
+                  {/* Text fills most of the container */}
+                  <div className="flex-1 space-y-4 text-gray-900 dark:text-gray-200">
+                    <p>
+                      <strong>Official Currency:</strong> Mongolian Tögrög (MNT)
+                    </p>
+
+                    <p>
+                      <strong>Tax-Free Shopping:</strong> Foreign visitors can
+                      enjoy tax-free shopping under Mongolia’s VAT refund
+                      system.{" "}
+                      <a
+                        href="https://en.ulaanbaatar-airport.mn/tax-refund"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 dark:text-blue-400 underline"
+                      >
+                        Learn more
+                      </a>
+                    </p>
+
+                    <p>
+                      <strong>Payment Methods:</strong> Credit cards are widely
+                      accepted in Ulaanbaatar, but cash is needed in remote
+                      areas. Apple Pay works; other mobile payments may be
+                      limited.
+                    </p>
+
+                    <p>
+                      <strong>Tipping Culture:</strong> Tipping isn’t expected
+                      but appreciated. Small gifts like food or souvenirs are
+                      thoughtful in rural areas.
+                    </p>
+                  </div>
+
+                  {/* banks.png now on the right */}
+                  <img
+                    src="banks.png"
+                    className="w-60 h-60 object-contain rounded-xl"
+                    alt="Banks"
+                  />
+                </div>
+              </div>
+            </div>
           </section>
 
           {/* Category Buttons (no active highlight) */}
@@ -273,49 +366,93 @@ export default function TravelResourcesPage() {
             ))}
           </div>
 
-          {/* Travel Resources Grid */}
+          {/* Travel Resources Bento Grid – Filled Images */}
           <div className="space-y-12 relative z-10">
-            {categories
-              .filter((c) => filtered.some((r) => r.category === c))
-              .map((category) => {
-                const list = filtered.filter((r) => r.category === category);
-                const Icon = iconFor(category);
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[280px]">
+              {filtered.map((r, i) => {
+                const Icon = iconFor(r.category);
+
+                // Conditionally increase rowSpan for long-text cards
+                let rowSpan;
+                if (
+                  [
+                    "Travel Insurance",
+                    "Consular Visa Portal",
+                    "Car Rentals",
+                  ].includes(r.name)
+                ) {
+                  rowSpan = 3; // taller for specific cards
+                } else {
+                  rowSpan = [1, 1, 2][Math.floor(Math.random() * 3)]; // 1 or 2 for others
+                }
+
+                // Map card names to image paths
+                const imageMap = {
+                  "Mongolia Visa Info": "/visa.jpeg",
+                  "Mongolia E-Visa": "/evisa2.jpeg",
+                  "Consular Visa Portal": "/visa3.jpeg",
+                  "CDC Travelers’ Health – Mongolia": "/cdc.png",
+                  "Healthcare Tips": "/healthcare.png",
+                  "Travel Insurance": "/insurance.jpg",
+                  "MIAT Mongolian Airlines": "/miat.jpeg",
+                  "Bus & Train Info": "/bus.jpg",
+                  "Maps.me": "/map.jpg",
+                  "Trip Planner": "/travelplan.jpg",
+                  "Currency Converter": "/USD-MNT.jpg",
+                  "Car Rentals": "/rental.jpg",
+                };
+
+                const imgSrc = imageMap[r.name] || "/placeholder.png";
 
                 return (
-                  <section key={category} className="space-y-6">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-blue-100 rounded-full">
-                        <Icon size={20} />
+                  <a
+                    key={i}
+                    href={r.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1 overflow-hidden"
+                    style={{ gridRowEnd: `span ${rowSpan}` }}
+                  >
+                    {/* Image */}
+                    <div
+                      className="bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400 text-sm relative overflow-hidden"
+                      style={{
+                        height:
+                          rowSpan === 3
+                            ? "420px"
+                            : rowSpan === 2
+                            ? "360px"
+                            : "180px",
+                      }}
+                    >
+                      <img
+                        src={imgSrc}
+                        alt={r.name}
+                        className="w-full h-full object-cover"
+                      />
+
+                      {/* Category badge */}
+                      <div className="absolute top-2 left-2 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 rounded-full px-2 py-1 text-xs flex items-center gap-1">
+                        <Icon size={14} /> {r.category}
                       </div>
-                      <h2 className="text-2xl font-semibold text-white">
-                        {category}
-                      </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {list.map((r, i) => (
-                        <a
-                          key={i}
-                          href={r.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block rounded-2xl bg-white dark:bg-gray-800 p-6 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1"
-                        >
-                          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                            {r.name}
-                          </h3>
-                          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                            {r.description}
-                          </p>
-                          <span className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm">
-                            Visit <ExternalLink size={16} />
-                          </span>
-                        </a>
-                      ))}
+                    {/* Content */}
+                    <div className="p-4">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                        {r.name}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        {r.description}
+                      </p>
+                      <span className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm">
+                        Visit <ExternalLink size={16} />
+                      </span>
                     </div>
-                  </section>
+                  </a>
                 );
               })}
+            </div>
           </div>
         </div>
       </div>

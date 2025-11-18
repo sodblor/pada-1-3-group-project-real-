@@ -1,7 +1,17 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@font-face {
+  font-family: "ClassicalMongolianDashtseden";
+  src: url("/font/ClassicalMongolianDashtseden.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -143,3 +153,5 @@
     --sidebar-ring: oklch(0.439 0 0);
   }
 }
+
+

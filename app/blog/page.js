@@ -15,16 +15,16 @@ export default function Blog() {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      {/* Background */}
+    
       <img
         src={bgImage}
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Overlay */}
+  
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* Content */}
+     
       <div
         className={`relative max-w-3xl mx-auto pt-28 pb-16 px-6 text-white transition-all duration-700 ease-out ${
           ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
@@ -36,7 +36,7 @@ export default function Blog() {
         </p>
 
         <div className="space-y-12">
-          {/* Post 1 */}
+        
           <article
             className={`bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg transition-all duration-700 ease-out ${
               ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
@@ -52,7 +52,7 @@ export default function Blog() {
             </p>
           </article>
 
-          {/* Post 2 */}
+     
           <article
             className={`bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg transition-all duration-700 ease-out ${
               ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
@@ -68,7 +68,7 @@ export default function Blog() {
             </p>
           </article>
 
-          {/* Post 3 */}
+         
           <article
             className={`bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg transition-all duration-700 ease-out ${
               ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"

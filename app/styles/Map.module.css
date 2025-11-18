@@ -89,6 +89,50 @@
     pointer-events: none;
 }
 
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .headerImage { 
+    width: 100%;
+    height: 520px;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerTitle {
+    font-size: 56px;
+    top: calc(50% - 110px);
+  }
+  .headerImage {
+    width: 100%;
+    height: 360px;
+  }
+  .mapContainerBox {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Hide the large Mongolia SVG map on phones */
+  .mapContainer { 
+    display: none;
+  }
+  .headerTitle {
+    font-size: 42px;
+    top: calc(50% - 80px);
+  }
+  .headerRow {
+    gap: 8px;
+  }
+  .headerImage {
+    width: 100%;
+    height: 260px;
+  }
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
 .aimagPath {
     /* SVG дээрх аймаг бүрийн үндсэн загвар */  
     fill: #e0e0e0;

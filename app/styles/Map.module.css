@@ -89,6 +89,21 @@
     pointer-events: none;
 }
 
+/* Mobile aimag buttons (hidden by default) */
+.mobileAimagButtons {
+    display: none;
+}
+
+.aimagBtn {
+    display: block;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #111827;
+    color: #ffffff;
+    border: 1px solid #1f2937;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .headerImage { 
@@ -112,9 +127,13 @@
 }
 
 @media (max-width: 640px) {
-  /* Hide the large Mongolia SVG map on phones */
   .mapContainer { 
     display: none;
+  }
+  /* Show mobile aimag buttons on phones */
+  .mobileAimagButtons {
+    display: block;
+    margin-top: 12px;
   }
   .headerTitle {
     font-size: 42px;
@@ -127,9 +146,12 @@
     width: 100%;
     height: 260px;
   }
-  .contentGrid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  /* Ensure 2 columns on phone overriding base grid rule */
+  .mobileAimagButtons .contentGrid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -152,6 +174,36 @@
     justify-content: center;
 }
 
+
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    /* grid-auto-rows: 120px; */
+    gap: 16px;
+  }
+  .gridItem {
+    height: 100%;
+  }
+  .gridItemInner {
+    height: 100%;
+  }
+  .gridItemWide { grid-column: span 2; }
+  .gridItemTall { grid-row: span 2; }
+  .gridItemBig { grid-column: span 3; grid-row: span 2; }
+  /* New span helpers to match the requested layout */
+  .gridItem2x2 { grid-column: span 2; grid-row: span 2; }
+  .gridItemCol3 { grid-column: span 3; }
+  .gridItemCol3Tall { grid-column: span 3; grid-row: span 2; }
+  .gridItemFull { grid-column: span 6; }
+  /* Adjust image ratios for tall/big cards so visuals fill nicely */
+  .gridItemTall .gridImage,
+  .gridItemBig .gridImage {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+}
+
 .gridItem {
     background: #ffffff;    
     border: 1px solid #e5e7eb;
@@ -168,6 +220,7 @@
     height: 100%;
     overflow: hidden;
     border-radius: 8px;
+    position: relative;
 }
 
 .gridImage {
@@ -181,16 +234,18 @@
 }
 
 .gridDesc {
-    flex: 1 1 0; /* ~20% */
-    background: #ffffff;
-    color: #111827;
-    padding: 10px 12px;
-    font-size: 14px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 12px 14px;
+    font-size: 15px;
+    color: #ffffff;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.75) 100%);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid #f1f5f9;
-    min-height: 44px;
+    align-items: flex-end;
+    min-height: 56px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 
 /* * NOTE: Hover-ийг inline style-аар 'fill' утгыг өөрчилж хийсэн тул, 
@@ -216,4 +271,32 @@
     font-weight: bold;
     color: #d84315; /* Улаан өнгөөр тодотгох */
     margin-left: 8px;
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 90px;
+  gap: 14px;
+  padding: 20px;
+  background: #0e1f2d;
+  border-radius: 20px;
+}
+
+.box {
+  background: #c3c6c7;
+  border-radius: 18px;
+}
+
+ 
+ .bento > :nth-child(4n + 1) { grid-row: span 2; }
+ .bento > :nth-child(4n + 2) { grid-row: span 3; }
+ .bento > :nth-child(4n + 3) { grid-row: span 2; }
+ .bento > :nth-child(4n + 4) { grid-row: span 3; }
+.bento .gridItemInner { height: 100%; }
+.bento .gridImage {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;  
 }

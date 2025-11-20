@@ -786,6 +786,44 @@ export const AIMAG_DATA = {
     transportOptions: [{ mode: "By bus" }, { mode: "Self drive" }],
     tips: [],
   },
+  MN047:{
+    name: "tov",
+    restaurants: [
+     { name: "Bayan Mongolian Resort",
+       link: "https://www.google.com/maps/place/Bayan+Mongolian+Resort/@47.9124799,106.6733724,10z/data=!4m7!3m6!1s0x5d945959f4ef7441:0x3494d051bbc890e4!8m2!3d47.8242675!4d107.6162971!15sChViYXlhbiBvbmdvbGlhbiByZXNvcnSSAQxyZXNvcnRfaG90ZWzgAQA!16s%2Fg%2F11h3kr4_j1?coh=164777&entry=tt&shorturl=1"
+    }, 
+    {
+      name:"Modern Nomads",
+      link:"https://www.google.com/maps/search/?api=1&query=Modern+Nomads+NUBIA+Airport"
+    },
+    {
+      name: "HS Khaan Resort Restaurant",
+      link: "https://hs-khaan-resort.com/dining_en.php?utm_source=chatgpt.com"
+    },
+    {
+      name: "Чансаа Restaurant",
+      link:"https://mapcarta.com/W763031413"
+    }
+  ],
+    hotels: [
+    {
+      name:"Bayan Mongolian Resort",
+      link:"https://www.google.com/maps/place//data=!4m2!3m1!1s0x5d945959f4ef7441:0x3494d051bbc890e4?utm_source=mstt_1"
+    },
+    {
+      name:"HS Khaan Resort Hotel",
+    },{
+      name:"Janchivlin Resort",
+      link:"https://www.google.com/maps/search/?api=1&query=47.5923,107.6093"
+    },
+    {
+      name:"Wilderness / Therapy Resort",
+      link:""
+    }
+    ],
+    transportOptions: [],
+    tips: [],
+  },
 
   MN1: {
     name: "ulaanbaatar",

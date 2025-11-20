@@ -1,18 +1,13 @@
 "use client";
 
-// components/MongoliaMap.js
 import React, { useState } from "react";
-import styles from "../styles/Map.module.css"; // CSS модулиа оруулж ирнэ
-import { AIMAG_ID_TO_NAME, AIMAG_IDS } from "./AimagData";
+import styles from "../styles/Map.module.css"; 
+import { AIMAG_ID_TO_NAME, AIMAG_IDS, AIMAG_ID_TO_SLUG } from "./AimagData";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-// Simplemaps-ийн SVG-г React Component болгон ашиглах жишээ
-// ЖИЧ: Та mn.svg доторх бүх <path> элементүүдийг ЭНД оруулах ёстой.
 const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
-  // Simplemaps-ийн SVG-ийн үндсэн viewBox болон бүх path элементүүдийг энд хуулж оруулаарай.
-  // Аймаг бүр id="MNXXX" гэсэн format-тай байх ёстой.
-  // Бидний жишээнд зөвхөн hover event-ийг харуулахын тулд загварчилсан SVG-г ашиглана.
+  
 
   const router = useRouter();
 
@@ -310,16 +305,94 @@ const MongoliaMap = () => {
           onAimagLeave={handleAimagLeave}
           hoveredAimagId={hoveredAimagId}
         />
-        <h2 className="text-[35px] font-bold" >Most visited:</h2>
-        <div className={styles.contentGrid}>
-          {carduud.map((c, idx) => (
-            <div className={styles.gridItem} key={idx}>
-              <Link href={`/aimag/${c.slug}`} className={styles.gridItemInner}>
-                <img className={styles.gridImage} src={c.img} alt={c.title} />
-                <div className={styles.gridDesc}>{c.title}</div>
-              </Link>
+        {(() => {
+          const allAimags = AIMAG_IDS.map((id) => ({
+            title: AIMAG_ID_TO_NAME[id],
+            slug: id === "MN047" ? "tov" : AIMAG_ID_TO_SLUG[id],
+          }));
+          const imageBySlug = Object.fromEntries(
+            carduud.map((c) => [c.slug, c.img])
+          );
+          return (
+            <div className={styles.mobileAimagButtons}>
+              <div className={styles.contentGrid}>
+                {allAimags.map((c, idx) => (
+                  <div className={styles.gridItem} key={c.slug}>
+                    <Link href={`/aimag/${c.slug}`} className={styles.gridItemInner}>
+                      <img
+                        className={styles.gridImage}
+                        src={imageBySlug[c.slug] || carduud[idx % carduud.length].img}
+                        alt={c.title}
+                      />
+                      <div className={styles.gridDesc}>{c.title}</div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          );
+        })()}
+        <div className={styles.bento}>
+          <div className={`${styles.box} ${styles.box1}`}>
+            <Link href={`/aimag/${carduud[0].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[0].img} alt={carduud[0].title} />
+              <div className={styles.gridDesc}>{carduud[0].title}</div>
+            </Link>
+          </div>
+          <div className={`${styles.box} ${styles.box2}`}>
+            <Link href={`/aimag/${carduud[1].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[1].img} alt={carduud[1].title} />
+              <div className={styles.gridDesc}>{carduud[1].title}</div>
+            </Link>
+          </div>
+          <div className={`${styles.box} ${styles.box3}`}>
+            <Link href={`/aimag/${carduud[2].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[2].img} alt={carduud[2].title} />
+              <div className={styles.gridDesc}>{carduud[2].title}</div>
+            </Link>
+          </div>
+          <div className={`${styles.box} ${styles.box4}`}>
+            <Link href={`/aimag/${carduud[3].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[3].img} alt={carduud[3].title} />
+              <div className={styles.gridDesc}>{carduud[3].title}</div>
+            </Link>
+          </div>
+          <div className={`${styles.box} ${styles.box5}`}>
+            <Link href={`/aimag/${carduud[4].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[4].img} alt={carduud[4].title} />
+              <div className={styles.gridDesc}>{carduud[4].title}</div>
+            </Link>
+          </div>
+          <div className={`${styles.box} ${styles.box6}`}>
+            <Link href={`/aimag/${carduud[5].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[5].img} alt={carduud[5].title} />
+              <div className={styles.gridDesc}>{carduud[5].title}</div>
+            </Link>
+          </div>
+          <div className={`${styles.box} ${styles.box7}`}>
+            <Link href={`/aimag/${carduud[6].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[6].img} alt={carduud[6].title} />
+              <div className={styles.gridDesc}>{carduud[6].title}</div>
+            </Link>
+          </div>
+          <div className={`${styles.box} ${styles.box8}`}>
+            <Link href={`/aimag/${carduud[7].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[7].img} alt={carduud[7].title} />
+              <div className={styles.gridDesc}>{carduud[7].title}</div>
+            </Link>
+          </div>
+          <div className={`${styles.box} ${styles.box9}`}>
+            <Link href={`/aimag/${carduud[8].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[8].img} alt={carduud[8].title} />
+              <div className={styles.gridDesc}>{carduud[8].title}</div>
+            </Link>
+          </div>
+          <div className={`${styles.box} ${styles.box10}`}>
+            <Link href={`/aimag/${carduud[9].slug}`} className={styles.gridItemInner}>
+              <img className={styles.gridImage} src={carduud[9].img} alt={carduud[9].title} />
+              <div className={styles.gridDesc}>{carduud[9].title}</div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

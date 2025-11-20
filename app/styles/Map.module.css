@@ -1,11 +1,37 @@
+.headerBar {
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto 8px auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.headerTitle {
+    font-weight: 800;
+    font-size: 70px;
+    color: #000000;
+    font-size: bold;
+}
+.mapContainerBox {
+    background: #ffffff;
+    border: 1px solid #e5e7eb; /* gray-200 */
+    border-radius: 12px;
+    padding: 16px;
+    max-width: 1500px; /* match header image width */
+    width: 100%;
+    box-sizing: border-box;
+    margin: 16px auto;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
 /* styles/Map.module.css */
 
 .wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
     padding: 20px;
     font-family: Arial, sans-serif;
+    background-color: #e5e5e5;
 }
 
 .title {
@@ -14,18 +40,108 @@
 }
 
 .mapContainer { 
-    width: 1200px; 
-    height: auto;
+    width: 1500px; 
+    height: 600px;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+    background-color: #ffffff;
+
+}
+
+.headerRow {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.verticalLabel {
+        writing-mode: vertical-rl;
+        font-size: 50px;
+        font-family: "ClassicalMongolianDashtseden", sans-serif;
+        color: white;
+}
+.headerImage {  
+    flex: 1 1 auto;
+    width: 1500px;
+    height: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 8px; 
+}
+
+.headerImageWrap {
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.headerOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
 }
 
 .aimagPath {
-    /* SVG дээрх аймаг бүрийн үндсэн загвар */
+    /* SVG дээрх аймаг бүрийн үндсэн загвар */  
     fill: #e0e0e0;
     stroke: #333;
     stroke-width: 0.5;
     cursor: pointer;
     transition: fill 0.2s ease-in-out;
+}
+
+.contentGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin: 24px auto 0 auto;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.gridItem {
+    background: #ffffff;    
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 6px 14px rgba(17, 24, 39, 0.06);
+}
+
+.gridItemInner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.gridImage {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.gridDesc {
+    flex: 1 1 0; /* ~20% */
+    background: #ffffff;
+    color: #111827;
+    padding: 10px 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #f1f5f9;
+    min-height: 44px;
 }
 
 /* * NOTE: Hover-ийг inline style-аар 'fill' утгыг өөрчилж хийсэн тул, 

@@ -23,11 +23,18 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
   };
 
   return (
-    <svg
-      className={styles.mapContainer}
-      baseProfile="tiny"
-      fill="#6f9c76"
-      stroke="#ffffff"
+    <div className={styles.mapWrapper}>
+      <img 
+        src="/map/mongolia-map-bg.jpg" 
+        alt="Mongolia Map Background" 
+        className={styles.mapBackground}
+        onError={(e) => console.error('Error loading map background:', e)} 
+      />
+      <svg
+        className={styles.mapContainer}
+        baseProfile="tiny"
+        fill="rgba(111, 156, 118, 0.7)"  /* Semi-transparent fill */
+        stroke="#ffffff"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth=".5"
@@ -245,6 +252,7 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
         <circle className="Ulaanbaatar" cx="588.7" cy="205.6" id="MN1"></circle>
       </g>
     </svg>
+    </div>
   );
 };
 
@@ -278,121 +286,128 @@ const MongoliaMap = () => {
 
   return (  
     <div className={styles.wrapper}>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      {/* Header Section */}
       <div className={styles.headerRow}>
         <div className={styles.headerImageWrap}>
           <p className={styles.headerTitle}>MONGOLIA</p>
           <img
             className={styles.headerImage}
-           src="https://images.fineartamerica.com/images-medium-large-5/yurt-the-traditional-mongolian-yurt-panoramic-images.jpg"
+            src="https://images.fineartamerica.com/images-medium-large-5/yurt-the-traditional-mongolian-yurt-panoramic-images.jpg"
+            alt="Mongolian landscape"
           />
           <div className={styles.headerOverlay}>
             <div className={styles.verticalLabel}>ᠮᠣᠩᠭᠣᠯ</div>
           </div>
         </div>
-      </div>
-      <div className={styles.infoBox}>
-        аймаг/хот:
-        <span className={styles.aimagName}>{currentAimagName}</span>
-      </div>
-      <div className={styles.mapContainerBox}>
-        <MongoliaSVG  
-          onAimagHover={handleAimagHover}
-          onAimagLeave={handleAimagLeave}
-          hoveredAimagId={hoveredAimagId}
-        />
-        {(() => {
-          const allAimags = AIMAG_IDS.map((id) => ({
-            title: AIMAG_ID_TO_NAME[id],
-            slug: id === "MN047" ? "tov" : AIMAG_ID_TO_SLUG[id],
-          }));
-          const imageBySlug = Object.fromEntries(
-            carduud.map((c) => [c.slug, c.img])
-          );
-          return (
-            <div className={styles.mobileAimagButtons}>
-              <div className={styles.contentGrid}>
-                {allAimags.map((c, idx) => (
-                  <div className={styles.gridItem} key={c.slug}>
-                    <Link href={`/aimag/${c.slug}`} className={styles.gridItemInner}>
-                      <img
-                        className={styles.gridImage}
-                        src={imageBySlug[c.slug] || carduud[idx % carduud.length].img}
-                        alt={c.title}
-                      />
-                      <div className={styles.gridDesc}>{c.title}</div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
+      </div> <br/> <br/>
+       <br/> <br/> <br/> <br/>
+      {/* Map Section */}
+      <div className={styles.mapSection}>
+        <div className={styles.infoBox}>
+          аймаг/хот:
+          <span className={styles.aimagName}>{currentAimagName}</span>
+        </div>
+        
+        <div className={styles.mapContainerBox}>
+          <MongoliaSVG  
+            onAimagHover={handleAimagHover}
+            onAimagLeave={handleAimagLeave}
+            hoveredAimagId={hoveredAimagId}
+          />    
+        </div>
+      </div> <br/> <br/>
+      <p className="text-[40px] text-bold" >Most visited:</p>
+      {/* Bento Grid Section */}
+      <div className={styles.bentoSection}>
+        <div className={styles.bentoContainer}>
+          {carduud.slice(0, 10).map((card, index) => (
+            <div key={index} className={`${styles.bentoBox} ${styles[`box-${index + 1}`]}`}>
+              <Link href={`/aimag/${card.slug}`} className={styles.gridItemInner}>
+                <img className={styles.gridImage} src={card.img} alt={card.title} />
+                <div className={styles.gridDesc}>{card.title}</div>
+              </Link>
             </div>
-          );
-        })()}
-        <div className={styles.bento}>
-          <div className={`${styles.box} ${styles.box1}`}>
-            <Link href={`/aimag/${carduud[0].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[0].img} alt={carduud[0].title} />
-              <div className={styles.gridDesc}>{carduud[0].title}</div>
-            </Link>
-          </div>
-          <div className={`${styles.box} ${styles.box2}`}>
-            <Link href={`/aimag/${carduud[1].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[1].img} alt={carduud[1].title} />
-              <div className={styles.gridDesc}>{carduud[1].title}</div>
-            </Link>
-          </div>
-          <div className={`${styles.box} ${styles.box3}`}>
-            <Link href={`/aimag/${carduud[2].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[2].img} alt={carduud[2].title} />
-              <div className={styles.gridDesc}>{carduud[2].title}</div>
-            </Link>
-          </div>
-          <div className={`${styles.box} ${styles.box4}`}>
-            <Link href={`/aimag/${carduud[3].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[3].img} alt={carduud[3].title} />
-              <div className={styles.gridDesc}>{carduud[3].title}</div>
-            </Link>
-          </div>
-          <div className={`${styles.box} ${styles.box5}`}>
-            <Link href={`/aimag/${carduud[4].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[4].img} alt={carduud[4].title} />
-              <div className={styles.gridDesc}>{carduud[4].title}</div>
-            </Link>
-          </div>
-          <div className={`${styles.box} ${styles.box6}`}>
-            <Link href={`/aimag/${carduud[5].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[5].img} alt={carduud[5].title} />
-              <div className={styles.gridDesc}>{carduud[5].title}</div>
-            </Link>
-          </div>
-          <div className={`${styles.box} ${styles.box7}`}>
-            <Link href={`/aimag/${carduud[6].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[6].img} alt={carduud[6].title} />
-              <div className={styles.gridDesc}>{carduud[6].title}</div>
-            </Link>
-          </div>
-          <div className={`${styles.box} ${styles.box8}`}>
-            <Link href={`/aimag/${carduud[7].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[7].img} alt={carduud[7].title} />
-              <div className={styles.gridDesc}>{carduud[7].title}</div>
-            </Link>
-          </div>
-          <div className={`${styles.box} ${styles.box9}`}>
-            <Link href={`/aimag/${carduud[8].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[8].img} alt={carduud[8].title} />
-              <div className={styles.gridDesc}>{carduud[8].title}</div>
-            </Link>
-          </div>
-          <div className={`${styles.box} ${styles.box10}`}>
-            <Link href={`/aimag/${carduud[9].slug}`} className={styles.gridItemInner}>
-              <img className={styles.gridImage} src={carduud[9].img} alt={carduud[9].title} />
-              <div className={styles.gridDesc}>{carduud[9].title}</div>
-            </Link>
-          </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Reviews Section */}
+      <div className={styles.reviewsSection}>
+        <h2 className={styles.reviewsTitle}>Traveler Experiences </h2>
+        <div className={styles.reviewsContainer}>
+          {[
+            {
+              name: "Samantha Cross",
+              location: "Australia",
+              rating: 5,
+              comment: "Spent 11 nights getting a taste of the nomadic lifestyle. We stayed in fire warmed gers, rode camels in the Gobi desert, saw once known to be extinct wild horses, and bathed in hot springs. A wonderful experience that I'll never forget.",
+              avatar: "https://randomuser.me/api/portraits/women/45.jpg"
+            },
+            {
+              name: "Mary Kay & Natalie",
+              location: "USA",
+              rating: 5,
+              comment: "Our guide Anar did an excellent job and we enjoyed her very much. Our driver Denzka was very professional and I felt very safe. I only wish we had more time here. Hopefully we will return again soon.",
+              avatar: "https://randomuser.me/api/portraits/women/68.jpg"
+            },
+            {
+              name: "Furkan",
+              location: "United Kingdom",
+              rating: 5,
+              comment: "I had an amazing time in the Gobi! The team made the trip. Denska is the best driver I've had on any trip, and Soni is an entertaining and knowledgeable guide. Thank you for all your support making the trip happen.",
+              avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+            },
+            {
+              name: "Siewhong",
+              location: "Singapore",
+              rating: 5,
+              comment: "We've really enjoyed our trip in Mongolia very much! It was indeed an adventurous journey with lots of fun. The boat trip at Khuvsgul Lake, Naadam festival, and horse riding were amazing. Our driver Toka was incredibly professional and went above and beyond during a river crossing incident.",
+              avatar: "https://randomuser.me/api/portraits/women/28.jpg"
+            },
+            {
+              name: "Vijay & Ranjit Virk",
+              location: "USA",
+              rating: 5,
+              comment: "Thank you for ensuring we had a wonderful trip in Mongolia. We greatly appreciated the traditional Mongolian farewell – it was touching. We already miss Mongolia and the wonderful hospitality we received.",
+              avatar: "https://randomuser.me/api/portraits/men/45.jpg"
+            },
+            {
+              name: "Kathryn & Sandra",
+              location: "Australia",
+              rating: 5,
+              comment: "We adored our time with you and have recommended your company and tour to anyone who wants to listen. Mongolia is a magic place and so are the people we met.",
+              avatar: "https://randomuser.me/api/portraits/women/50.jpg"
+            },
+            {
+              name: "Nicholas Low",
+              location: "International",
+              rating: 5,
+              comment: "My photos of our holiday in Mongolia came out spectacularly well. Everyone who has seen them has raved about how beautiful your country is. Our holiday far surpassed my expectations in every way.",
+              avatar: "https://randomuser.me/api/portraits/men/55.jpg"
+            }
+          ].map((review, index) => (
+            <div key={index} className={styles.reviewCard}>
+              <div className={styles.reviewHeader}>
+                <img 
+                  src={review.avatar} 
+                  alt={review.name} 
+                  className={styles.reviewAvatar}
+                />
+                <div>
+                  <h4 className={styles.reviewName}>{review.name}</h4>
+                  <p className={styles.reviewLocation}>{review.location}</p>
+                  <div className={styles.rating}>
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className={i < review.rating ? styles.starFilled : styles.star}>
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className={styles.reviewText}>"{review.comment}"</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

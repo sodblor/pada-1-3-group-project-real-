@@ -1,302 +1,326 @@
-.headerBar {
-    max-width: 1500px;
-    width: 100%;
-    margin: 0 auto 8px auto;
-    display: flex;
-    justify-content: flex-end;
-}
+  .headerBar {
+      max-width: 1500px;
+      width: 100%;
+      margin: 0 auto 8px auto;
+      display: flex;
+      justify-content: flex-end;
+  }
 
-.headerTitle {
-    font-weight: 800;
-    font-size: 90px;
-    color: #ffffff;
-    position: absolute;
-    top: calc(50% - 170px);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
-}
-.mapContainerBox {
-    background: #ffffff;
-    border: 1px solid #e5e7eb; /* gray-200 */
+  .headerTitle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 80px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      z-index: 2;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+  }
+  .mapContainerBox {
+      background: #ffffff;
+      border: 1px solid #e5e7eb; /* gray-200 */
+      border-radius: 12px;
+      padding: 16px;
+      max-width: 1500px; /* match header image width */
+      width: 100%;
+      box-sizing: border-box;
+      margin: 16px auto;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+  /* styles/Map.module.css */
+
+  .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;    
+      /* padding: 20px; */
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+  }
+
+  .title {
+      color: #333;
+      margin-bottom: 20px;
+  } 
+
+  .mapContainer { 
+      width: 1500px; 
+      height: 600px;
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+      background-color: #ffffff;
+
+  }
+  .mapSection{
+    display: flex;  
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffffff;
+  }
+  .infoBox{
+    border: 1px solid #215fda;
     border-radius: 12px;
     padding: 16px;
-    max-width: 1500px; /* match header image width */
-    width: 100%;
+    width: 200px;
     box-sizing: border-box;
     margin: 16px auto;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-/* styles/Map.module.css */
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;    
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #e5e5e5;
-}
-
-.title {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.mapContainer { 
-    width: 1500px; 
-    height: 600px;
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
-    background-color: #ffffff;
-
-}
-
-.headerRow {
-    display: flex;
-    align-items: stretch;
-    gap: 12px;
-    margin-bottom: 16px;
-}
-
-.verticalLabel {
-        writing-mode: vertical-rl;
-        font-size: 50px;
-        font-family: "ClassicalMongolianDashtseden", sans-serif;
-        color: white;
-}
-.headerImage {  
-    flex: 1 1 auto;
-    width: 1500px;
-    height: 700px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-    border-radius: 8px; 
-}
-
-.headerImageWrap {
-    position: relative;
-    flex: 1 1 auto;
-}
-
-.headerOverlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    pointer-events: none;
-}
-
-/* Mobile aimag buttons (hidden by default) */
-.mobileAimagButtons {
-    display: none;
-}
-
-.aimagBtn {
-    display: block;
-    text-align: center;
-    padding: 10px 12px;
-    border-radius: 10px;
-    background: #111827;
-    color: #ffffff;
-    border: 1px solid #1f2937;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .headerImage { 
-    width: 100%;
-    height: 520px;
   }
-}
 
-@media (max-width: 768px) {
-  .headerTitle {
-    font-size: 56px;
-    top: calc(50% - 110px);
-  }
-  .headerImage {
-    width: 100%;
-    height: 360px;
-  }
-  .mapContainerBox {
-    padding: 12px;
-  }
-}
-
-@media (max-width: 640px) {
-  .mapContainer { 
-    display: none;
-  }
-  /* Show mobile aimag buttons on phones */
-  .mobileAimagButtons {
-    display: block;
-    margin-top: 12px;
-  }
-  .headerTitle {
-    font-size: 42px;
-    top: calc(50% - 80px);
-  }
   .headerRow {
-    gap: 8px;
+      display: flex;  
+      /* align-items: stretch; */
+      /* gap: 12px; */
+      /* margin-bottom: 16px; */
+      background-color: rgb(27, 184, 92);
+      width: 100%;
+      height: 600px;
   }
-  .headerImage {
-    width: 100%;
-    height: 260px;
-  }
-  /* Ensure 2 columns on phone overriding base grid rule */
-  .mobileAimagButtons .contentGrid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 10px !important;
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
 
-.aimagPath {
-    /* SVG дээрх аймаг бүрийн үндсэн загвар */  
-    fill: #e0e0e0;
-    stroke: #333;
-    stroke-width: 0.5;
-    cursor: pointer;
-    transition: fill 0.2s ease-in-out;
-}
+  .verticalLabel {
+          writing-mode: vertical-rl;
+          font-size: 50px;  
+          font-family: "ClassicalMongolianDashtseden", sans-serif;
+          color: white;
+  }
+  .headerImage {  
+      flex: 1 1 auto;
+      width: 100%;
+      height: 700px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      border-radius: 8px; 
 
-.contentGrid {
+  }
+
+  .headerImageWrap {
+      position: relative;
+      flex: 1 1 auto;
+  }
+
+  .headerOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+  }
+
+  .aimagPath {
+      fill: #e0e0e0;
+      stroke: #333;
+      stroke-width: 0.5;
+      cursor: pointer;
+      transition: fill 0.2s ease-in-out;
+  }
+
+  .bento {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-    margin: 24px auto 0 auto;
-    width: 100%;
-    max-width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 90px;
+    gap: 14px;
+    padding: 20px;
+    background: #0e1f2d;
+    border-radius: 20px;
+  }
+    
+  .box {
+    background: #c3c6c7;
+    border-radius: 18px;
+  }
+
+  /* Bento Container */
+  .bentoContainer {
+    /* Scoped CSS variables for this module */
+    --gap-size: 10px;
+    --container-color: #2c3e50;
+    --box-color: #cccccc;
+    --padding-size: 20px;
+    --border-radius-size: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: var(--gap-size);
+    padding: var(--padding-size);
+    background-color: var(--container-color);
+    border-radius: var(--border-radius-size);
+    width: 1500px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .bentoBox {
+    background-color: var(--box-color);
+    border-radius: var(--border-radius-size);
+    display: flex;
     justify-content: center;
-}
-
-
-@media (min-width: 1024px) {
-  .contentGrid {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    /* grid-auto-rows: 120px; */
-    gap: 16px;
-  }
-  .gridItem {
-    height: 100%;
-  }
-  .gridItemInner {
-    height: 100%;
-  }
-  .gridItemWide { grid-column: span 2; }
-  .gridItemTall { grid-row: span 2; }
-  .gridItemBig { grid-column: span 3; grid-row: span 2; }
-  /* New span helpers to match the requested layout */
-  .gridItem2x2 { grid-column: span 2; grid-row: span 2; }
-  .gridItemCol3 { grid-column: span 3; }
-  .gridItemCol3Tall { grid-column: span 3; grid-row: span 2; }
-  .gridItemFull { grid-column: span 6; }
-  /* Adjust image ratios for tall/big cards so visuals fill nicely */
-  .gridItemTall .gridImage,
-  .gridItemBig .gridImage {
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-  }
-}
-
-.gridItem {
-    background: #ffffff;    
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 0;
+    align-items: center;
+    font-weight: bold;
+    color: #444;
     overflow: hidden;
-    box-shadow: 0 6px 14px rgba(17, 24, 39, 0.06);
-}
+    position: relative;
+  }
 
-.gridItemInner {
+  .bentoBox .gridItemInner {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  .bentoBox .gridImage {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    border-radius: 8px;
-    position: relative;
-}
-
-.gridImage {
-    width: 100%;
-    display: block;
-    aspect-ratio: 16 / 9;
-    height: auto;
     object-fit: cover;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
+    transition: transform 0.3s ease;
+  }
 
-.gridDesc {
+  .bentoBox .gridDesc {
     position: absolute;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    padding: 12px 14px;
-    font-size: 15px;
-    color: #ffffff;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.75) 100%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .bentoBox:hover .gridImage {
+    transform: scale(1.05);
+  }
+
+  .bentoBox:hover .gridDesc {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  /* Box positions */
+  .box-1 { grid-column: 1 / span 2; grid-row: 1 / span 3; } 
+  .box-5 { grid-column: 3 / span 1; grid-row: 1 / span 2; }
+  .box-2 { grid-column: 3 / span 1; grid-row: 3 / span 1; }
+  .box-3 { grid-column: 3 / span 1; grid-row: 4 / span 2; }
+  .box-4 { grid-column: 4 / span 2; grid-row: 1 / span 2; }
+  .box-6 { grid-column: 6 / span 1; grid-row: 1 / span 2; }
+  .box-7 { grid-column: 6 / span 1; grid-row: 3 / span 2; }
+  .box-8 { grid-column: 6 / span 1; grid-row: 5 / span 1; }
+  .box-9 { grid-column: 1 / span 2; grid-row: 4 / span 2; }
+  .box-10 { grid-column: 4 / span 2; grid-row: 3 / span 3; }
+
+  /* Ensure images fill the bento boxes */
+  .bento-container .gridItemInner { height: 100%; }
+  .bento-container .gridImage { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Reviews Section */
+  .reviewsSection {
+    width: 100%;
+    max-width: 1500px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .reviewsTitle {
+    font-size: 2rem;
+    color: #2d3748;
+    margin-bottom: 24px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .reviewsContainer {
     display: flex;
-    align-items: flex-end;
-    min-height: 56px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-}
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 #f7fafc;
+    -webkit-overflow-scrolling: touch;
+  }
 
-/* * NOTE: Hover-ийг inline style-аар 'fill' утгыг өөрчилж хийсэн тул, 
- * CSS-ийн :hover pseudo-class-ийг ашиглахгүй.
- * Хэрвээ та зөвхөн CSS-ээр хийхийг хүсвэл:
- * .aimagPath:hover {
- * fill: #ff6347;
- * }
- * гэж бичих боломжтой ч, React state ашигласан нь илүү уян хатан байдаг.
-*/
+  .reviewsContainer::-webkit-scrollbar {
+    height: 8px;
+  }
 
-.infoBox {
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    border: 1px solid #0070f3;
-    border-radius: 5px;
-    background-color: #f0f8ff;
-    color: #333;
-    font-size: 1.1em;   
-}
+  .reviewsContainer::-webkit-scrollbar-track {
+    background: #f7fafc;
+    border-radius: 4px;
+  }
 
-.aimagName {
-    font-weight: bold;
-    color: #d84315; /* Улаан өнгөөр тодотгох */
-    margin-left: 8px;
-}
+  .reviewsContainer::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 4px;
+  }
 
-.bento {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 90px;
-  gap: 14px;
-  padding: 20px;
-  background: #0e1f2d;
-  border-radius: 20px;
-}
+  .reviewCard {
+    flex: 0 0 320px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
 
-.box {
-  background: #c3c6c7;
-  border-radius: 18px;
-}
+  .reviewCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
 
- 
- .bento > :nth-child(4n + 1) { grid-row: span 2; }
- .bento > :nth-child(4n + 2) { grid-row: span 3; }
- .bento > :nth-child(4n + 3) { grid-row: span 2; }
- .bento > :nth-child(4n + 4) { grid-row: span 3; }
-.bento .gridItemInner { height: 100%; }
-.bento .gridImage {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: auto;
-  object-fit: cover;  
-}
+  .reviewHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .reviewAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
+    border: 2px solid #e2e8f0;
+  }
+
+  .reviewName {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+  }
+
+  .reviewLocation {
+    margin: 2px 0 0 0;
+    font-size: 0.9rem;
+    color: #718096;
+  }
+
+  .rating {
+    display: flex;
+    margin-top: 4px;
+  }
+
+  .star {
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    margin-right: 2px;
+  }
+
+  .starFilled {
+    color: #f6ad55;
+    font-size: 1.1rem;
+    margin-right: 2px;
+  }
+
+  .reviewText {
+    color: #4a5568;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }

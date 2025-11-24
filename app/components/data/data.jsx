@@ -12,18 +12,18 @@ export const AIMAG_DATA = {
       { name: "Malchin Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Malchin+Restaurant+Tsetserleg" },
       { name: "Tsakhiur Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Tsakhiur+Tsetserleg" },
       { name: "Tenger Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Tenger+Restaurant+Tsetserleg" },
-      { name: "Sky Nomad’s Restaurant", link: "https://mapcarta.com/N4991696521"},
-      { name: "Mongolian Falcon (Tsetserleg)", link: "https://www.hinomad.mn/en/hotel/1863531895938093056"},
-      { name: "Цэнхэр жигүүр / Blue Wing Tourist Camp Restaurant", link: "https://www.ihotel.mn/hotel/tsenkher-zhigr-zhuulchny-baaz/"}
+      { name: "Sky Nomad’s Restaurant", link: "https://mapcarta.com/N4991696521" },
+      { name: "Mongolian Falcon (Tsetserleg)", link: "https://www.hinomad.mn/en/hotel/1863531895938093056" },
+      { name: "Цэнхэр жигүүр / Blue Wing Tourist Camp Restaurant", link: "https://www.ihotel.mn/hotel/tsenkher-zhigr-zhuulchny-baaz/" }
     ],
     cafes: [
-  { name: "Sky Nomad’s Café", link: "https://www.google.com/maps/search/?api=1&query=Sky+Nomad’s+Tsetserleg" },
-  { name: "Fairfield Guesthouse Café & Bakery", link: "https://www.google.com/maps/search/?api=1&query=Fairfield+Tsetserleg" },
-  { name: "Ashid Bekhi Coffee Shop", link: "https://www.google.com/maps/search/?api=1&query=Ashid+Bekhi+Tsetserleg" },
-  { name: "Ayura Vegan Café", link: "https://ayuravegancafe.wordpress.com/" },
-  { name: "Orgil Cafe", link: "https://mapcarta.com/N4324686291" },
-  {name:"Моих Чянга Bakery (Moikh Chyanga Bakery)", link:"https://mapcarta.com/N4324686291"},
-  ],
+      { name: "Sky Nomad’s Café", link: "https://www.google.com/maps/search/?api=1&query=Sky+Nomad’s+Tsetserleg" },
+      { name: "Fairfield Guesthouse Café & Bakery", link: "https://www.google.com/maps/search/?api=1&query=Fairfield+Tsetserleg" },
+      { name: "Ashid Bekhi Coffee Shop", link: "https://www.google.com/maps/search/?api=1&query=Ashid+Bekhi+Tsetserleg" },
+      { name: "Ayura Vegan Café", link: "https://ayuravegancafe.wordpress.com/" },
+      { name: "Orgil Cafe", link: "https://mapcarta.com/N4324686291" },
+      { name: "Моих Чянга Bakery (Moikh Chyanga Bakery)", link: "https://mapcarta.com/N4324686291" },
+    ],
     hotels: [
       { name: "Ashid Bekhi Hotel", link: "https://mapcarta.com/W1195988055" },
       { name: "Malchin Hotel", link: "https://www.facebook.com/malchinhotelara/" },
@@ -205,10 +205,9 @@ export const AIMAG_DATA = {
     name: "govisumber",
     shortDescription:
       "Govisümber is one of Mongolia’s smallest aimags, located just south of Ulaanbaatar and known for its mining and modern development.",
-    // no "established" on wiki, but it's a newer aimag (1990s), you can put a placeholder
     established: "1996",
     center: "Choyr",
-    centerDistanceFromUlaanbaatar_km: 180, // approximate; small aimag near UB
+    centerDistanceFromUlaanbaatar_km: 180,
     restaurants: [
       { name: "Local Diner", link: "/h" },
       { name: "Súm Café", link: "/h" }
@@ -312,9 +311,9 @@ export const AIMAG_DATA = {
     name: "dornogovi",
     shortDescription:
       "Dornogovi aimag covers a large part of the eastern Gobi Desert, offering iconic desert landscapes and salt flats.",
-    established: "1931", 
+    established: "1931",
     center: "Sainshand",
-    centerDistanceFromUlaanbaatar_km: 500, 
+    centerDistanceFromUlaanbaatar_km: 500,
     restaurants: [
       { name: "Desert Nomad Restaurant", link: "/h" },
       { name: "Gobi Grill", link: "/h" }
@@ -347,9 +346,9 @@ export const AIMAG_DATA = {
     name: "dundgovi",
     shortDescription:
       "Dundgovi is a southern aimag featuring semi-desert terrain, salt lakes, and nomadic herding communities.",
-    established: "1942", 
+    established: "1942",
     center: "Mandalgovi",
-    centerDistanceFromUlaanbaatar_km: 300, 
+    centerDistanceFromUlaanbaatar_km: 300,
     restaurants: [
       { name: "Royal Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Royal+Restaurant+Mandalgovi" },
       { name: "Burd Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Burd+Hotel+Mandalgovi" }
@@ -384,7 +383,7 @@ export const AIMAG_DATA = {
       "Zavkhan aimag lies in western Mongolia, where desert dunes meet mountain highlands — home to Otgontenger peak and scenic lakes. ",
     established: "1931",
     center: "Uliastai",
-    centerDistanceFromUlaanbaatar_km: 1104, 
+    centerDistanceFromUlaanbaatar_km: 1104,
     restaurants: [
       { name: "Edelweiss Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Edelweiss+Uliastai" },
       { name: "Hangai Restaurant", link: "/h" }
@@ -626,9 +625,9 @@ export const AIMAG_DATA = {
     name: "khuvsgul",
     shortDescription:
       "Khövsgöl aimag is in northern Mongolia and is famous for Lake Khövsgöl, clear waters, dense forest, and nomadic life.",
-    established: "1931", // placeholder
+    established: "1931", 
     center: "Mörön",
-    centerDistanceFromUlaanbaatar_km: 880, // rough
+    centerDistanceFromUlaanbaatar_km: 880, 
     restaurants: [
       { name: "Orgil Restaurant (Hatgal)", link: "https://www.google.com/maps/search/?api=1&query=Orgil+Hatgal" },
       { name: "Northern Steppes Restaurant", link: "/h" }
@@ -641,11 +640,59 @@ export const AIMAG_DATA = {
       { name: "Khuvsgul Lake Hotel", link: "/h" },
       { name: "Eco‑Lodge Ger Camp", link: "/h" }
     ],
-    attractions: [
-      "Lake Khövsgöl",
-      "Forest Hiking Trails",
-      "Nomadic Ger Camps"
-    ],
+    attractions:[
+  {
+    name: "Khuvsgul Lake (Хөвсгөл нуур)",
+    note: "The biggest freshwater lake in Mongolia. Called “Blue Pearl of Mongolia.” Crystal-clear water, mountains all around, boat rides, camping, horseback riding.",
+    image: "https://www.escapetomongolia.com/__data/assets/image/0014/6224/222.jpg"
+  },
+  {
+    name: "Khatgal Town",
+    note: "Southern gateway to the lake. Has cozy cafes, souvenir shops, bike rentals, and lake-view spots.",
+    image: "https://cdn.mongolia-guide.com/generated/sum/9EztTp5RqnFd2mfgUNkFcu6R9NQT00oyALBgKV0h_1920_1000.jpeg"
+  },
+  {
+    name: "Khuvsgul Lake National Park",
+    note: "Huge protected area around the lake. Good for hiking, trekking, wildlife watching. Famous for reindeer herders (Tsaatan) access point.",
+    image: "https://travelbuddies.info/wp-content/uploads/2016/04/lake-khuvsgul-1024x378.jpg"
+  },
+  {
+    name: "Tsaatan (Reindeer Herders) Community",
+    note: "Nomadic Dukha people living in taiga near Tsagaan Nuur. Unique culture, riding reindeers, photography, homestays.",
+    image: "https://travelbuddies.info/wp-content/uploads/2016/04/reindeers-near-teepee-in-taiga-1.jpg",
+  },
+  {
+    name: "Darkhad Valley (Дархадын хотгор)",
+    note: "Remote, stunning valley surrounded by mountains. Known for shaman culture, rivers, and lush forests.",
+    image: "https://correctmongolia.com/wp-content/uploads/2024/02/darkhad-valley-1.jpg"
+  },
+  {
+    name: "Khankh Town & Khankh Border Area",
+    note: "Located on the northern side of the lake. Quiet, untouched nature, beautiful pebble beaches.",
+    image: "https://cdn.mongolia-guide.com/generated/sum/tqAgaIUYU2X7vqGMK6YONuWhppRn0KmmJGwlqFYL_520_350.jpeg"
+  },
+  {
+    name: "Uushig Deer Stones (Уушгийн хадны хүннүч чулуужсан хөшөө)",
+    note: "Ancient deer stones near Murun. Archaeological site dating back to Bronze Age.",
+    image: "https://i0.wp.com/ashihai.mn/wp-content/uploads/Uushig2.jpeg?resize=1024%2C683&ssl=1"
+  },
+  {
+    name: "Uran Dush Passage (Уран дөш)",
+    note: "Natural rock formations and cliffs with great hiking.",
+    image: "https://humanz.mn/wp-content/uploads/2025/11/image-41.png"
+  },
+  {
+    name: "Danzandarjaa Monastery (Данзанравжаа хийд) – Mörön",
+    note: "Religious and historical site in the provincial capital.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/8b/M%C3%B6r%C3%B6nMonastery.jpg"
+  },
+  {
+    name: "Somo Had (Хүслийн хад)",
+    note: "Хүслийн хад is a lakeside sacred rock on the eastern shore of Khuvsgul Lake, where visitors make wishes, enjoy panoramic views, and take photos by the iconic cliff.",
+    image: "https://ggg.duuren.life/storage/post/csofk1cazgmffq5fkppqwkferkrupvgruksnovvw_1709184733.jpg"
+  }
+],
+
     transportOptions: [
       { mode: "Bus", note: "Bus to Mörön from UB" },
       { mode: "Car", note: "4×4 for forest and mountain roads" }
@@ -661,9 +708,9 @@ export const AIMAG_DATA = {
     name: "khentii",
     shortDescription:
       "Khentii aimag lies to the east of Ulaanbaatar and features rolling hills, forested areas, and historical significance as the birthplace of Genghis Khan.",
-    established: "1930", // placeholder
-    center: "Öndörkhaan", // from geo‑ref :contentReference[oaicite:4]{index=4}
-    centerDistanceFromUlaanbaatar_km: 340, // approximate
+    established: "1930", 
+    center: "Öndörkhaan", 
+    centerDistanceFromUlaanbaatar_km: 340, 
     restaurants: [
       { name: "Khentii Traditional Restaurant", link: "/h" },
       { name: "Forest Edge Restaurant", link: "/h" }
@@ -681,7 +728,7 @@ export const AIMAG_DATA = {
       "Forest Hiking",
       "Historical Monuments"
     ],
-   transportOptions: [
+    transportOptions: [
       { mode: "Bus", note: "Direct buses from UB" },
       { mode: "Car", note: "Scenic mountain roads" }
     ],
@@ -696,9 +743,9 @@ export const AIMAG_DATA = {
     name: "umnugovi",
     shortDescription:
       "Ömnögovi aimag is Mongolia’s largest aimag by area, dominated by the Gobi Desert and famous for its dunes, fossils, and remote beauty.",
-    established: "1931", // approximate
+    established: "1931", 
     center: "Dalanzadgad",
-    centerDistanceFromUlaanbaatar_km: 550, // rough
+    centerDistanceFromUlaanbaatar_km: 550, 
     restaurants: [
       { name: "Khishig Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Ömnögovi+Khishig+Restaurant" },
       { name: "Green Gobi Restaurant", link: "/h" },
@@ -767,7 +814,7 @@ export const AIMAG_DATA = {
   MN1: {
     name: "ulaanbaatar",
     shortDescription: "Ulaanbaatar is Mongolia’s capital and largest city, serving as the country’s political, economic, and cultural center.",
-    established: "1639", // historic founding
+    established: "1639", 
     center: "Ulaanbaatar",
     centerDistanceFromUlaanbaatar_km: 0,
     restaurants: [
@@ -797,12 +844,7 @@ export const AIMAG_DATA = {
       "Visit early in the morning for temples to avoid crowds."
     ]
   },
-
-  // ... add other aimags similarly: MN039 (Khentii), MN053 (Ömnögovi), MN047 (Töv), etc.
 };
-
-// (Maintain your SLUG_TO_AIMAG_ID, AIMAG_ID_TO_NAME, helper functions etc.)
-
 export const SLUG_TO_AIMAG_ID = {};
 export const AIMAG_ID_TO_NAME = {};
 

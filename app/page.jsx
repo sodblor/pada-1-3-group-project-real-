@@ -43,17 +43,12 @@ export default function HomePage() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {/* Background image */}
       <img
         src={img}
         alt="background"
         className="absolute inset-0 w-full h-full object-cover brightness-[.92] contrast-[1.05] transition-opacity duration-1000"
       />
-
-      {/* Gradient overlay */}
       <div className={`absolute inset-0 ${gradients[type]}`} />
-
-      {/* Search bar */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-3 w-[90%] max-w-md p-3 bg-white/90 rounded-full shadow-lg backdrop-blur-md">
         <input
           type="text"

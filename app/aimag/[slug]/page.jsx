@@ -15,6 +15,8 @@ import {
   getCategoryBySlug,
 } from "../../components/data/data";
 
+import { AimagDestinationDetails, AimagHotelDetails } from "../../components/AimagDestinationDetails";
+
 import Link from "next/link";
 
 
@@ -468,15 +470,17 @@ export const FunContent = ({ borderRadiusLG, name, aimag }) => {
         {aimag?.attractions?.length > 0 && (
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-3 text-gray-900">Main attractions</h2>
-            <div className="grid gap-3 md:grid-cols-2">
-              {aimag.attractions.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-gray-100 bg-white px-4 py-3 text-sm text-gray-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition"
-                >
-                  {item}
-                </div>
-              ))}
+            <div className="grid gap-4 md:grid-cols-2">
+              {aimag.attractions.map((item, idx) => {
+                const isObject = item && typeof item === "object";
+                const title = isObject ? item.name : item;
+                const note = isObject ? item.note : undefined;
+                const image = isObject ? item.image : undefined;
+
+                return (
+                  <AimagDestinationDetails key={idx} attraction={item} />
+                );
+              })}
             </div>
           </div>
         )}
@@ -581,8 +585,9 @@ export const AccomodationContent = ({ borderRadiusLG, aimag, name }) => {
           padding: 24,
           background: "#FFFFFF",
           borderRadius: borderRadiusLG,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+          boxShadow: "0 4px 16px rgba(15,23,42,0.06)",
         }}
+        className="border border-gray-100"
       >
         {aimag?.hotels?.length > 0 ? (
           <List
@@ -590,26 +595,7 @@ export const AccomodationContent = ({ borderRadiusLG, aimag, name }) => {
             dataSource={aimag.hotels}
             renderItem={(hotel) => (
               <List.Item key={hotel.name}>
-                <div className="h-full flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition shadow-gray-100">
-                  <div>
-                    <h3 className="font-semibold text-base md:text-lg text-gray-900 mb-1 line-clamp-2">
-                      {hotel.name}
-                    </h3>
-                    {hotel.address && (
-                      <p className="text-xs md:text-sm text-gray-600 mb-2 line-clamp-2">
-                        {hotel.address}
-                      </p>
-                    )}
-                  </div>
-                  {hotel.link && (
-                    <Link
-                      href={hotel.link}
-                      className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline"
-                    >
-                      Visit hotel
-                    </Link>
-                  )}
-                </div>
+                <AimagHotelDetails hotel={hotel} />
               </List.Item>
             )}
           />

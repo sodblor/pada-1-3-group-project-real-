@@ -1,5 +1,6 @@
 "use client";
-
+import Image from "next/image";
+import { useEffect } from "react";
 import { useState } from "react";
 import { ThemeProvider } from "next-themes";
 import {
@@ -14,6 +15,8 @@ import {
   CloudRain,
   CloudSun,
 } from "lucide-react";
+
+
 
 const travelResources = [
   {
@@ -163,25 +166,30 @@ export default function TravelResourcesPage() {
       >
         <div className="absolute inset-0 bg-black/50 dark:bg-black/70 transition-colors duration-500"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-20 space-y-20 z-10">
-          {/* Hero Image */}
-          <div className="flex justify-center relative z-10">
-            <img
-              src="/oneinfo.jpg"
-              alt="Mongolia info"
-              className="
-    w-full             
-    max-w-none         
-    h-[420px]           
-    object-cover       
-    rounded-2xl 
-    shadow-2xl 
-    border-4 
-    border-white 
-    dark:border-gray-200
-  "
-            />
-          </div>
+{/* FULLSCREEN HERO — FIXED WIDTH + CENTERED CROP */}
+<section className="relative w-full h-screen overflow-hidden">
+  <div className="absolute inset-0">
+    <Image
+      src="/oneinfo.jpg"
+      alt="Travel Hero"
+      fill
+      className="object-cover object-center"
+      priority
+      sizes="100vw"
+    />
+  </div>
+
+  {/* DARK OVERLAY + TEXT */}
+  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+    <h1 className="text-white text-5xl md:text-6xl font-bold drop-shadow-xl text-center px-4">
+      Plan Your Adventure
+    </h1>
+  </div>
+</section>
+
+{/* MAIN CONTENT WRAPPER STARTS AFTER HERO */}
+<div className="relative max-w-7xl mx-auto px-4 md:px-6 py-20 space-y-20 z-10">
+
 
           {/* Info Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 -mt-20 relative z-10">

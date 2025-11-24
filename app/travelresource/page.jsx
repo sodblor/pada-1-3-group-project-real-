@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import { useState } from "react";
-import { ThemeProvider } from "next-themes";
 import {
   Globe,
   HeartPulse,
@@ -159,61 +158,54 @@ export default function TravelResourcesPage() {
   const categories = [...new Set(travelResources.map((r) => r.category))];
 
   return (
-    <ThemeProvider attribute="class" enableSystem={true}>
-      <div
-        className="w-full min-h-screen bg-cover bg-center relative transition-colors duration-500"
-        style={{ backgroundImage: "url('/resourcebg.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-black/50 dark:bg-black/70 transition-colors duration-500"></div>
+    <div className="relative min-h-screen">
+      {/* HERO SECTION */}
+      <section className="relative w-full h-screen overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/oneinfo.jpg"
+            alt="Travel Hero"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <h1 className="text-white text-5xl md:text-6xl font-bold drop-shadow-xl text-center px-4">
+              Plan Your Adventure
+            </h1>
+          </div>
+        </div>
+      </section>
 
-{/* FULLSCREEN HERO — FIXED WIDTH + CENTERED CROP */}
-<section className="relative w-full h-screen overflow-hidden">
-  <div className="absolute inset-0">
-    <Image
-      src="/oneinfo.jpg"
-      alt="Travel Hero"
-      fill
-      className="object-cover object-center"
-      priority
-      sizes="100vw"
-    />
-  </div>
-
-  {/* DARK OVERLAY + TEXT */}
-  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-    <h1 className="text-white text-5xl md:text-6xl font-bold drop-shadow-xl text-center px-4">
-      Plan Your Adventure
-    </h1>
-  </div>
-</section>
-
-{/* MAIN CONTENT WRAPPER STARTS AFTER HERO */}
-<div className="relative max-w-7xl mx-auto px-4 md:px-6 py-20 space-y-20 z-10">
-
+      {/* MAIN CONTENT */}
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-20 -mt-20 z-10">
+        <div className="w-full bg-cover bg-center relative">
+          <div className="absolute inset-0 bg-black/50 -z-10"></div>
 
           {/* Info Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 -mt-20 relative z-10">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-xl transition-colors duration-500">
+            <div className="bg-white rounded-xl p-6 text-center shadow-xl">
               <p className="font-bold text-lg">Capital City</p>
               <p>Ulaanbaatar</p>
             </div>
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-xl transition-colors duration-500">
+            <div className="bg-white rounded-xl p-6 text-center shadow-xl">
               <p className="font-bold text-lg">Writing System</p>
               <p>Mongolian Cyrillic</p>
             </div>
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-xl transition-colors duration-500">
+            <div className="bg-white rounded-xl p-6 text-center shadow-xl">
               <p className="font-bold text-lg">Demographics</p>
               <p>Mongol, Kazakh, Other</p>
             </div>
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-xl transition-colors duration-500">
+            <div className="bg-white rounded-xl p-6 text-center shadow-xl">
               <p className="font-bold text-lg">Religion</p>
               <p>Buddhism, Islam, Shamanism</p>
             </div>
           </div>
 
           {/* Ulaanbaatar Weather Widget */}
-          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 mb-10">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <div className="bg-white rounded-2xl shadow-xl p-6 mb-10">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
               Current Weather
             </h2>
 
@@ -245,25 +237,15 @@ export default function TravelResourcesPage() {
           </div>
 
           {/* Weather Section */}
-          <section className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 space-y-6 transition-colors duration-500">
+          <section className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
             <div className="flex justify-center relative z-10">
               <img
                 src="/temphero.png"
                 alt="Mongolia info"
-                className="
-    w-full             
-    max-w-none         
-    h-[420px]           
-    object-cover       
-    rounded-2xl 
-    shadow-2xl 
-    border-4 
-    border-white 
-    dark:border-gray-200
-  "
+                className="w-full max-w-none h-[420px] object-cover rounded-2xl shadow-2xl border-4 border-white"
               />
             </div>
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+            <h2 className="text-2xl font-semibold text-gray-900">
               Seasons and Holidays
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -418,12 +400,12 @@ export default function TravelResourcesPage() {
                     href={r.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1 overflow-hidden"
+                    className="block rounded-2xl bg-white shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1 overflow-hidden"
                     style={{ gridRowEnd: `span ${rowSpan}` }}
                   >
                     {/* Image */}
                     <div
-                      className="bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400 text-sm relative overflow-hidden"
+                      className="bg-gray-200 flex items-center justify-center text-gray-400 text-sm relative overflow-hidden"
                       style={{
                         height:
                           rowSpan === 3
@@ -440,20 +422,20 @@ export default function TravelResourcesPage() {
                       />
 
                       {/* Category badge */}
-                      <div className="absolute top-2 left-2 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 rounded-full px-2 py-1 text-xs flex items-center gap-1">
+                      <div className="absolute top-2 left-2 bg-blue-100 text-blue-800 rounded-full px-2 py-1 text-xs flex items-center gap-1">
                         <Icon size={14} /> {r.category}
                       </div>
                     </div>
 
                     {/* Content */}
                     <div className="p-4">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
                         {r.name}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                      <p className="text-gray-600 text-sm mb-4">
                         {r.description}
                       </p>
-                      <span className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm">
+                      <span className="inline-flex items-center gap-1 text-blue-600 font-medium text-sm">
                         Visit <ExternalLink size={16} />
                       </span>
                     </div>
@@ -464,6 +446,6 @@ export default function TravelResourcesPage() {
           </div>
         </div>
       </div>
-    </ThemeProvider>
+    </div>
   );
 }

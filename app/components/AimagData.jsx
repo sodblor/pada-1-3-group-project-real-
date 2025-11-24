@@ -43,7 +43,7 @@ export const AIMAG_ID_TO_SLUG = {
   MN035: "orkhon",
   MN049: "selenge",
   MN051: "sukhbaatar",
-  MN047: "tuv",
+  MN047: "tov",
   MN046: "uvs",
   MN1: "ulaanbaatar",
   MN053: "umnugovi",

@@ -3,16 +3,22 @@
 import React, { useState } from "react";
 import { FileOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme, List, Tag } from "antd";
-import { SLUG_TO_AIMAG_ID, AIMAG_ID_TO_NAME } from "../../components/AimagData";
-import { notFound } from "next/navigation";
-import { use } from "react";
+import { notFound, useParams } from "next/navigation";
 import { AirVent } from "lucide-react";
 import { Utensils } from "lucide-react";
 import { Hotel } from "lucide-react";
 import { Bus, Car, Plane } from "lucide-react";
-import AIMAG_DATA, { getAimagBySlug, getCategoryBySlug } from "../../components/data/data";
+import {
+  SLUG_TO_AIMAG_ID,
+  AIMAG_ID_TO_NAME,
+  getAimagBySlug,
+  getCategoryBySlug,
+} from "../../components/data/data";
+
+import { AimagDestinationDetails, AimagHotelDetails } from "../../components/AimagDestinationDetails";
 
 import Link from "next/link";
+
 
 const { Header, Content, Sider } = Layout;
 
@@ -44,24 +50,36 @@ export const CafeContent = ({ borderRadiusLG, name, items = [] }) => {
           padding: 24,
           background: "#FFFFFF",
           borderRadius: borderRadiusLG,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+          boxShadow: "0 4px 16px rgba(15,23,42,0.06)",
         }}
+        className="border border-gray-100"
       >
         {items && items.length > 0 ? (
           <List
-            itemLayout="horizontal"
+            grid={{ gutter: 16, xs: 1, sm: 2, md: 3 }}
             dataSource={items}
             renderItem={(c) => (
-              <List.Item
-                actions={[
-                  c.link ? (
-                    <Link href={c.link} className="text-blue-600 hover:underline font-medium">
-                      View
+              <List.Item>
+                <div className="h-full flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition shadow-gray-100">
+                  <div>
+                    <h3 className="font-semibold text-base md:text-lg text-gray-900 mb-1 line-clamp-2">
+                      {c.name}
+                    </h3>
+                    {c.address && (
+                      <p className="text-xs md:text-sm text-gray-600 mb-2 line-clamp-2">
+                        {c.address}
+                      </p>
+                    )}
+                  </div>
+                  {c.link && (
+                    <Link
+                      href={c.link}
+                      className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline"
+                    >
+                      View details
                     </Link>
-                  ) : null,
-                ]}
-              >
-                <List.Item.Meta title={c.name} description={c.address} />
+                  )}
+                </div>
               </List.Item>
             )}
           />
@@ -103,19 +121,26 @@ export const YurtContent = ({ borderRadiusLG, name, items = [] }) => {
       >
         {items && items.length > 0 ? (
           <List
-            itemLayout="horizontal"
+            grid={{ gutter: 16, xs: 1, sm: 2, md: 3 }}
             dataSource={items}
             renderItem={(y) => (
-              <List.Item
-                actions={[
-                  y.link ? (
-                    <Link href={y.link} className="text-blue-600 hover:underline font-medium">
-                      View
+              <List.Item>
+                <div className="h-full flex flex-col justify-between rounded-xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-md transition-shadow">
+                  <div>
+                    <h3 className="font-semibold text-lg text-gray-900 mb-1">{y.name}</h3>
+                    {y.address && (
+                      <p className="text-sm text-gray-600 mb-2">{y.address}</p>
+                    )}
+                  </div>
+                  {y.link && (
+                    <Link
+                      href={y.link}
+                      className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline"
+                    >
+                      View camp
                     </Link>
-                  ) : null,
-                ]}
-              >
-                <List.Item.Meta title={y.name} description={y.address} />
+                  )}
+                </div>
               </List.Item>
             )}
           />
@@ -157,19 +182,30 @@ export const RestaurantsContent = ({ borderRadiusLG, name, items = [] }) => {
       >
         {items && items.length > 0 ? (
           <List
-            itemLayout="horizontal"
+            grid={{ gutter: 16, xs: 1, sm: 2, md: 3 }}
             dataSource={items}
             renderItem={(r) => (
-              <List.Item
-                actions={[
-                  r.link ? (
-                    <Link href={r.link} className="text-blue-600 hover:underline font-medium">
-                      View
+              <List.Item>
+                <div className="h-full flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition shadow-gray-100">
+                  <div>
+                    <h3 className="font-semibold text-base md:text-lg text-gray-900 mb-1 line-clamp-2">
+                      {r.name}
+                    </h3>
+                    {r.address && (
+                      <p className="text-xs md:text-sm text-gray-600 mb-2 line-clamp-2">
+                        {r.address}
+                      </p>
+                    )}
+                  </div>
+                  {r.link && (
+                    <Link
+                      href={r.link}
+                      className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline"
+                    >
+                      View restaurant
                     </Link>
-                  ) : null,
-                ]}
-              >
-                <List.Item.Meta title={r.name} description={r.address} />
+                  )}
+                </div>
               </List.Item>
             )}
           />
@@ -181,30 +217,10 @@ export const RestaurantsContent = ({ borderRadiusLG, name, items = [] }) => {
   );
 };
 
-const Placeholder = ({ title }) => (
-  <Content style={{ margin: "24px" }}>
-    <div
-      style={{
-        padding: 24,
-        minHeight: 360,
-        background: "#FFFFFF",
-        borderRadius: "12px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-      }}
-    >
-      <h2 className="text-2xl font-semibold mb-4">{title}</h2>
-      <p className="text-gray-600">
-        Content for this section will be added later.
-      </p>
-    </div>
-  </Content>
-);
-
-export default function Page(props) {
+export default function Page() {
   const [selectedTab, setSelectedTab] = useState("fun");
-  const params = use(props.params);
-
-  const { slug } = params;
+  const params = useParams();
+  const slug = params?.slug;
 
   const aimagId = SLUG_TO_AIMAG_ID[slug];
   if (!aimagId) return notFound();
@@ -270,7 +286,7 @@ export default function Page(props) {
   const render = () => {
     switch (selectedTab) {
       case "fun":
-        return <FunContent borderRadiusLG={borderRadiusLG} name={name} />;
+        return <FunContent borderRadiusLG={borderRadiusLG} name={name} aimag={aimag} />;
       case "accom-1":
         return (
           <AccomodationContent
@@ -301,7 +317,7 @@ export default function Page(props) {
           <CafeContent
             borderRadiusLG={borderRadiusLG}
             name={name}
-            items={filterCafes(getCategoryBySlug(slug, "restaurants"))}
+            items={getCategoryBySlug(slug, "cafes")}
           />
         );
       case "transport-bus":
@@ -329,7 +345,7 @@ export default function Page(props) {
           />
         );
       default:
-        return <FunContent borderRadiusLG={borderRadiusLG} name={name} />;
+        return <FunContent borderRadiusLG={borderRadiusLG} name={name} aimag={aimag} />;
     }
   };
 
@@ -373,7 +389,6 @@ export default function Page(props) {
             zIndex: 10,
           }}
         >
-          <h1 className="text-xl font-medium text-gray-800">{name}</h1>
         </Header>
 
         {render()}
@@ -382,10 +397,10 @@ export default function Page(props) {
   );
 }
 
-export const FunContent = ({ borderRadiusLG, name }) => {
+export const FunContent = ({ borderRadiusLG, name, aimag }) => {
   return (
     <Content style={{ margin: "24px" }}>
-      <section className="relative w-full h-96 md:h-[560px] rounded-3xl overflow-hidden shadow-lg mb-16">
+      <section className="relative w-full h-96 md:h-[520px] rounded-3xl overflow-hidden shadow-lg mb-12 md:mb-16">
         <img
           src="https://images.unsplash.com/photo-1597434429739-2574d7e06807"
           className="w-full h-full object-cover"
@@ -393,10 +408,10 @@ export const FunContent = ({ borderRadiusLG, name }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 p-8 md:p-12 text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-3 drop-shadow-md">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 drop-shadow-md">
             Explore {name}
           </h1>
-          <p className="text-lg md:text-xl max-w-2xl drop-shadow">
+          <p className="text-base md:text-lg lg:text-xl max-w-2xl drop-shadow">
             Vast horizons, nomadic culture, and timeless landscapes await.
           </p>
         </div>
@@ -408,16 +423,82 @@ export const FunContent = ({ borderRadiusLG, name }) => {
           minHeight: 360,
           background: "#FFFFFF",
           borderRadius: borderRadiusLG,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+          boxShadow: "0 4px 16px rgba(15,23,42,0.06)",
         }}
+        className="border border-gray-100"
       >
-        <p className="text-gray-700">
-          Эндээс {name} аймагтай холбоотой контентээ filter-ээр харуулна.
-        </p>
+        {aimag && (
+          <div className="mb-10 space-y-6">
+            <div className="grid gap-6 md:grid-cols-5 items-start">
+              <div className="md:col-span-3 space-y-2">
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900">
+                  About {name}
+                </h2>
+                {aimag.shortDescription && (
+                  <p className="text-gray-800 leading-relaxed text-sm md:text-base">
+                    {aimag.shortDescription}
+                  </p>
+                )}
+              </div>
+              <div className="md:col-span-2 flex justify-start md:justify-end">
+                <div className="w-full max-w-xs rounded-2xl border border-gray-200 bg-slate-50 px-4 py-3 text-xs md:text-sm text-gray-700 space-y-1">
+                  <p className="font-semibold text-gray-800 mb-1">Key info</p>
+                  {aimag.established && (
+                    <p>
+                      <span className="font-medium">Established:</span> {aimag.established}
+                    </p>
+                  )}
+                  {aimag.center && (
+                    <p>
+                      <span className="font-medium">Center:</span> {aimag.center}
+                    </p>
+                  )}
+                  {typeof aimag.centerDistanceFromUlaanbaatar_km === "number" && (
+                    <p>
+                      <span className="font-medium">Distance from Ulaanbaatar:</span>{" "}
+                      {aimag.centerDistanceFromUlaanbaatar_km} km
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="h-px bg-gray-100" />
+          </div>
+        )}
+
+        {aimag?.attractions?.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-xl font-semibold mb-3 text-gray-900">Main attractions</h2>
+            <div className="grid gap-4 md:grid-cols-2">
+              {aimag.attractions.map((item, idx) => {
+                const isObject = item && typeof item === "object";
+                const title = isObject ? item.name : item;
+                const note = isObject ? item.note : undefined;
+                const image = isObject ? item.image : undefined;
+
+                return (
+                  <AimagDestinationDetails key={idx} attraction={item} />
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {aimag?.tips?.length > 0 && (
+          <div>
+            <h2 className="text-xl font-semibold mb-3 text-gray-900">Travel tips</h2>
+            <ul className="space-y-2 text-sm md:text-base text-gray-700 list-disc list-inside">
+              {aimag.tips.map((tip, idx) => (
+                <li key={idx}>{tip.note || tip}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </Content>
   );
-};
+}
 
 export const TransportContent = ({ borderRadiusLG, name, items = [] }) => {
   return (
@@ -449,19 +530,25 @@ export const TransportContent = ({ borderRadiusLG, name, items = [] }) => {
       >
         {items && items.length > 0 ? (
           <List
-            itemLayout="horizontal"
+            grid={{ gutter: 16, xs: 1, sm: 2, md: 3 }}
             dataSource={items}
-            renderItem={(opt, idx) => (
+            renderItem={(opt) => (
               <List.Item>
-                <List.Item.Meta
-                  title={
-                    <span className="flex items-center gap-2">
-                      {opt.mode}
+                <div className="h-full flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-4 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition shadow-gray-100">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-semibold text-gray-900 text-sm md:text-base">
+                        {opt.mode}
+                      </span>
                       {opt.mode && <Tag color="blue">Option</Tag>}
-                    </span>
-                  }
-                  description={opt.note}
-                />
+                    </div>
+                    {opt.note && (
+                      <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+                        {opt.note}
+                      </p>
+                    )}
+                  </div>
+                </div>
               </List.Item>
             )}
           />
@@ -498,36 +585,20 @@ export const AccomodationContent = ({ borderRadiusLG, aimag, name }) => {
           padding: 24,
           background: "#FFFFFF",
           borderRadius: borderRadiusLG,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+          boxShadow: "0 4px 16px rgba(15,23,42,0.06)",
         }}
+        className="border border-gray-100"
       >
         {aimag?.hotels?.length > 0 ? (
-          aimag.hotels.map((hotel) => {
-            console.log(hotel);
-
-            return (
-              <div
-                key={hotel.name}
-                className="flex items-center justify-between py-4 border-b last:border-0"
-              >
-                <div>
-                  <h3 className="font-semibold text-lg">{hotel.name}</h3>
-                  {hotel.address && (
-                    <p className="text-sm text-gray-600 mt-1">
-                      {hotel.address}
-                    </p>
-                  )}
-                </div>
-                <Link
-                  href={hotel.link}
-                 
-                  className="text-blue-600 hover:underline font-medium"
-                >
-                  Visit
-                </Link>
-              </div>
-            );
-          })
+          <List
+            grid={{ gutter: 16, xs: 1, sm: 2, md: 3 }}
+            dataSource={aimag.hotels}
+            renderItem={(hotel) => (
+              <List.Item key={hotel.name}>
+                <AimagHotelDetails hotel={hotel} />
+              </List.Item>
+            )}
+          />
         ) : (
           <p className="text-gray-500 text-center py-8">
             No hotels listed for {name} yet.

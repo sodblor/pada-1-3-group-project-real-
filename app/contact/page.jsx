@@ -51,10 +51,7 @@ export default function Contact() {
       className="relative min-h-screen w-full bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/contact.jpg')" }}
     >
-      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
-
-      {/* PAGE FADE-IN */}
       <div
         className={`relative max-w-6xl mx-auto py-20 px-4 md:px-6 transition-all duration-700 ease-out ${
           ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
@@ -68,7 +65,6 @@ export default function Contact() {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Contact Info */}
           <section
             className={`bg-black/60 backdrop-blur-sm rounded-2xl shadow-md p-6 flex flex-col gap-6 transition-all duration-700 ease-out ${
               ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
@@ -90,8 +86,6 @@ export default function Contact() {
               </div>
             ))}
           </section>
-
-          {/* Contact Form */}
           <section
             className={`bg-black/60 backdrop-blur-sm rounded-2xl shadow-md p-6 transition-all duration-700 ease-out ${
               ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"

@@ -1,4 +1,4 @@
-"use client";
+  "use client";
 
 // components/MongoliaMap.js
 import React, { useState } from "react";
@@ -254,6 +254,48 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
 
 const MongoliaMap = () => {
   const [hoveredAimagId, setHoveredAimagId] = useState(null);
+  const [currentReview, setCurrentReview] = useState(0);
+  const [slideDirection, setSlideDirection] = useState('');
+  
+  const reviews = [
+    {
+      name: 'Alex Johnson',
+      location: 'Ulaanbaatar',
+      rating: 5,
+      comment: 'An unforgettable experience! The landscapes are breathtaking and the people are incredibly welcoming.',
+      date: 'October 2023'
+    },
+    {
+      name: 'Sarah Kim',
+      location: 'Gobi Desert',
+      rating: 4,
+      comment: 'The Gobi Desert was absolutely stunning. The night sky there is something you have to see to believe!',
+      date: 'August 2023'
+    },
+    {
+      name: 'James Wilson',
+      location: 'Khovsgol Lake',
+      rating: 5,
+      comment: 'The crystal clear waters of Khovsgol Lake were the highlight of our trip. Perfect for nature lovers!',
+      date: 'July 2023'
+    }
+  ];
+
+  const handlePrevReview = () => {
+    setSlideDirection('slide-out-right');
+    setTimeout(() => {
+      setCurrentReview(prev => (prev > 0 ? prev - 1 : reviews.length - 1));
+      setSlideDirection('slide-in-left');
+    }, 300);
+  };
+
+  const handleNextReview = () => {
+    setSlideDirection('slide-out-left');
+    setTimeout(() => {
+      setCurrentReview(prev => (prev < reviews.length - 1 ? prev + 1 : 0));
+      setSlideDirection('slide-in-right');
+    }, 300);
+  };
 
   const handleAimagHover = (aimagId) => {
     setHoveredAimagId(aimagId);
@@ -267,28 +309,65 @@ const MongoliaMap = () => {
     ? AIMAG_ID_TO_NAME[hoveredAimagId]
     : "";
 
-  const carduud = [
-    { title: "Булган", img: "https://media.discordapp.net/attachments/1435213199866855464/1437763713565458573/7-Khetsuu-khad-Hyargas-lake-top-10-places-bayar.jpeg?ex=69146d4d&is=69131bcd&hm=9abd3190ff544f3ebdec8f61cd1dd9ba06d26dbb9167ddc8b0c1b596b55edf32&=&format=webp&width=2362&height=1572" },
-    { title: "Дархан-Уул", img: "https://media.discordapp.net/attachments/1435213199866855464/1437763714790199377/4-Khermen-tsav-top-10-places-bayar.jpeg?ex=69146d4d&is=69131bcd&hm=a54a1560aafb9a8ae4704e467e21f75fee4aada9adf55c0cce60c64ee226a73f&=&format=webp&width=2368&height=1572" },
-    { title: " Дорнод", img: "https://media.discordapp.net/attachments/1435213199866855464/1437763715448442920/2-Kharkhiraa-turgen-top-10-places-bayar-2.jpg?ex=69146d4e&is=69131bce&hm=208be939d7f0ec467ac1de7f807c6f4f3c5ef1ec690ae0ec4c760a694e88426d&=&format=webp&width=2360&height=1572" },
-    { title: "Завхан", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770031994900572/b-travel-in-mongolia.jpg?ex=69147330&is=691321b0&hm=ff333079c44bddafb845542d6262168c119a5daf7628f91fcfbe2468bcb0be56&=&format=webp&width=1764&height=1022" },
-    { title: "Сүхбаатар", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770033768955914/B-huvsgul_lake.jpg?ex=69147330&is=691321b0&hm=27dbc36593c28dca736435be454de7791b423749a099f19cd0b8aa63434f2517&=&format=webp&width=1600&height=1200" },
-    { title: "Сэлэнгэ", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034020876360/5cd94af5-b308-48d4-9b2c-4bd632745942-galle-terelj-national-park-scenery.jpg?ex=69147330&is=691321b0&hm=915d7a5fff2d78991707013d95468b78460c6758e16a43f6c0e4ba823b969e37&=&format=webp&width=1786&height=1022" },
-    { title: "Төв", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034268344330/b-altai_mnt.jpg?ex=69147330&is=691321b0&hm=7aab276e4296389e78bc25728f415df2abf25cc50841678732d4f450cade51a0&=&format=webp&width=1920&height=1066" },
-    { title: " Увс", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034523930664/B-tuvhun_monastery_orkhon_valley.jpg?ex=69147330&is=691321b0&hm=64b6707c7597ec3e9641a8e12daff4dfd8363e3490d85e165b2c4469d7c2d4e7&=&format=webp&width=1600&height=1200" },
-    { title: "Ховд", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034813341746/B-hustai_national_park.jpg?ex=69147330&is=691321b0&hm=f3a472abbc6e591b5f1683a5dc5e3d7932fd4b5201a0fab945ec1819b96e498e&=&format=webp&width=1600&height=1074" },
-    { title: "Хөвсгөл", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770035237093457/B-size_updated-tsagaan-suwarga.jpg?ex=69147330&is=691321b0&hm=b9ce875e24ea441d8684708d3d6888603111b9fa65b87894920a8db5713d8c4f&=&format=webp&width=2400&height=1260" },
-
-
+    const carduud = [
+    { 
+      title: "Булган", 
+      slug: "bulgan",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437763713565458573/7-Khetsuu-khad-Hyargas-lake-top-10-places-bayar.jpeg?ex=69146d4d&is=69131bcd&hm=9abd3190ff544f3ebdec8f61cd1dd9ba06d26dbb9167ddc8b0c1b596b55edf32&=&format=webp&width=2362&height=1572" 
+    },
+    { 
+      title: "Дархан-Уул", 
+      slug: "darkhan-uul",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437763714790199377/4-Khermen-tsav-top-10-places-bayar.jpeg?ex=69146d4d&is=69131bcd&hm=a54a1560aafb9a8ae4704e467e21f75fee4aada9adf55c0cce60c64ee226a73f&=&format=webp&width=2368&height=1572" 
+    },
+    { 
+      title: "Дорнод", 
+      slug: "dornod",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437763715448442920/2-Kharkhiraa-turgen-top-10-places-bayar-2.jpg?ex=69146d4e&is=69131bce&hm=208be939d7f0ec467ac1de7f807c6f4f3c5ef1ec690ae0ec4c760a694e88426d&=&format=webp&width=2360&height=1572" 
+    },
+    { 
+      title: "Завхан", 
+      slug: "zavkhan",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770031994900572/b-travel-in-mongolia.jpg?ex=69147330&is=691321b0&hm=ff333079c44bddafb845542d6262168c119a5daf7628f91fcfbe2468bcb0be56&=&format=webp&width=1764&height=1022" 
+    },
+    { 
+      title: "Сүхбаатар", 
+      slug: "sukhbaatar",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770033768955914/B-huvsgul_lake.jpg?ex=69147330&is=691321b0&hm=27dbc36593c28dca736435be454de7791b423749a099f19cd0b8aa63434f2517&=&format=webp&width=1600&height=1200" 
+    },
+    { 
+      title: "Сэлэнгэ", 
+      slug: "selenge",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034020876360/5cd94af5-b308-48d4-9b2c-4bd632745942-galle-terelj-national-park-scenery.jpg?ex=69147330&is=691321b0&hm=915d7a5fff2d78991707013d95468b78460c6758e16a43f6c0e4ba823b969e37&=&format=webp&width=1786&height=1022" 
+    },
+    { 
+      title: "Төв", 
+      slug: "tuv",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034268344330/b-altai_mnt.jpg?ex=69147330&is=691321b0&hm=7aab276e4296389e78bc25728f415df2abf25cc50841678732d4f450cade51a0&=&format=webp&width=1920&height=1066" 
+    },
+    { 
+      title: "Увс", 
+      slug: "uvs",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034523930664/B-tuvhun_monastery_orkhon_valley.jpg?ex=69147330&is=691321b0&hm=64b6707c7597ec3e9641a8e12daff4dfd8363e3490d85e165b2c4469d7c2d4e7&=&format=webp&width=1600&height=1200" 
+    },
+    { 
+      title: "Ховд", 
+      slug: "khovd",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034813341746/B-hustai_national_park.jpg?ex=69147330&is=691321b0&hm=f3a472abbc6e591b5f1683a5dc5e3d7932fd4b5201a0fab945ec1819b96e498e&=&format=webp&width=1600&height=1074" 
+    },
+    { 
+      title: "Хөвсгөл", 
+      slug: "khuvsgul",
+      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770035237093457/B-size_updated-tsagaan-suwarga.jpg?ex=69147330&is=691321b0&hm=b9ce875e24ea441d8684708d3d6888603111b9fa65b87894920a8db5713d8c4f&=&format=webp&width=2400&height=1260" 
+    },
   ];
+
+  const handleAimagClick = (slug) => {
+    window.location.href = `/aimag/${slug}`;
+  };
 
   return (  
     <div className={styles.wrapper}>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <div className={styles.headerRow}>
         <div className={styles.headerImageWrap}>
           <p className={styles.headerTitle}>MONGOLIA</p>
@@ -313,13 +392,58 @@ const MongoliaMap = () => {
         />
         <div className={styles.contentGrid}>
           {carduud.map((c, idx) => (
-            <div className={styles.gridItem} key={idx}>
+            <div 
+              className={styles.gridItem} 
+              key={idx} 
+              onClick={() => handleAimagClick(c.slug)}
+              style={{ cursor: 'pointer' }}
+            >
               <div className={styles.gridItemInner}>
                 <img className={styles.gridImage} src={c.img} alt={c.title} />
                 <div className={styles.gridDesc}>{c.title}</div>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Review Section */}
+      <div className={styles.reviewSection}>
+        <h2 className={styles.reviewTitle}>Traveler Reviews</h2>
+        <div className={styles.reviewContainer}>
+          <button 
+            className={`${styles.carouselButton} ${styles.prevButton}`} 
+            onClick={handlePrevReview}
+            aria-label="Previous review"
+          >
+            ❮
+          </button>
+          
+          <div className={`${styles.reviewSlide} ${styles[slideDirection]}`}>
+            <div className={styles.reviewCard}>
+              <div className={styles.reviewHeader}>
+                <div className={styles.reviewAuthor}>{reviews[currentReview].name}</div>
+                <div className={styles.reviewRating}>
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className={i < reviews[currentReview].rating ? styles.starFilled : styles.star}>
+                      ★
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.reviewLocation}>{reviews[currentReview].location}</div>
+              <p className={styles.reviewComment}>"{reviews[currentReview].comment}"</p>
+              <div className={styles.reviewDate}>{reviews[currentReview].date}</div>
+            </div>
+          </div>
+          
+          <button 
+            className={`${styles.carouselButton} ${styles.nextButton}`} 
+            onClick={handleNextReview}
+            aria-label="Next review"
+          >
+            ❯
+          </button>
         </div>
       </div>
     </div>

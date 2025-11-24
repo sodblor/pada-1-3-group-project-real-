@@ -1,3 +1,5 @@
+
+
 export const AIMAG_DATA = {
   MN073: {
     name: "arkhangai",
@@ -699,6 +701,8 @@ export const AIMAG_DATA = {
       { name: "Turt Hotel", link: "/h" },
       { name: "Ger Camp on Lake Khövsgöl", link: "/h" },
       { name: "Eco-Luxury Lodge by Lake", link: "/h" },
+      { name: "Khun Odod Resort, Khuvsgul province Mongolia", link: "/h" },
+      {  name:" Ar Davhar Peninsula Eco Lodge" , link:"/h"}
     ],
     transportOptions: [
       { mode: "By bus" },

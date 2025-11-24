@@ -50,9 +50,17 @@ export default function HomePage() {
         src={img}
         className="absolute inset-0 w-full h-full object-cover brightness-[.92] contrast-[1.05]"
       />
-
       <div className={`absolute inset-0 ${gradient}`} />
-
+      
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white/50 z-10">
+        <p className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg animate-fade-in">
+          Wander where the world feels endless
+        </p>
+        <p className="text-2xl md:text-3xl font-medium drop-shadow-lg animate-fade-in animation-delay-200">
+          and your heart feels free.
+        </p>
+      </div>
+      
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-3 bg-white p-3 rounded-full w-[400px]">
         <input
           className="flex-1 px-2 py-1 outline-none text-black"

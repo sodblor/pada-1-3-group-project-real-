@@ -6,6 +6,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "../../components/ui/dialog"
+import { cn } from "../../lib/utils"
 
 export const AimagDestinationDetails = ({ attraction }) => {
     return (
@@ -54,14 +55,14 @@ export const AttractionTriggerComponent = ({ attraction }) => {
     return (
         <DialogTrigger>
             <div
-                className="cursor-pointer rounded-2xl border border-gray-100 bg-white/95 px-4 py-4 text-sm text-gray-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-blue-50/10 transition flex gap-3"
+                className="cursor-pointer group/attr-card rounded-2xl border border-gray-100 bg-white/95 text-sm text-gray-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-blue-50/10 transition flex gap-3"
             >
                 <div className="flex-shrink-0 sr-only w-7 h-7 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-[11px] font-semibold text-blue-700">
                     {attraction.name}
                 </div>
-                <div className="flex-1 flex gap-3">
+                <div className={'flex-1 flex gap-3 h-full flex item-center'}>
                     {attraction?.image && (
-                        <div className="flex-shrink-0 w-28 h-20 sm:w-32 sm:h-24 rounded-2xl overflow-hidden bg-gray-100">
+                        <div className="flex-shrink-0 w-30 h-full sm:w-40 mask-alpha mask-cover transition-all ease-linear duration-300 mask-r-from-20% group-hover/attr-card:mask-r-from-100% aspect-square rounded-l-2xl overflow-hidden bg-gray-100">
                             <img
                                 src={attraction.image}
                                 alt={attraction.name}
@@ -69,7 +70,7 @@ export const AttractionTriggerComponent = ({ attraction }) => {
                             />
                         </div>
                     )}
-                    <div className="flex-1">
+                    <div className="flex-1 p-4">
                         <p className="font-semibold text-gray-900 mb-1 text-sm md:text-base">
                             {attraction.name}
                         </p>

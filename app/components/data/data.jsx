@@ -630,7 +630,7 @@ export const AIMAG_DATA = {
     centerDistanceFromUlaanbaatar_km: 880, 
     restaurants: [
       { name: "Orgil Restaurant (Hatgal)", link: "https://www.google.com/maps/search/?api=1&query=Orgil+Hatgal" },
-      { name: "Northern Steppes Restaurant", link: "/h" }
+      { name: "Northern Steppes Restaurant", link: "/site not available" }
     ],
     cafes: [
       { name: "Espresso Coffee Shop", link: "https://www.google.com/maps/search/?api=1&query=Espresso+Moron" },

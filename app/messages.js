@@ -5,7 +5,7 @@ export const messages = {
     home: "Home",
     blog: "Blog",
     resources: "Resources",
-    contact: "Contact",
+    contactLabel: "Contact", // <-- for header only
     signin: "Sign In",
     
     // Blog page
@@ -78,6 +78,25 @@ export const messages = {
       relatedPosts: "Related Posts",
       readMore: "Read More",
     },
+    
+    // Contact page
+    contact: {
+      title: "Get In Touch",
+      subtitle: "We'd love to hear from you. Send us a message about your questions or partnership opportunities.",
+      email: "Email",
+      phone: "Phone",
+      address: "Address",
+      addressText: "Ulaanbaatar, Sukhbaatar District",
+      namePlaceholder: "Your Name",
+      emailPlaceholder: "Your Email",
+      subjectPlaceholder: "Subject (optional)",
+      messagePlaceholder: "Your Message...",
+      sendButton: "Send Message",
+      sending: "Sending...",
+      errorRequired: "Please fill in your name, email, and message.",
+      successMessage: "Message sent successfully! We'll get back to you soon.",
+      errorMessage: "An error occurred. Please try again.",
+    },
   },
   
   mn: {
@@ -85,7 +104,7 @@ export const messages = {
     home: "Нүүр",
     blog: "Блог",
     resources: "Нөөц",
-    contact: "Холбоо барих",
+    contactLabel: "Холбоо барих", // <-- for header only
     signin: "Нэвтрэх",
     
     // Blog page
@@ -157,6 +176,25 @@ export const messages = {
       publishedOn: "Нийтэлсэн огноо",
       relatedPosts: "Холбоотой нийтлэлүүд",
       readMore: "Дэлгэрэнгүй",
+    },
+    
+    // Contact page
+    contact: {
+      title: "Бидэнтэй холбогдох",
+      subtitle: "Санал хүсэлт, хамтын ажиллагааны талаар бидэнд бичээрэй.",
+      email: "И-мэйл",
+      phone: "Утас",
+      address: "Хаяг",
+      addressText: "Улаанбаатар хот, Сүхбаатар дүүрэг",
+      namePlaceholder: "Таны нэр",
+      emailPlaceholder: "Таны и-мэйл",
+      subjectPlaceholder: "Гарчиг (сонголттой)",
+      messagePlaceholder: "Таны мессеж...",
+      sendButton: "Мэссэж илгээх",
+      sending: "Илгээж байна...",
+      errorRequired: "Та нэр, и-мэйл, мессежээ бөглөнө үү.",
+      successMessage: "Мэссэж амжилттай илгээгдлээ! Бид удахгүй холбогдоно.",
+      errorMessage: "Алдаа гарлаа. Дахин оролдоно уу.",
     },
   },
 };

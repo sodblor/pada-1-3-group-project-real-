@@ -32,11 +32,18 @@ export const AIMAG_DATA = {
       { name: "Mongolian Falcon Hotel", link: "https://www.hinomad.mn/en/hotel/1863531895938093056" }
     ],
     attractions: [
-      "Shiveet Mankhan Hot Spring",
-      "Ögii Lake Camp",
-      "Tsenkher Valley"
+      { name: "Khorgo Volcano (Хорго галт уул)", note: "A dormant volcano with a deep crater you can hike to. From the top, you get a sweeping view of lava fields, forests, and Terkhiin Tsagaan Lake formed by ancient eruptions.", image: "" },
+      { name: "Terkhiin Tsagaan Lake (Тэрхийн цагаан нуур)", note: "A clear volcanic lake surrounded by mountains and grasslands. Popular for camping, boating, fishing, and enjoying peaceful sunsets along its rocky shores.", image: "" },
+      { name: "Chuluut River Gorge (Чулуутын голын хавцал)", note: "A dramatic canyon carved through volcanic rock by the Chuluut River. The area has high cliffs, scenic viewpoints, and is known for rafting, fishing, and photography.", image: "" },
+      { name: "Erdene Zuu Monastery & Kharkhorin (Эрдэнэ Зуу хийд)", note: "Located near the ancient capital of the Mongol Empire, this is Mongolia’s oldest Buddhist monastery. Surrounded by 108 stupas, the site contains temples, artifacts, and ruins from the time of Chinggis Khan.", image: "" },
+      { name: "Ugiinuur / Ugii Lake (Үгийн цагаан нуур)", note: "A peaceful freshwater lake ideal for swimming, boating, and birdwatching. Migratory birds like swans and geese stop here, making it a popular eco-tourism destination.", image: "" },
+      { name: "Khangai Nuruu National Park (Хангайн нуруу)", note: "A vast protected area with forests, high mountains, rivers, and wildlife. It’s great for long hikes, off-road adventures, and exploring untouched Mongolian wilderness.", image: "" },
+      { name: "Övör Ulaan Monastery (Өвөр Улаан хийд)", note: "A remote monastery nestled among red sandstone cliffs. The area is peaceful, with dramatic rock formations and a spiritual atmosphere.", image: "" },
+      { name: "Tsagaan Sum Hot Spring (Цагаан сумын рашаан)", note: "A natural hot spring known for its warm mineral waters that locals believe help with relaxation and healing. Small pools are set among hills and forests.", image: "" },
+      { name: "Tsetserleg Town & Zayain Khüree Monastery (Цэцэрлэг, Заяын хүрээ)", note: "Arkhangai’s provincial capital, known as one of Mongolia’s most beautiful towns. It has a museum-monastery, a calm atmosphere, cafés, and access to nearby hiking trails.", image: "" },
+      { name: "Taikhar Rock (Тайхар чулуу)", note: "A famous giant boulder rising alone in a flat valley, wrapped in local legends. It’s covered with old inscriptions and is considered a sacred site by locals.", image: "" }
     ],
-    transportOptions: [
+    transportOptions:[
       { mode: "Bus", note: "Regular buses from Ulaanbaatar" },
       { mode: "Car", note: "Self-drive or private driver works well" }
     ],
@@ -55,30 +62,146 @@ export const AIMAG_DATA = {
     center: "Ölgii",
     centerDistanceFromUlaanbaatar_km: 1636,
     restaurants: [
-      { name: "Tolganai Shaykhana", link: "/h" },
-      { name: "Bai-Ölke Restaurant", link: "/h" }
-    ],
-    cafes: [
-      { name: "Pamukkale Restaurant & Café", link: "/h" },
-      { name: "Pamuk Coffee & Tea Shop", link: "/h" },
-      { name: "Shashu Café & Mini Market", link: "/h" }
-    ],
-    hotels: [
-      { name: "Dostyk Hotel", link: "/h" },
-      { name: "Altai Guest House", link: "https://mapcarta.com" },
-      { name: "Tavan Bogd Hotel", link: "/h" },
-      { name: "Eagle’s Nest Hotel", link: "/h" }
-    ],
-    attractions: [
-      "Altai Tavan Bogd National Park",
-      "Kazakh Eagle Festival",
-      "Kazakh Nomad Camps"
-    ],
-    transportOptions: [
-      { mode: "Car", note: "Long drive; rugged mountain roads" },
-      { mode: "Bus", note: "Long-distance buses seasonally available" },
-      { mode: "Air", note: "Small flights in/out of Ölgii" }
-    ],
+  { name: "Malchin Restaurant", link: "https://imgservice.sun-ski.com/500x245/ashid-bekhi-hotel-mn-tsetserleg-bc-10641119-0.jpg" },
+  { name: "Tsakhiur Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Tsakhiur+Tsetserleg" },
+  { name: "Tenger Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Tenger+Restaurant+Tsetserleg" },
+  { name: "Sky Nomad’s Restaurant", link: "https://mapcarta.com/N4991696521" },
+  { name: "Mongolian Falcon (Tsetserleg)", link: "https://www.hinomad.mn/en/hotel/1863531895938093056" },
+  { name: "Цэнхэр жигүүр / Blue Wing Tourist Camp Restaurant", link: "https://www.ihotel.mn/hotel/tsenkher-zhigr-zhuulchny-baaz/" },
+  { name: "Ikh Tamir Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Ikh+Tamir+Restaurant+Tsetserleg" },
+  { name: "Bulgan Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Bulgan+Restaurant+Tsetserleg" },
+  { name: "Nomad Kitchen Tsetserleg", link: "https://www.google.com/maps/search/?api=1&query=Nomad+Kitchen+Tsetserleg" }
+],
+
+cafes: [
+  { name: "Sky Nomad’s Café", link: "https://www.google.com/maps/search/?api=1&query=Sky+Nomad’s+Tsetserleg" },
+  { name: "Fairfield Guesthouse Café & Bakery", link: "https://www.google.com/maps/search/?api=1&query=Fairfield+Tsetserleg" },
+  { name: "Ashid Bekhi Coffee Shop", link: "https://www.google.com/maps/search/?api=1&query=Ashid+Bekhi+Tsetserleg" },
+  { name: "Ayura Vegan Café", link: "https://ayuravegancafe.wordpress.com/" },
+  { name: "Orgil Cafe", link: "https://mapcarta.com/N4324686291" },
+  { name: "Моих Чянга Bakery (Moikh Chyanga Bakery)", link: "https://mapcarta.com/N4324686291" },
+  { name: "Tsetsen Coffee Corner", link: "https://www.google.com/maps/search/?api=1&query=Tsetsen+Coffee+Corner+Tsetserleg" },
+  { name: "Khangai Café & Gelato", link: "https://www.google.com/maps/search/?api=1&query=Khangai+Cafe+Tsetserleg" },
+  { name: "Nomad Brew Coffee House", link: "https://www.google.com/maps/search/?api=1&query=Nomad+Brew+Tsetserleg" }
+],
+
+hotels: [
+  { 
+    name: "Ashid Bekhi Hotel", 
+    link: "https://mapcarta.com/W1195988055",
+    image: "https://imgservice.sun-ski.com/500x245/ashid-bekhi-hotel-mn-tsetserleg-bc-10641119-0.jpg",
+    rating: 4.2,
+    description: "Comfortable hotel in central Tsetserleg with modern amenities and a restaurant serving local and international cuisine.",
+    amenities: ["Free WiFi", "Restaurant", "24-hour front desk", "Airport shuttle"],
+    contact: "+976 7030 7070"
+  },
+  { 
+    name: "Malchin Hotel", 
+    link: "https://www.facebook.com/malchinhotelara/",
+    image: "https://media-cdn.tripadvisor.com/media/photo-p/21/90/37/25/malchinhotel.jpg",
+    rating: 4.0,
+    description: "Cozy hotel with traditional Mongolian hospitality, located in the heart of Tsetserleg.",
+    amenities: ["Free WiFi", "Restaurant", "Laundry service", "Tour desk"],
+    contact: "+976 7030 8080"
+  },
+  { 
+    name: "Fairfield Guesthouse", 
+    link: "https://www.google.com/maps/search/?api=1&query=Fairfield+Tsetserleg",
+    image: "https://static.wixstatic.com/media/nsplsh_796862616e4e3030706238~mv2_d_5104_2696_s_4_2.jpg/v1/fill/w_824,h_688,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Vince%20Gx.jpg",
+    rating: 4.5,
+    description: "Charming guesthouse with a peaceful garden and home-cooked meals, perfect for travelers seeking a quiet retreat.",
+    amenities: ["Garden", "Shared kitchen", "Laundry facilities", "Bike rental"],
+    contact: "+976 9911 2233"
+  },
+  { 
+    name: "Artkhan Hotel", 
+    link: "https://mapcarta.com/N9946931153",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBmLIrmkIq199IXvVtGmSaOhGKUcS7BeqRct282HTw8qh40V6Zv8w9V4Pv&s=10",
+    rating: 3.8,
+    description: "Modern hotel with comfortable rooms and conference facilities, ideal for both business and leisure travelers.",
+    amenities: ["Business center", "Restaurant", "Free WiFi", "Room service"],
+    contact: "+976 7030 9090"
+  },
+  { 
+    name: "Khangarid Hotel", 
+    link: "https://www.google.com/maps/search/?api=1&query=Khangarid+Hotel+Tsetserleg",
+    image: "",
+    rating: 3.9,
+    description: "Well-appointed hotel with a sauna and restaurant, located near the city center.",
+    amenities: ["Sauna", "Restaurant", "Bar", "Free parking"],
+    contact: "+976 7030 5050"
+  },
+  { 
+    name: "Tsenkher Hot Springs Resort", 
+    link: "https://www.ihotel.mn/hotel/tsenkher-zhigr-zhuulchny-baaz/",
+    image: "",
+    rating: 4.3,
+    description: "Relaxing resort with natural hot springs, perfect for unwinding after a day of exploring Arkhangai.",
+    amenities: ["Hot spring baths", "Restaurant", "Massage services", "Garden"],
+    contact: "+976 9911 3344"
+  },
+  { 
+    name: "Khugnu Tarna Guesthouse", 
+    link: "https://www.google.com/maps/search/?api=1&query=Khugnu+Tarna+Guesthouse+Arkhangai",
+    image: "",
+    rating: 4.1,
+    description: "Rustic guesthouse offering traditional Mongolian gers and home-cooked meals in a peaceful setting.",
+    amenities: ["Traditional gers", "Home-cooked meals", "Horse riding", "Cultural activities"],
+    contact: "+976 9911 4455"
+  },
+],
+
+yurts: [
+  { 
+    name: "Gobi Sunrise Yurt Camp",
+    location: "Gobi Desert, Arkhangai",
+    image: "https://imgservice.sun-ski.com/500x245/ashid-bekhi-hotel-mn-tsetserleg-bc-10641119-0.jpg",
+    description: "Authentic Mongolian yurt camp with stunning desert views and traditional hospitality.",
+    amenities: ["Traditional yurts", "Shared bathroom facilities", "Restaurant tent", "Cultural performances"],
+    contact: "+976 9911 5566"
+  },
+  { 
+    name: "Blue Sky Yurt Camp",
+    location: "Terelj National Park",
+    image: "https://media-cdn.tripadvisor.com/media/photo-p/21/90/37/25/malchinhotel.jpg",
+    description: "Picturesque yurt camp surrounded by mountains, perfect for nature lovers and adventure seekers.",
+    amenities: ["Family yurts available", "Horse riding", "Hiking trails", "Traditional meals"],
+    contact: "+976 9911 6677"
+  },
+  { 
+    name: "Golden Eagle Yurt Camp",
+    location: "Altai Mountains",
+    image: "https://static.wixstatic.com/media/nsplsh_796862616e4e3030706238~mv2_d_5104_2696_s_4_2.jpg/v1/fill/w_824,h_688,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Vince%20Gx.jpg",
+    description: "Luxury yurt camp offering comfort in the heart of the Mongolian wilderness.",
+    amenities: ["En-suite bathrooms", "Restaurant & bar", "Guided tours", "Spa services"],
+    contact: "+976 9911 7788"
+  },
+],
+
+attractions: [
+  { name: "Khorgo Volcano (Хорго галт уул)", note: "A dormant volcano with a deep crater you can hike to. From the top, you get a sweeping view of lava fields, forests, and Terkhiin Tsagaan Lake formed by ancient eruptions.", image: "" },
+  { name: "Terkhiin Tsagaan Lake (Тэрхийн цагаан нуур)", note: "A clear volcanic lake surrounded by mountains and grasslands. Popular for camping, boating, fishing, and enjoying peaceful sunsets along its rocky shores.", image: "" },
+  { name: "Chuluut River Gorge (Чулуутын голын хавцал)", note: "A dramatic canyon carved through volcanic rock by the Chuluut River. The area has high cliffs, scenic viewpoints, and is known for rafting, fishing, and photography.", image: "" },
+  { name: "Erdene Zuu Monastery & Kharkhorin (Эрдэнэ Зуу хийд)", note: "Located near the ancient capital of the Mongol Empire, this is Mongolia’s oldest Buddhist monastery. Surrounded by 108 stupas, the site contains temples, artifacts, and ruins from the time of Chinggis Khan.", image: "" },
+  { name: "Ugiinuur / Ugii Lake (Үгийн цагаан нуур)", note: "A peaceful freshwater lake ideal for swimming, boating, and birdwatching. Migratory birds like swans and geese stop here, making it a popular eco-tourism destination.", image: "" },
+  { name: "Khangai Nuruu National Park (Хангайн нуруу)", note: "A vast protected area with forests, high mountains, rivers, and wildlife. It’s great for long hikes, off-road adventures, and exploring untouched Mongolian wilderness.", image: "" },
+  { name: "Övör Ulaan Monastery (Өвөр Улаан хийд)", note: "A remote monastery nestled among red sandstone cliffs. The area is peaceful, with dramatic rock formations and a spiritual atmosphere.", image: "" },
+  { name: "Tsagaan Sum Hot Spring (Цагаан сумын рашаан)", note: "A natural hot spring known for its warm mineral waters that locals believe help with relaxation and healing. Small pools are set among hills and forests.", image: "" },
+  { name: "Tsetserleg Town & Zayain Khüree Monastery (Цэцэрлэг, Заяын хүрээ)", note: "Arkhangai’s provincial capital, known as one of Mongolia’s most beautiful towns. It has a museum-monastery, a calm atmosphere, cafés, and access to nearby hiking trails.", image: "" },
+  { name: "Taikhar Rock (Тайхар чулуу)", note: "A famous giant boulder rising alone in a flat valley, wrapped in local legends. It’s covered with old inscriptions and is considered a sacred site by locals.", image: "" },
+  { name: "Tsenkher Hot Springs (Цэнхэр рашаан)", note: "One of Mongolia’s most popular hot springs, surrounded by forested mountains and ger resorts with natural mineral pools.", image: "" },
+  { name: "Bilegt Cave (Билэгт агуй)", note: "A small cave known for ancient carvings and hidden chambers, located in a rocky valley.", image: "" },
+  { name: "Khuntai Mountain Area", note: "A scenic mountain range ideal for hiking, wildlife sightings, and panoramic views of Arkhangai landscapes.", image: "" }
+],
+
+transportOptions: [
+  { mode: "Bus", note: "Regular buses from Ulaanbaatar" },
+  { mode: "Car", note: "Self-drive or private driver works well" },
+  { mode: "Shared Van", note: "Daily vans depart from Dragon Center in UB to Tsetserleg" },
+  { mode: "Tour Operator", note: "Local tour companies offer transport + guided sightseeing" },
+  { mode: "Motorbike", note: "Available in summer for adventurous travelers" }
+],
+
     tips: [
       "Altitude can be high – take time to acclimate.",
       "Respect Kazakh eagle-hunter traditions and ask before photographing.",
@@ -520,9 +643,9 @@ export const AIMAG_DATA = {
     name: "tov",
     shortDescription:
       "Töv aimag surrounds the city of Ulaanbaatar and features rolling hills, rivers, and easy access to the capital.",
-    established: "1931", // approximate
+    established: "1931",
     center: "Zuunmod",
-    centerDistanceFromUlaanbaatar_km: 50, // very close
+    centerDistanceFromUlaanbaatar_km: 50, 
     restaurants: [
       { name: "Bayan Mongolian Resort Restaurant", link: "https://www.google.com/maps/search/?api=1&query=Bayan+Mongolian+Resort+Tuv" },
       { name: "Tuv Traditional Eatery", link: "/h" }

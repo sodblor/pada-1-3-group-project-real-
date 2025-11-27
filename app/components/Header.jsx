@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import { Sun, Moon } from "lucide-react";
-// import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import LanguageToggle from "./LanguageToggle";
 import { messages } from "../messages";
-
 export default function Header() {
-  // const { theme, setTheme } = useTheme();
+
   const [lang, setLang] = useState("en");
 
   useEffect(() => {
@@ -33,15 +31,7 @@ export default function Header() {
         <button className="px-4 py-1 rounded-full border border-white/30 hover:bg-white hover:text-black transition">
           {t.signin}
         </button>
-
         <LanguageToggle onChange={setLang} />
-{/* 
-        <button
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          className="p-2 rounded-full border border-white/30 hover:bg-white hover:text-black transition"
-        >
-          {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-        </button> */}
       </div>
     </header>
   );

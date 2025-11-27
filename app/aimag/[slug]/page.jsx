@@ -230,10 +230,7 @@ export default function Page() {
 
   const menuItems = [
     getItem("Fun things to do ", "fun", <AirVent className="w-2.5" />),
-    getItem("Accommodation", "accom", <Hotel className="w-2.5" />, [
-      getItem("Hotel", "accom-1"),
-      getItem("Yurt", "accom-2"),
-    ]),
+    getItem("Accommodation", "accom-1", <Hotel className="w-2.5" />),
     getItem("Food", "food", <Utensils className="w-2.5" />, [
       getItem("Restaurant", "food-1"),
       getItem("Cafe", "food-2"),
@@ -289,19 +286,10 @@ export default function Page() {
         return <FunContent borderRadiusLG={borderRadiusLG} name={name} aimag={aimag} />;
       case "accom-1":
         return (
-          <AccomodationContent
+          <AccommodationContent
             borderRadiusLG={borderRadiusLG}
             aimag={aimag}
             name={name}
-          />
-        );
-      case "accom-2":
-        return (
-          <YurtContent
-            borderRadiusLG={borderRadiusLG}
-            aimag={aimag}
-            name={name}
-            items={filterYurts(aimag?.hotels || [])}
           />
         );
       case "food-1":
@@ -562,49 +550,66 @@ export const TransportContent = ({ borderRadiusLG, name, items = [] }) => {
 
 export const AccomodationContent = ({ borderRadiusLG, aimag, name }) => {
   return (
-    <Content style={{ margin: "24px" }}>
-      <section className="relative w-full h-96 md:h-[560px] rounded-3xl overflow-hidden shadow-lg mb-16">
+    <Content className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+      <section className="relative w-full h-80 md:h-[500px] rounded-3xl overflow-hidden shadow-xl mb-12 bg-gray-100">
         <img
           src="https://images.unsplash.com/photo-1597434429739-2574d7e06807"
-          className="w-full h-full object-cover"
-          alt="Accommodation"
+          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+          alt="Luxury hotel in Mongolia"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 p-8 md:p-12 text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-3 drop-shadow-md">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 p-8 md:p-12 text-white max-w-4xl">
+          <h1 className="text-4xl md:text-6xl font-bold mb-3 drop-shadow-lg leading-tight">
             Hotels in {name}
           </h1>
-          <p className="text-lg md:text-xl max-w-2xl drop-shadow">
-            Comfortable stays across the province.
+          <p className="text-lg md:text-xl max-w-2xl drop-shadow-md">
+            Discover comfortable stays and exceptional hospitality across {name} province.
           </p>
         </div>
       </section>
+      <div className="mb-16">
+        <div className="mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Featured Stays</h2>
+          <div className="w-16 h-1 bg-blue-600 rounded-full"></div>
+        </div>
 
-      <div
-        style={{
-          padding: 24,
-          background: "#FFFFFF",
-          borderRadius: borderRadiusLG,
-          boxShadow: "0 4px 16px rgba(15,23,42,0.06)",
-        }}
-        className="border border-gray-100"
-      >
         {aimag?.hotels?.length > 0 ? (
-          <List
-            grid={{ gutter: 16, xs: 1, sm: 2, md: 3 }}
-            dataSource={aimag.hotels}
-            renderItem={(hotel) => (
-              <List.Item key={hotel.name}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {aimag.hotels.map((hotel) => (
+              <div key={hotel.name} className="h-full">
                 <AimagHotelDetails hotel={hotel} />
-              </List.Item>
-            )}
-          />
+              </div>
+            ))}
+          </div>
         ) : (
-          <p className="text-gray-500 text-center py-8">
-            No hotels listed for {name} yet.
-          </p>
+          <div className="text-center py-16 bg-gray-50 rounded-2xl">
+            <div className="mx-auto w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mb-4">
+              <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-1">No hotels listed yet</h3>
+            <p className="text-gray-500 max-w-md mx-auto">We're working on adding the best accommodations in {name}. Check back soon!</p>
+          </div>
         )}
       </div>
+      {aimag?.yurts?.length > 0 && (
+        <div className="mt-16">
+          <div className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Traditional Yurt Stays</h2>
+            <div className="w-16 h-1 bg-amber-500 rounded-full"></div>
+            <p className="mt-2 text-gray-600 max-w-3xl">Experience authentic Mongolian hospitality in traditional yurts (gers) with modern comforts.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {aimag.yurts.map((yurt) => (
+              <div key={yurt.name} className="h-full">
+                <AimagHotelDetails hotel={yurt} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </Content>
   );
 };

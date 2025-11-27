@@ -7,9 +7,9 @@ import { messages } from "../messages";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Contact() {
-  const { lang } = useLanguage(); // Get current language
-  const t = messages[lang] || messages.en; // Fallback to English
-
+  const { lang } = useLanguage();
+  const t = messages[lang] || messages.en;
+  
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -30,28 +30,26 @@ export default function Contact() {
   const onSubmit = async (e) => {
     e.preventDefault();
     setStatus("");
-
     if (!form.name || !form.email || !form.message) {
-      setStatus(t.contact.errorRequired);
+      setStatus(t.contactPage.errorRequired);
       return;
     }
-
     setSubmitting(true);
     try {
-      await new Promise((r) => setTimeout(r, 800)); // simulate API call
-      setStatus(t.contact.successMessage);
+      await new Promise((r) => setTimeout(r, 800));
+      setStatus(t.contactPage.successMessage);
       setForm({ name: "", email: "", subject: "", message: "" });
     } catch {
-      setStatus(t.contact.errorMessage);
+      setStatus(t.contactPage.errorMessage);
     } finally {
       setSubmitting(false);
     }
   };
 
   const contactInfo = [
-    { icon: Mail, title: t.contact.email, text: "support@example.com" },
-    { icon: Phone, title: t.contact.phone, text: "+976 9900 0000" },
-    { icon: MapPin, title: t.contact.address, text: t.contact.addressText },
+    { icon: Mail, title: t.contactPage.email, text: "support@travelii.com" },
+    { icon: Phone, title: t.contactPage.phone, text: "+976 9900 0000" },
+    { icon: MapPin, title: t.contactPage.address, text: t.contactPage.addressText },
   ];
 
   return (
@@ -65,10 +63,9 @@ export default function Contact() {
           ready ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        {/* Header */}
         <header className="text-center mb-12 text-white">
-          <h1 className="text-4xl font-bold mb-2">{t.contact.title}</h1>
-          <p className="text-lg">{t.contact.subtitle}</p>
+          <h1 className="text-4xl font-bold mb-2">{t.contactPage.title}</h1>
+          <p className="text-lg">{t.contactPage.subtitle}</p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -106,7 +103,7 @@ export default function Contact() {
                 <input
                   className="border border-gray-600 rounded-lg p-3 outline-none bg-black/30 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-400"
                   name="name"
-                  placeholder={t.contact.namePlaceholder}
+                  placeholder={t.contactPage.namePlaceholder}
                   value={form.name}
                   onChange={onChange}
                 />
@@ -114,7 +111,7 @@ export default function Contact() {
                   className="border border-gray-600 rounded-lg p-3 outline-none bg-black/30 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-400"
                   name="email"
                   type="email"
-                  placeholder={t.contact.emailPlaceholder}
+                  placeholder={t.contactPage.emailPlaceholder}
                   value={form.email}
                   onChange={onChange}
                 />
@@ -123,14 +120,14 @@ export default function Contact() {
               <input
                 className="border border-gray-600 rounded-lg p-3 outline-none bg-black/30 text-white placeholder-gray-300 focus:ring-2 focus:ring-purple-400"
                 name="subject"
-                placeholder={t.contact.subjectPlaceholder}
+                placeholder={t.contactPage.subjectPlaceholder}
                 value={form.subject}
                 onChange={onChange}
               />
               <textarea
                 className="border border-gray-600 rounded-lg p-3 outline-none bg-black/30 text-white placeholder-gray-300 resize-none focus:ring-2 focus:ring-purple-400"
                 name="message"
-                placeholder={t.contact.messagePlaceholder}
+                placeholder={t.contactPage.messagePlaceholder}
                 rows={5}
                 value={form.message}
                 onChange={onChange}
@@ -148,7 +145,7 @@ export default function Contact() {
                 disabled={submitting}
               >
                 <Send size={18} />
-                {submitting ? t.contact.sending : t.contact.sendButton}
+                {submitting ? t.contactPage.sending : t.contactPage.sendButton}
               </button>
             </form>
           </section>

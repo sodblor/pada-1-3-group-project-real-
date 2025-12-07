@@ -5,15 +5,23 @@ import { useRouter } from "next/navigation";
 
 export default function HomePage() {
   const images = [
-    { src: "https://images.unsplash.com/photo-1597434429739-2574d7e06807", type: "warm" },
-    { src: "https://images.unsplash.com/photo-1680551294585-891c84bf6d43", type: "cool" },
-    { src: "https://images.unsplash.com/photo-1664433451451-11337deef597", type: "dark" },
+    {
+      src: "https://images.unsplash.com/photo-1597434429739-2574d7e06807",
+      type: "warm",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1680551294585-891c84bf6d43",
+      type: "cool",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1664433451451-11337deef597",
+      type: "dark",
+    },
   ];
 
   const [index, setIndex] = useState(0);
   const [search, setSearch] = useState("");
   const router = useRouter();
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,11 +30,16 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
-
   const handleSearch = () => {
     const slug = search.trim().toLowerCase();
     if (!slug) return;
-    router.push(`/${slug}`);
+
+    // Case-insensitive check for "mongolia"
+    if (slug === "mongolia") {
+      router.push("/map");
+    } else {
+      router.push(`/${slug}`);
+    }
   };
 
   const handleKey = (e) => {

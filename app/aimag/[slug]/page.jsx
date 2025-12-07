@@ -503,7 +503,7 @@ export const TransportContent = ({ borderRadiusLG, name, items = [] }) => {
             Transport in {name}
           </h1>
           <p className="text-base md:text-lg max-w-2xl drop-shadow">
-            Options to get in and around the province.
+            {/* Options to get in and around the province. */}
           </p>
         </div>
       </section>

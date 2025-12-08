@@ -1,4 +1,4 @@
-// app/blog/[id]/page.js
+
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -7,10 +7,10 @@ import { messages } from "../../messages";
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function BlogDetail() {
-  const { lang } = useLanguage(); // Get language from context
-  const pathname = usePathname(); // e.g., "/blog/3"
-  const id = pathname.split("/").pop(); // get the last part of the URL
-  const t = messages[lang] || messages.en; // fallback to English
+  const { lang } = useLanguage(); 
+  const pathname = usePathname(); 
+  const id = pathname.split("/").pop(); 
+  const t = messages[lang] || messages.en; 
 
   return (
     <div className="min-h-screen px-6 py-24 max-w-4xl mx-auto">

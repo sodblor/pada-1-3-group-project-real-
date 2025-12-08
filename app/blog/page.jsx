@@ -1,4 +1,3 @@
-// app/blog/page.js
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,7 +5,6 @@ import Link from "next/link";
 import { messages } from "../messages";
 import { useLanguage } from "../context/LanguageContext";
 
-// Blog posts with real content for easier translation
 const blogData = [
   {
     id: 1,
@@ -129,7 +127,6 @@ export default function Blog() {
 
   const t = messages[lang] || messages.en;
 
-  // Translate posts
   const translatedPosts = blogData.map((post) => ({
     ...post,
     title: t.blogPosts?.[post.titleKey] || `Blog Post #${post.id}`,
@@ -155,7 +152,6 @@ export default function Blog() {
         </h1>
       </div>
 
-      {/* Tag Filter */}
       <div className="max-w-6xl mx-auto px-6 py-6 flex flex-wrap gap-3">
         <button
           onClick={() => setActiveTag("")}
@@ -182,8 +178,6 @@ export default function Blog() {
           </button>
         ))}
       </div>
-
-      {/* Blog Cards */}
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-8">
         {filteredPosts.map((post) => (
           <Link

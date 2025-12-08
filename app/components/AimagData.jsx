@@ -1,59 +1,260 @@
-export const AIMAG_ID_TO_NAME = {
-  MN073: "Архангай",
-  MN071: "Баян-Өлгий",
-  MN069: "Баянхонгор",
-  MN067: "Булган",
-  MN037: "Дархан-Уул",
-  MN061: "Дорнод",
-  MN063: "Дорноговь",
-  MN059: "Дундговь",
-  MN057: "Завхан",
-  MN065: "Говь-Алтай",
-  MN064: "Говьсүмбэр",
-  MN039: "Хэнтий",
-  MN043: "Ховд",
-  MN041: "Хөвсгөл",
-  MN035: "Орхон",
-  MN049: "Сэлэнгэ",
-  MN051: "Сүхбаатар",
-  MN047: "Төв",
-  MN046: "Увс",
-  MN1: "Улаанбаатар",
-  MN053: "Өмнөговь",
-  MN055: "Өвөрхангай",
-};
+// app/lib/aimagData.jsx
 
-export const AIMAG_IDS = Object.keys(AIMAG_ID_TO_NAME);
+export const AIMAG_LIST = [
+  {
+    slug: "ulaanbaatar",
+    name: "Улаанбаатар",
+    shortDescription: "The bustling capital of Mongolia.",
+    attractions: [
+      // { name: "Gandan Monastery", note: "Historic Buddhist monastery", image: "/images/gandan.jpg" },
+    ],
+    hotels: [
+      // { name: "Blue Sky Hotel", address: "Peace Ave 10", link: "https://bluesky.mn" },
+    ],
+    restaurants: [
+      // { name: "Modern Nomads", address: "Peace Ave 5", link: "https://modernnomads.mn" },
+    ],
+    transportOptions: [
+      // { mode: "Bus", note: "City bus network" },
+      // { mode: "Taxi", note: "Easily available" },
+    ],
+    tips: [
+      // "Carry cash for smaller shops",
+      // "Best time to visit: June-August"
+    ],
+  },
 
-export const AIMAG_ID_TO_SLUG = {
-  MN073: "arkhangai",
-  MN071: "bayan-ulgii",
-  MN069: "bayankhongor",
-  MN067: "bulgan",
-  MN037: "darkhan-uul",
-  MN061: "dornod",
-  MN063: "dornogovi",
-  MN059: "dundgovi",
-  MN057: "zavkhan",
-  MN065: "govi-altai",
-  MN064: "govisumber",
-  MN039: "khentii",
-  MN043: "khovd",
-  MN041: "khuvsgul",
-  MN035: "orkhon",
-  MN049: "selenge",
-  MN051: "sukhbaatar",
-  MN047: "tov",
-  MN046: "uvs",
-  MN1: "ulaanbaatar",
-  MN053: "umnugovi",
-  MN055: "uvurhangai",
-};
+  {
+    slug: "arkhangai",
+    name: "Архангай",
+    shortDescription: "Mountainous province with lakes and nomadic culture.",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
 
-export const SLUG_TO_AIMAG_ID = Object.fromEntries(
-  Object.entries(AIMAG_ID_TO_SLUG).map(([id, slug]) => [slug, id])
-);
+  {
+    slug: "bayan-ulgii",
+    name: "Баян-Өлгий",
+    shortDescription: "Home of Kazakh culture and Altai mountains.",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
 
-export const GET_KEYS = () => {
-  return Object.keys();
-};
+  {
+    slug: "bayankhongor",
+    name: "Баянхонгор",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "bulgan",
+    name: "Булган",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "govi-altai",
+    name: "Говь-Алтай",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "govisumber",
+    name: "Говьсүмбэр",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "darkhan-uul",
+    name: "Дархан-Уул",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "dornod",
+    name: "Дорнод",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "dornogovi",
+    name: "Дорноговь",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "dundgovi",
+    name: "Дундговь",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "zavkhan",
+    name: "Завхан",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "orkhon",
+    name: "Орхон",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "uvurkhangai",
+    name: "Өвөрхангай",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "umnugovi",
+    name: "Өмнөговь",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "sukhbaatar",
+    name: "Сүхбаатар",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "selenge",
+    name: "Сэлэнгэ",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "tuv",
+    name: "Төв",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "uvs",
+    name: "Увс",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "khovd",
+    name: "Ховд",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "khuvsgul",
+    name: "Хөвсгөл",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+
+  {
+    slug: "khentii",
+    name: "Хэнтий",
+    shortDescription: "",
+    attractions: [],
+    hotels: [],
+    restaurants: [],
+    transportOptions: [],
+    tips: [],
+  },
+];
+
+// helper function
+export const getAimagBySlug = (slug) => AIMAG_LIST.find((a) => a.slug === slug);

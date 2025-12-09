@@ -1,7 +1,7 @@
   "use client";
 
 // components/MongoliaMap.js
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "../styles/Map.module.css"; // CSS модулиа оруулж ирнэ
 import { AIMAG_ID_TO_NAME, AIMAG_IDS } from "./AimagData";
 import { useRouter } from "next/navigation";
@@ -9,9 +9,7 @@ import { useRouter } from "next/navigation";
 // Simplemaps-ийн SVG-г React Component болгон ашиглах жишээ
 // ЖИЧ: Та mn.svg доторх бүх <path> элементүүдийг ЭНД оруулах ёстой.
 const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
-  // Simplemaps-ийн SVG-ийн үндсэн viewBox болон бүх path элементүүдийг энд хуулж оруулаарай.
-  // Аймаг бүр id="MNXXX" гэсэн format-тай байх ёстой.
-  // Бидний жишээнд зөвхөн hover event-ийг харуулахын тулд загварчилсан SVG-г ашиглана.
+  
 
   const router = useRouter();
 
@@ -43,13 +41,26 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
   
     >
       <style>{`
-                #features path { fill: #e0e0e0; cursor: pointer; transition: fill 0.15s ease }
-                ${
-                  hoveredAimagId
-                    ? `#features path#${hoveredAimagId} { fill: #ff6347 !important }`
-                    : ""
-                }
-            `}</style>
+        #features path { 
+          fill: #f0f0f0; 
+          cursor: pointer; 
+          transition: fill 0.15s ease;
+          stroke: #d1d1d1;
+          stroke-width: 1;
+          vector-effect: non-scaling-stroke;
+        }
+        #features path:hover {
+          fill: #e6f0fa;
+        }
+        ${
+          hoveredAimagId
+            ? `#features path#${hoveredAimagId} { 
+                fill: #e6f0fa !important; 
+                stroke: #a0c0e0;
+              }`
+            : ""
+        }
+      `}</style>
       <g id="features" onMouseOver={handleOver} onMouseOut={handleLeave}>
         <path
           d="M860.6 274.6l-2.4-2.8-5.8-9.4-0.4-0.5-0.4-0.4-0.6-0.2-12 0.6-5.3 1.1-13 0.5-2.5 0.7-4.8 2.4-3.4-6.3-1.7-2.5-0.8-0.9-0.9-0.8-0.8-0.6-0.9-0.5-3.1-1.3-0.5-0.3-0.5-0.4-0.3-0.6-0.3-0.8-0.1-1.1 0.1-3.3 0.9-7.6-0.2-1.1-0.4-0.5-0.6-0.5-5-2.7-12.9-10.4-17.1-3.8-5.5-2.6-1.5-0.3-0.8 0-0.8 0.1-1 0.3-4.8 2.6 0.3-5-0.3-3.8-1.2-5.3-1.2-2.5-0.3-0.6-1.5-2.9-0.7-7.2 0.4-2.9 0.7-1.8 0-2.5-0.3-2.4-0.5-1.7-1.7-4.3-5.5-10.3-1.1-2.6-0.5-1.5 0.3-1 0.7-2.1 0-0.8-0.1-1.2-1.1-3.2-0.9-5.8-0.1-2 0.1-0.2 0.1-0.2 0.5-0.4 0.2-0.4 0.1-0.3 0-0.2-0.1-0.3-2.1-3 0-0.1 8.6-3.9 1.2-0.2 3.1 0.3 2.5 1.3 0.8 0.2 0.9 0 1.2-0.4 2.6-1.3 1.7-1.5 0.6-0.5 0.6-0.3 0.6-0.1 1.5-0.1 0.5-0.3 0.3-1 0-1.5 0.1-0.7 0.3-0.8 2-4 0.7-1 0.8-0.9 5.8-4.4 0.7-1.1 0.5-0.4 1.5-1.1 0.5-0.5 1.4-1.2 4.9-2.6 0.6-0.1 1.2 0.2 0.6 0 0.4-0.2 3.4-3.5 0.6-0.4 1.2-0.3 0.6-0.3 1.7-1.8 2.4-1.4 2.4-0.9 1.3 0.2 2.6 1.3 1.4 0.4 5.2-0.8 2.7 0.7 6.9 4 0.5 0.5 0.4 0.6 0.6 1.3 0.4 0.6 4.1 4.6 4.5 3.4 0.5 0.2 1.8-0.1 0.6 0.2 1 0.1 2-0.4 3 0.7 0.9 0 1-0.3 8.5-5 2.4-0.7 2.3 0.1 2.3 0.9 7.8 3.1 1.2 1.1 1 1.5 0.9 1.7-6 13.4-0.4 1.1-6 13.5-5.9 13.4-0.1 0.7 0.4 1.5 0 0.8-0.5 1.3-7 10.9 0.1 1.1 0 0.7 0.6 8.4-0.1 0.9-4.1 2.6-0.1 0.1-1.1 0.7-2.3 1-0.6 0.8 0 0.4 0.4 2.7 0 0.2 0.9 5.4 0.3 0.2 0.1 0.5 0.7 0.9 7.2 7.7 1.7 0.9 1.7-1.1 3.1-4.1 2.8-1.8 1.7-0.6 5.2 1.2 2 0 7.2-1.6 2-0.1 0.8 0.1 3.4 1.5 2.1 0.8 0.7 0.4 6.9 6.5 1.3 0.1 1.1-1.4 0.5-0.9 0.2-0.2 0.9-1.5 0.5-0.4 1.5-1.3 6-8 0.8-0.7 1.3-0.5 4.5 0.3 0.7 0 1.9-0.9 1.6-0.3 1.7 0 0.7 0.2 1.3 0.8 0.8 0.2 5.4 0.4 2 1 1.8 2.2 3 5 1.5 1.6 5.8 2.6 2.5 0.9 0.7 0.5 0.4 0.6 0.2 0.8 0.3 3 0.2 0.7 0.3 0.5 0.3 0.2 0 0.1 0.3 0.1 0.1 0 2.6 1.1 1.1 0.3 0.6 0.4 0.2 0.6-0.2 0.4-0.6 0.9-0.2 0.6 1.1 0.4 4.4 4 0.4 0.5 0.4 0.8 0.2 0.7 0.4 0.5 0.7 0.2 0.1 0.2 0.4-0.1 0.5 0.2 1.2 0.9 2 2.4 0.8 1.2 0.7 1.5 0.2 0.8 0 2.4 0.1 0.5 0.1 0.3 0.1 0.2 0.4 0.6 0.9 1 0.4 0.5 0.2 0.3 0 0.4 0.2 0.3 0.2 0.3 0.3 0.1 0.5 0 0.3 0.1 0.1 0.3-0.1 0.4-0.2 0.3-0.1 0.3 0 0.6 0.1 0.2 0.1 0.1 0.1 0.2 0.2 0 0.1 0.2 0 0.2-0.1 0.3 0 0.3 0 0.9-0.4 1.3 0 0.7 0.1 0.4 0.4 0.7 0.1 0.3 0 0.4-0.2 0.3-0.2 0.3-0.2 0.3-0.1 0.1-0.2 0.5-0.4 0.4-0.7-0.3-1-0.1-0.2 0.6-0.2 0.3-0.5 0.7-0.2 0.2-0.7 0.4-0.4 0.2-0.8 0.8-0.1 0.1-0.3 0-0.6-0.1-1-0.9-0.6-0.1-0.7 0-2.1-0.4-1.4 0.1-2.5 0.6-1.3 0-7.2-2-0.7-0.3-0.7-0.6-0.8-1.7-0.5-0.7-0.6 0.2-0.7 0.8-0.4 0.3-0.5-0.2-0.3-0.5-0.1-0.7-0.2-0.6-0.6-0.3-0.9 0.3-0.7 0.8-0.3 0.6-0.2 0.2 0 0.1-0.4 0.8-0.6 0.1-0.1-0.1-0.1 0.7-0.3 0.1-1-0.2-1.1-0.6-1-0.4-0.4 0.2-0.8 0.5-0.5 0.2-2.2 0-1.1-0.3-1.8-0.9-1-0.3-0.9-0.1-0.9 0-0.9 0.3-0.9 0.6-1.1 1-0.4 0.1-1.5 0.1-0.5 0.2-2.2 1.7-0.9 0.1-1.4 0.4-0.7 0.3-0.6 0.4-0.3 0.5-0.2 0-0.6 0.9-0.6 0.5-0.1 0-0.1 0.1 0 1-0.4 0.2-1.5 0.2-0.1-0.1-0.1 0.1-1.1 0.1-0.7-0.1-1.2-0.8-0.2-0.2-0.3-0.8-0.5-0.7-0.1-0.1-0.3-0.6-0.4-0.4-0.3 0-1.2 0.9-0.5 0.1-0.1 0-0.5-0.3-2.3 0.6 0.5 1.3 0 0.6-0.2 0.6-1 1.4-0.3 1.1-0.1 2.3-0.7 1.2 0 0.2-1.1 0.3-9.4-0.6-3.6-0.8-0.5 0-0.2 0.1-0.6 0.7-1.8 1.5-0.4 0.2-1.7 0.2-1.2 0.4-0.6 0.5z"
@@ -254,32 +265,55 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
 
 const MongoliaMap = () => {
   const [hoveredAimagId, setHoveredAimagId] = useState(null);
-  const [currentReview, setCurrentReview] = useState(0);
+    const [currentReview, setCurrentReview] = useState(0);
   const [slideDirection, setSlideDirection] = useState('');
+  const [currentSlide, setCurrentSlide] = useState(0);
   
   const reviews = [
     {
       name: 'Alex Johnson',
       location: 'Ulaanbaatar',
       rating: 5,
-      comment: 'An unforgettable experience! The landscapes are breathtaking and the people are incredibly welcoming.',
+      comment: 'An unforgettable experience! The landscapes are breathtaking and the people are incredibly welcoming. The cultural heritage sites and the vibrant city life made our trip truly special.',
       date: 'October 2023'
     },
     {
       name: 'Sarah Kim',
       location: 'Gobi Desert',
       rating: 4,
-      comment: 'The Gobi Desert was absolutely stunning. The night sky there is something you have to see to believe!',
+      comment: 'The Gobi Desert was absolutely stunning. The night sky there is something you have to see to believe! We rode camels, stayed in a traditional ger, and watched the most beautiful sunsets.',
       date: 'August 2023'
     },
     {
       name: 'James Wilson',
       location: 'Khovsgol Lake',
       rating: 5,
-      comment: 'The crystal clear waters of Khovsgol Lake were the highlight of our trip. Perfect for nature lovers!',
+      comment: 'The crystal clear waters of Khovsgol Lake were the highlight of our trip. Perfect for nature lovers! We went horseback riding and hiking, and the views were absolutely spectacular.',
       date: 'July 2023'
+    },
+    {
+      name: 'Emma Davis',
+      location: 'Terelj National Park',
+      rating: 5,
+      comment: 'Terelj National Park is a paradise for outdoor enthusiasts. The rock formations are incredible, and we had an amazing time hiking and staying in a traditional Mongolian ger camp.',
+      date: 'June 2023'
+    },
+    {
+      name: 'Michael Chen',
+      location: 'Karakorum',
+      rating: 4,
+      comment: 'The historical significance of Karakorum is mind-blowing. Visiting the Erdene Zuu Monastery was a spiritual experience, and learning about Genghis Khan was fascinating.',
+      date: 'May 2023'
     }
   ];
+
+  // Auto-rotate reviews
+  useEffect(() => {
+    const timer = setInterval(() => {
+      handleNextReview();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [currentReview]);
 
   const handlePrevReview = () => {
     setSlideDirection('slide-out-right');
@@ -295,6 +329,18 @@ const MongoliaMap = () => {
       setCurrentReview(prev => (prev < reviews.length - 1 ? prev + 1 : 0));
       setSlideDirection('slide-in-right');
     }, 300);
+  };
+
+  const handleSlideChange = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const handlePrevSlide = () => {
+    setCurrentSlide(prev => (prev > 0 ? prev - 1 : 2));
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide(prev => (prev < 2 ? prev + 1 : 0));
   };
 
   const handleAimagHover = (aimagId) => {
@@ -313,17 +359,17 @@ const MongoliaMap = () => {
     { 
       title: "Булган", 
       slug: "bulgan",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437763713565458573/7-Khetsuu-khad-Hyargas-lake-top-10-places-bayar.jpeg?ex=69146d4d&is=69131bcd&hm=9abd3190ff544f3ebdec8f61cd1dd9ba06d26dbb9167ddc8b0c1b596b55edf32&=&format=webp&width=2362&height=1572" 
+      img: "https://correctmongolia.com/wp-content/uploads/2023/12/Bulgan.jpg" 
     },
     { 
       title: "Дархан-Уул", 
       slug: "darkhan-uul",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437763714790199377/4-Khermen-tsav-top-10-places-bayar.jpeg?ex=69146d4d&is=69131bcd&hm=a54a1560aafb9a8ae4704e467e21f75fee4aada9adf55c0cce60c64ee226a73f&=&format=webp&width=2368&height=1572" 
+      img: "https://www.escapetomongolia.com/__data/assets/image/0016/11374/Darkhan-Khairkhan-Mountain.jpg" 
     },
     { 
       title: "Дорнод", 
       slug: "dornod",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437763715448442920/2-Kharkhiraa-turgen-top-10-places-bayar-2.jpg?ex=69146d4e&is=69131bce&hm=208be939d7f0ec467ac1de7f807c6f4f3c5ef1ec690ae0ec4c760a694e88426d&=&format=webp&width=2360&height=1572" 
+      img: "https://live.staticflickr.com/2818/9690536148_a2792aca54.jpg" 
     },
     { 
       title: "Завхан", 
@@ -368,48 +414,93 @@ const MongoliaMap = () => {
 
   return (  
     <div className={styles.wrapper}>
-      <div className={styles.headerRow}>
-        <div className={styles.headerImageWrap}>
-          <p className={styles.headerTitle}>MONGOLIA</p>
+      <div className={styles.headerImageWrap}>
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
           <img
             className={styles.headerImage}
-           src="https://images.fineartamerica.com/images-medium-large-5/yurt-the-traditional-mongolian-yurt-panoramic-images.jpg"
+            src="https://lh6.googleusercontent.com/proxy/8HEZKWMB0jC4xEkxHXCInO2OCPs661KYrELWt5LkzoT2JjuyA0YXlqKOWWAjvIcYYitpU9jGA3zeL5wbuSo360Yjr-imzi48iC9Z5dSsTbU24dTtrKUYu5oQgWRlffd6oCk"
+            alt="Mongolian landscape"
           />
-          <div className={styles.headerOverlay}>
-            <div className={styles.verticalLabel}>ᠮᠣᠩᠭᠣᠯ</div>
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            color: 'white',
+            fontSize: '4rem',
+            fontWeight: 'bold',
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+            textAlign: 'center',
+            width: '100%',
+            fontFamily: 'Arial, sans-serif',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase'
+          }}>
+            MONGOLIA
           </div>
         </div>
+        <div className={styles.headerOverlay}>
+          <div className={styles.verticalLabel}>ᠮᠣᠩᠭᠣᠯ</div>
+        </div>
       </div>
-      <div className={styles.infoBox}>
-        аймаг/хот:
-        <span className={styles.aimagName}>{currentAimagName}</span>
-      </div>
+
       <div className={styles.mapContainerBox}>
+        <div className={styles.infoBox}>
+          <span>Selected: </span>
+          <span className={styles.aimagName}>{currentAimagName || 'Hover over a region'}</span>
+        </div>
+        
         <MongoliaSVG  
           onAimagHover={handleAimagHover}
           onAimagLeave={handleAimagLeave}
           hoveredAimagId={hoveredAimagId}
         />
-        <div className={styles.contentGrid}>
-          {carduud.map((c, idx) => (
-            <div 
-              className={styles.gridItem} 
-              key={idx} 
-              onClick={() => handleAimagClick(c.slug)}
-              style={{ cursor: 'pointer' }}
-            >
-              <div className={styles.gridItemInner}>
-                <img className={styles.gridImage} src={c.img} alt={c.title} />
-                <div className={styles.gridDesc}>{c.title}</div>
+      </div>
+
+ 
+      <div className={styles.sliderContainer}>
+        <h2 className={styles.sliderTitle}>Featured Destinations</h2>
+        <div className={styles.slider}>
+          {carduud.slice(0, 6).map((destination, index) => (
+            <div key={index} className={styles.slide} onClick={() => handleAimagClick(destination.slug)}>
+              <img 
+                src={destination.img} 
+                alt={destination.title} 
+                className={styles.slideImage}
+                loading="lazy"
+              />
+              <div className={styles.slideContent}>
+                <h3 className={styles.slideTitle}>{destination.title}</h3>
+                <p className={styles.slideDescription}>
+                  Discover the breathtaking landscapes and rich culture of {destination.title}. 
+                  Perfect for adventure seekers and culture enthusiasts alike.
+                </p>
+                <button className={styles.slideButton}>
+                  Explore {destination.title} →
+                </button>
               </div>
             </div>
           ))}
         </div>
+        <button className={`${styles.sliderButton} ${styles.prev}`}>
+          ❮
+        </button>
+        <button className={`${styles.sliderButton} ${styles.next}`}>
+          ❯
+        </button>
+        <div className={styles.sliderNav}>
+          {[0, 1, 2].map((dot) => (
+            <div 
+              key={dot} 
+              className={`${styles.sliderDot} ${dot === 0 ? styles.active : ''}`}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Review Section */}
-      <div className={styles.reviewSection}>
-        <h2 className={styles.reviewTitle}>Traveler Reviews</h2>
+      {/* Traveler Reviews Section */}
+      <section className={styles.reviewSection}>
+        <h2 className={styles.reviewTitle}>Traveler Experiences</h2>
         <div className={styles.reviewContainer}>
           <button 
             className={`${styles.carouselButton} ${styles.prevButton}`} 
@@ -431,8 +522,14 @@ const MongoliaMap = () => {
                   ))}
                 </div>
               </div>
-              <div className={styles.reviewLocation}>{reviews[currentReview].location}</div>
-              <p className={styles.reviewComment}>"{reviews[currentReview].comment}"</p>
+              <div className={styles.reviewLocation}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                {reviews[currentReview].location}
+              </div>
+              <p className={styles.reviewComment}>{reviews[currentReview].comment}</p>
               <div className={styles.reviewDate}>{reviews[currentReview].date}</div>
             </div>
           </div>
@@ -445,7 +542,7 @@ const MongoliaMap = () => {
             ❯
           </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

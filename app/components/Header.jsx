@@ -28,13 +28,6 @@ export default function Header() {
         >
           {lang === "en" ? "MN" : "EN"}
         </button>
-        {/* Optional theme toggle */}
-        {/* <button
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          className="p-2 rounded-full border border-white/30 hover:bg-white hover:text-black transition"
-        >
-          {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-        </button> */}
       </div>
     </header>
   );

@@ -86,6 +86,7 @@ export const AttractionTriggerComponent = ({ attraction }) => {
     );
 };
 
+
 export const AimagHotelDetails = ({ hotel }) => {
     return (
         <Dialog>

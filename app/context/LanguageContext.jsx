@@ -1,4 +1,4 @@
-// app/context/LanguageContext.js
+
 "use client";
 import { createContext, useContext, useState } from "react";
 

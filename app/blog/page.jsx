@@ -130,7 +130,8 @@ export default function Blog() {
   const translatedPosts = blogData.map((post) => ({
     ...post,
     title: t.blogPosts?.[post.titleKey] || `Blog Post #${post.id}`,
-    excerpt: t.blogPosts?.[post.excerptKey] || "Discover amazing travel stories",
+    excerpt:
+      t.blogPosts?.[post.excerptKey] || "Discover amazing travel stories",
     tags: post.tags.map((tag) => t.tags?.[tag] || tag),
   }));
 

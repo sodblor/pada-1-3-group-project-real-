@@ -183,7 +183,7 @@ export default function TravelResourcesPage() {
       {/* MAIN CONTENT */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-20 -mt-20 z-10">
         {/* Info Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-16 relative z-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-12 mb-16 relative z-10 mt-5">
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-xl">
             <p className="font-bold text-lg text-gray-900 dark:text-gray-100">{t.infoCards.capitalCity}</p>
             <p className="text-gray-700 dark:text-gray-300">{t.infoCards.ulaanbaatar}</p>
@@ -200,39 +200,6 @@ export default function TravelResourcesPage() {
             <p className="font-bold text-lg text-gray-900 dark:text-gray-100">{t.infoCards.religion}</p>
             <p className="text-gray-700 dark:text-gray-300">{t.infoCards.buddhismIslam}</p>
           </div>
-        </div>
-
-        {/* Ulaanbaatar Weather Widget */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 mb-10">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-            {t.currentWeather}
-          </h2>
-
-          <div className="rounded-xl overflow-hidden">
-            <a
-              className="weatherwidget-io block w-full"
-              href="https://forecast7.com/en/47d89106d91/ulaanbaatar/"
-              data-label_1="ULAANBAATAR"
-              data-label_2="WEATHER"
-              data-theme="sky"
-            >
-              ULAANBAATAR WEATHER
-            </a>
-          </div>
-
-          <script>
-            {`
-              !function(d,s,id){
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if(!d.getElementById(id)){
-                  js = d.createElement(s);
-                  js.id = id;
-                  js.src = 'https://weatherwidget.io/js/widget.min.js';
-                  fjs.parentNode.insertBefore(js, fjs);
-                }
-              }(document,'script','weatherwidget-io-js');
-            `}
-          </script>
         </div>
 
         {/* Seasons Section */}
@@ -352,17 +319,17 @@ export default function TravelResourcesPage() {
               const rowSpan = rowSpanMap[r.nameKey] || 2;
 
               const imageMap = {
-                mongoliaVisaInfo: "/visa.jpeg",
-                mongoliaEVisa: "/evisa2.jpeg",
-                consularVisaPortal: "/visa3.jpeg",
-                cdcTravelersHealth: "/cdc.png",
-                healthcareTips: "/healthcare.png",
-                travelInsurance: "/insurance.jpg",
-                miatAirlines: "/miat.jpeg",
-                busTrainInfo: "/bus.jpg",
-                mapsMe: "/map.jpg",
-                tripPlanner: "/travelplan.jpg",
-                currencyConverter: "/USD-MNT.jpg",
+                mongoliaVisaInfo: "https://cdn.greensoft.mn/uploads/site/602/block/new_b98600dc0473267c959d56f40aab96d0db9c1ac5.jpg",
+                mongoliaEVisa: "https://cdn.passporthealthusa.com/wp-content/uploads/2018/02/e-visa.jpg?x88681",
+                consularVisaPortal: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Mongolia_Passport_2023.svg/847px-Mongolia_Passport_2023.svg.png",
+                cdcTravelersHealth: "https://static.vecteezy.com/system/resources/previews/024/637/507/large_2x/medical-equipment-healthcare-ai-generative-free-photo.jpg",
+                healthcareTips: "https://static.vecteezy.com/system/resources/previews/040/192/771/non_2x/logo-spiritual-health-care-psychology-meditation-person-and-nature-logo-vintage-calm-aesthetic-and-modern-editable-color-vector.jpg",
+                travelInsurance: "https://wwwnc.cdc.gov/travel/images/claim-form.jpg",
+                miatAirlines: "https://montsame.mn/uploads/content/fbb4b520237a13adae6cb9d84f7ee550.png",
+                busTrainInfo: "https://montsame.mn/files/65a4b130408b2.jpeg",
+                mapsMe: "https://www.livelikeitstheweekend.com/wp-content/uploads/2019/02/Google-Maps-Trip-Planner-16.png",
+                tripPlanner: "https://media.istockphoto.com/id/489525460/photo/couple-planning-honeymoon.jpg?s=612x612&w=0&k=20&c=7xgMS9mUlXri53V1t4QMEuIngc6nMe3_fWX1he157IY=",
+                currencyConverter: "https://cdn.corporatefinanceinstitute.com/assets/currency-1024x682.jpeg",
                 carRentals: "/rental.jpg",
               };
               const imgSrc = imageMap[r.nameKey] || "/placeholder.png";

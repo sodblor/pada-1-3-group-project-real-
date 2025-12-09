@@ -26,7 +26,7 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
     <div className={styles.mapWrapper}>
       <img 
         src="/map/mongolia-map-bg.jpg" 
-        alt="Mongolia Map Background" 
+        alt="Mongolia Map Backgrounds" 
         className={styles.mapBackground}
         onError={(e) => console.error('Error loading map background:', e)} 
       />

@@ -1,4 +1,4 @@
-  "use client";
+"use client";
 
 // components/MongoliaMap.js
 import React, { useRef, useState, useEffect } from "react";
@@ -38,7 +38,6 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
       width="1000"
       height="481"
       xmlns="http://www.w3.org/2000/svg"
-  
     >
       <style>{`
         #features path { 
@@ -265,29 +264,48 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
 
 const MongoliaMap = () => {
   const [hoveredAimagId, setHoveredAimagId] = useState(null);
+<<<<<<< HEAD
     const [currentReview, setCurrentReview] = useState(0);
   const [slideDirection, setSlideDirection] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
   
+=======
+  const [currentReview, setCurrentReview] = useState(0);
+  const [slideDirection, setSlideDirection] = useState("");
+
+>>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
   const reviews = [
     {
-      name: 'Alex Johnson',
-      location: 'Ulaanbaatar',
+      name: "Alex Johnson",
+      location: "Ulaanbaatar",
       rating: 5,
+<<<<<<< HEAD
       comment: 'An unforgettable experience! The landscapes are breathtaking and the people are incredibly welcoming. The cultural heritage sites and the vibrant city life made our trip truly special.',
       date: 'October 2023'
+=======
+      comment:
+        "An unforgettable experience! The landscapes are breathtaking and the people are incredibly welcoming.",
+      date: "October 2023",
+>>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
     },
     {
-      name: 'Sarah Kim',
-      location: 'Gobi Desert',
+      name: "Sarah Kim",
+      location: "Gobi Desert",
       rating: 4,
+<<<<<<< HEAD
       comment: 'The Gobi Desert was absolutely stunning. The night sky there is something you have to see to believe! We rode camels, stayed in a traditional ger, and watched the most beautiful sunsets.',
       date: 'August 2023'
+=======
+      comment:
+        "The Gobi Desert was absolutely stunning. The night sky there is something you have to see to believe!",
+      date: "August 2023",
+>>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
     },
     {
-      name: 'James Wilson',
-      location: 'Khovsgol Lake',
+      name: "James Wilson",
+      location: "Khovsgol Lake",
       rating: 5,
+<<<<<<< HEAD
       comment: 'The crystal clear waters of Khovsgol Lake were the highlight of our trip. Perfect for nature lovers! We went horseback riding and hiking, and the views were absolutely spectacular.',
       date: 'July 2023'
     },
@@ -305,6 +323,12 @@ const MongoliaMap = () => {
       comment: 'The historical significance of Karakorum is mind-blowing. Visiting the Erdene Zuu Monastery was a spiritual experience, and learning about Genghis Khan was fascinating.',
       date: 'May 2023'
     }
+=======
+      comment:
+        "The crystal clear waters of Khovsgol Lake were the highlight of our trip. Perfect for nature lovers!",
+      date: "July 2023",
+    },
+>>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
   ];
 
   // Auto-rotate reviews
@@ -316,18 +340,18 @@ const MongoliaMap = () => {
   }, [currentReview]);
 
   const handlePrevReview = () => {
-    setSlideDirection('slide-out-right');
+    setSlideDirection("slide-out-right");
     setTimeout(() => {
-      setCurrentReview(prev => (prev > 0 ? prev - 1 : reviews.length - 1));
-      setSlideDirection('slide-in-left');
+      setCurrentReview((prev) => (prev > 0 ? prev - 1 : reviews.length - 1));
+      setSlideDirection("slide-in-left");
     }, 300);
   };
 
   const handleNextReview = () => {
-    setSlideDirection('slide-out-left');
+    setSlideDirection("slide-out-left");
     setTimeout(() => {
-      setCurrentReview(prev => (prev < reviews.length - 1 ? prev + 1 : 0));
-      setSlideDirection('slide-in-right');
+      setCurrentReview((prev) => (prev < reviews.length - 1 ? prev + 1 : 0));
+      setSlideDirection("slide-in-right");
     }, 300);
   };
 
@@ -355,6 +379,7 @@ const MongoliaMap = () => {
     ? AIMAG_ID_TO_NAME[hoveredAimagId]
     : "";
 
+<<<<<<< HEAD
     const carduud = [
     { 
       title: "Булган", 
@@ -406,20 +431,48 @@ const MongoliaMap = () => {
       slug: "khuvsgul",
       img: "https://media.discordapp.net/attachments/1435213199866855464/1437770035237093457/B-size_updated-tsagaan-suwarga.jpg?ex=69147330&is=691321b0&hm=b9ce875e24ea441d8684708d3d6888603111b9fa65b87894920a8db5713d8c4f&=&format=webp&width=2400&height=1260" 
     },
+=======
+  const carduud = [
+    { title: "Архангай", slug: "arkhangai", img: "arkhangai.jpg" },
+    { title: "Баян-Өлгий", slug: "bayan-ulgii", img: "bayan-ulgii.jpg" },
+    { title: "Баянхонгор", slug: "bayankhongor", img: "bayankhongor.jpg" },
+    { title: "Булган", slug: "bulgan", img: "bulgan.jpg" },
+    { title: "Говь-Алтай", slug: "govi-altai", img: "govi-altai.jpg" },
+    { title: "Говьсүмбэр", slug: "govisumber", img: "govisumber.jpg" },
+    { title: "Дархан-Уул", slug: "darkhan-uul", img: "darkhan-uul.jpg" },
+    { title: "Дорноговь", slug: "dornogovi", img: "dornogovi.jpg" },
+    { title: "Дорнод", slug: "dornod", img: "dornod.jpeg" },
+    { title: "Дундговь", slug: "dundgovi", img: "dundgovi.jpg" },
+    { title: "Завхан", slug: "zavkhan", img: "zavkhan.jpg" },
+    { title: "Орхон", slug: "orkhon", img: "orkhon.jpg" },
+    { title: "Өвөрхангай", slug: "uvurkhangai", img: "uvurkhangai.jpg" },
+    { title: "Өмнөговь", slug: "umnegovi", img: "umnugovi.jpg" },
+    { title: "Сүхбаатар", slug: "sukhbaatar", img: "sukhbaatar.jpeg" },
+    { title: "Сэлэнгэ", slug: "selenge", img: "selenge.jpg" },
+    { title: "Төв", slug: "tuv", img: "tuv.jpg" },
+    { title: "Увс", slug: "uvs", img: "uvs.jpg" },
+    { title: "Хөвсгөл", slug: "khuvsgul", img: "khusvgul.jpeg" },
+    { title: "Хэнтий", slug: "khentii", img: "khentii.jpeg" },
+    { title: "Ховд", slug: "khovd", img: "khovd.jpg" },
+>>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
   ];
 
   const handleAimagClick = (slug) => {
     window.location.href = `/aimag/${slug}`;
   };
 
-  return (  
+  return (
     <div className={styles.wrapper}>
       <div className={styles.headerImageWrap}>
         <div style={{ position: 'relative', width: '100%', height: '100%' }}>
           <img
             className={styles.headerImage}
+<<<<<<< HEAD
             src="https://lh6.googleusercontent.com/proxy/8HEZKWMB0jC4xEkxHXCInO2OCPs661KYrELWt5LkzoT2JjuyA0YXlqKOWWAjvIcYYitpU9jGA3zeL5wbuSo360Yjr-imzi48iC9Z5dSsTbU24dTtrKUYu5oQgWRlffd6oCk"
             alt="Mongolian landscape"
+=======
+            src="https://images.fineartamerica.com/images-medium-large-5/yurt-the-traditional-mongolian-yurt-panoramic-images.jpg"
+>>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
           />
           <div style={{
             position: 'absolute',
@@ -445,16 +498,21 @@ const MongoliaMap = () => {
       </div>
 
       <div className={styles.mapContainerBox}>
+<<<<<<< HEAD
         <div className={styles.infoBox}>
           <span>Selected: </span>
           <span className={styles.aimagName}>{currentAimagName || 'Hover over a region'}</span>
         </div>
         
         <MongoliaSVG  
+=======
+        <MongoliaSVG
+>>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
           onAimagHover={handleAimagHover}
           onAimagLeave={handleAimagLeave}
           hoveredAimagId={hoveredAimagId}
         />
+<<<<<<< HEAD
       </div>
 
  
@@ -478,6 +536,19 @@ const MongoliaMap = () => {
                 <button className={styles.slideButton}>
                   Explore {destination.title} →
                 </button>
+=======
+        <div className={styles.contentGrid}>
+          {carduud.map((c, idx) => (
+            <div
+              className={styles.gridItem}
+              key={idx}
+              onClick={() => handleAimagClick(c.slug)}
+              style={{ cursor: "pointer" }}
+            >
+              <div className={styles.gridItemInner}>
+                <img className={styles.gridImage} src={c.img} alt={c.title} />
+                <div className={styles.gridDesc}>{c.title}</div>
+>>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
               </div>
             </div>
           ))}
@@ -502,27 +573,37 @@ const MongoliaMap = () => {
       <section className={styles.reviewSection}>
         <h2 className={styles.reviewTitle}>Traveler Experiences</h2>
         <div className={styles.reviewContainer}>
-          <button 
-            className={`${styles.carouselButton} ${styles.prevButton}`} 
+          <button
+            className={`${styles.carouselButton} ${styles.prevButton}`}
             onClick={handlePrevReview}
             aria-label="Previous review"
           >
             ❮
           </button>
-          
+
           <div className={`${styles.reviewSlide} ${styles[slideDirection]}`}>
             <div className={styles.reviewCard}>
               <div className={styles.reviewHeader}>
-                <div className={styles.reviewAuthor}>{reviews[currentReview].name}</div>
+                <div className={styles.reviewAuthor}>
+                  {reviews[currentReview].name}
+                </div>
                 <div className={styles.reviewRating}>
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className={i < reviews[currentReview].rating ? styles.starFilled : styles.star}>
+                    <span
+                      key={i}
+                      className={
+                        i < reviews[currentReview].rating
+                          ? styles.starFilled
+                          : styles.star
+                      }
+                    >
                       ★
                     </span>
                   ))}
                 </div>
               </div>
               <div className={styles.reviewLocation}>
+<<<<<<< HEAD
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
@@ -531,11 +612,21 @@ const MongoliaMap = () => {
               </div>
               <p className={styles.reviewComment}>{reviews[currentReview].comment}</p>
               <div className={styles.reviewDate}>{reviews[currentReview].date}</div>
+=======
+                {reviews[currentReview].location}
+              </div>
+              <p className={styles.reviewComment}>
+                "{reviews[currentReview].comment}"
+              </p>
+              <div className={styles.reviewDate}>
+                {reviews[currentReview].date}
+              </div>
+>>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
             </div>
           </div>
-          
-          <button 
-            className={`${styles.carouselButton} ${styles.nextButton}`} 
+
+          <button
+            className={`${styles.carouselButton} ${styles.nextButton}`}
             onClick={handleNextReview}
             aria-label="Next review"
           >

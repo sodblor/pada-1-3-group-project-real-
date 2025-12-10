@@ -1,5 +1,10 @@
 {
-  "MN073": "arkhangai",
+  "MN073": {
+    "name": "arkhangai",
+    "center": "tsterleg",
+    "images": ["", "", "", ""],
+    "humans": 123
+  },
   "MN071": "bayan-ulgii",
   "MN069": "bayankhongor",
   "MN067": "bulgan",

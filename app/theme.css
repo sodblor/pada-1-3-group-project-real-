@@ -1,0 +1,21 @@
+/* Global Theme Variables */
+:root {
+  /* Color Palette */
+  --pastel-blue: #e3f2fd;
+  --pastel-green: #e8f5e9;
+  --pastel-peach: #ffebee;
+  --pastel-lavender: #f3e5f5;
+  --text-primary: #2d3436;
+  --text-secondary: #636e72;
+  
+  /* Shadows */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Transitions */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Border Radius */
+  --border-radius: 16px;
+}

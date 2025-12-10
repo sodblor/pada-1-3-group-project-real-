@@ -144,7 +144,7 @@ export const AimagHotelDetails = ({ hotel }) => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-4xl p-0 overflow-hidden">
                 <div className="grid gap-0 md:grid-cols-2">
-                    <div className="relative h-64 md:h-[500px] bg-gray-100">
+                    <div className="relative h-64 md:h-[500px] bg-gray-200">
                         <img
                             src={hotel.image || "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"}
                             alt={hotel.name}

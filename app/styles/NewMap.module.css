@@ -54,26 +54,10 @@
   margin: 0;
   z-index: 2;
 }
-
-.infoBox {
-  background: #f8fafc;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  color: #334155;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.aimagName {
-  font-weight: 600;
-  color: #1e40af;
-  margin-left: 0.5rem;
-}
-
 .mapContainerBox {
   position: relative;
   width: 100%;
   max-width: 1400px;
-  margin: 0 auto;
 }
 
 .mapContainer {

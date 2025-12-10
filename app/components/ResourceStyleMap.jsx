@@ -72,14 +72,40 @@ const ResourceStyleMap = () => {
       location: 'Ulaanbaatar',
       rating: 5,
       comment: 'An unforgettable experience! The landscapes are breathtaking and the people are incredibly welcoming.',
-      date: 'October 2023'
+      date: 'October 2023',
+      image: '/images/ulaanbaatar.jpg'
     },
     {
       name: 'Sarah Kim',
       location: 'Gobi Desert',
       rating: 4,
       comment: 'The Gobi Desert was absolutely stunning. The night sky there is something you have to see to believe!',
-      date: 'August 2023'
+      date: 'August 2023',
+      image: '/images/gobi.jpg'
+    },
+    {
+      name: 'James Wilson',
+      location: 'Karakorum',
+      rating: 5,
+      comment: 'The historical sites in Karakorum are fascinating. A must-visit for history buffs!',
+      date: 'June 2023',
+      image: '/images/karakorum.jpg'
+    },
+    {
+      name: 'Emma Davis',
+      location: 'Khovsgol Lake',
+      rating: 5,
+      comment: 'The crystal clear waters of Khovsgol Lake are simply magical. Perfect for nature lovers!',
+      date: 'July 2023',
+      image: '/images/khovsgol.jpg'
+    },
+    {
+      name: 'Michael Brown',
+      location: 'Altai Mountains',
+      rating: 4,
+      comment: 'Hiking in the Altai Mountains was the highlight of our trip. Breathtaking views everywhere!',
+      date: 'September 2023',
+      image: '/images/altai.jpg'
     }
   ];
 
@@ -155,6 +181,26 @@ const ResourceStyleMap = () => {
                 />
               </div>
               <div className={styles.gridTitle}>{item.title}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Image Gallery */}
+      <div className={styles.imageGallery}>
+        <h2 className={styles.sectionTitle}>Popular Destinations</h2>
+        <div className={styles.galleryContainer}>
+          {reviews.map((review, index) => (
+            <div key={index} className={styles.galleryItem}>
+              <img 
+                src={review.image} 
+                alt={review.location} 
+                className={styles.galleryImage}
+              />
+              <div className={styles.imageOverlay}>
+                <h4>{review.location}</h4>
+                <p>{review.name}</p>
+              </div>
             </div>
           ))}
         </div>

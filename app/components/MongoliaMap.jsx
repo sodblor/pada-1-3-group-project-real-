@@ -1,13 +1,8 @@
 "use client";
-
-// components/MongoliaMap.js
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../styles/Map.module.css"; // CSS модулиа оруулж ирнэ
 import { AIMAG_ID_TO_NAME, AIMAG_IDS } from "./AimagData";
 import { useRouter } from "next/navigation";
-
-// Simplemaps-ийн SVG-г React Component болгон ашиглах жишээ
-// ЖИЧ: Та mn.svg доторх бүх <path> элементүүдийг ЭНД оруулах ёстой.
 const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
   
 
@@ -264,48 +259,45 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
 
 const MongoliaMap = () => {
   const [hoveredAimagId, setHoveredAimagId] = useState(null);
-<<<<<<< HEAD
-    const [currentReview, setCurrentReview] = useState(0);
-  const [slideDirection, setSlideDirection] = useState('');
-  const [currentSlide, setCurrentSlide] = useState(0);
-  
-=======
   const [currentReview, setCurrentReview] = useState(0);
   const [slideDirection, setSlideDirection] = useState("");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [regionSlide, setRegionSlide] = useState(0);
+  const [featuredSlide, setFeaturedSlide] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const headerImages = [
+    'https://media.cnn.com/api/v1/images/stellar/prod/150907165623-beautiful-mongolia4-flaming-cliffs.jpg?q=w_1800,h_1000,x_0,y_0,c_fill',
+    'https://northlandcashmere.com/static/nl/home_page/the_great_landscape/inner-mongolia-hulunbuir-summer.jpg',
+    'https://mongoliantravelagency.com/wp-content/uploads/2018/12/Orkhon-waterfall.jpg'
+  ];
 
->>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % headerImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [headerImages.length]);
+
   const reviews = [
     {
       name: "Alex Johnson",
       location: "Ulaanbaatar",
       rating: 5,
-<<<<<<< HEAD
       comment: 'An unforgettable experience! The landscapes are breathtaking and the people are incredibly welcoming. The cultural heritage sites and the vibrant city life made our trip truly special.',
       date: 'October 2023'
-=======
-      comment:
-        "An unforgettable experience! The landscapes are breathtaking and the people are incredibly welcoming.",
-      date: "October 2023",
->>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
     },
     {
       name: "Sarah Kim",
       location: "Gobi Desert",
       rating: 4,
-<<<<<<< HEAD
       comment: 'The Gobi Desert was absolutely stunning. The night sky there is something you have to see to believe! We rode camels, stayed in a traditional ger, and watched the most beautiful sunsets.',
-      date: 'August 2023'
-=======
-      comment:
-        "The Gobi Desert was absolutely stunning. The night sky there is something you have to see to believe!",
-      date: "August 2023",
->>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
+      date: 'August 2023',
     },
     {
       name: "James Wilson",
       location: "Khovsgol Lake",
       rating: 5,
-<<<<<<< HEAD
       comment: 'The crystal clear waters of Khovsgol Lake were the highlight of our trip. Perfect for nature lovers! We went horseback riding and hiking, and the views were absolutely spectacular.',
       date: 'July 2023'
     },
@@ -323,12 +315,6 @@ const MongoliaMap = () => {
       comment: 'The historical significance of Karakorum is mind-blowing. Visiting the Erdene Zuu Monastery was a spiritual experience, and learning about Genghis Khan was fascinating.',
       date: 'May 2023'
     }
-=======
-      comment:
-        "The crystal clear waters of Khovsgol Lake were the highlight of our trip. Perfect for nature lovers!",
-      date: "July 2023",
-    },
->>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
   ];
 
   // Auto-rotate reviews
@@ -379,82 +365,18 @@ const MongoliaMap = () => {
     ? AIMAG_ID_TO_NAME[hoveredAimagId]
     : "";
 
-<<<<<<< HEAD
-    const carduud = [
-    { 
-      title: "Булган", 
-      slug: "bulgan",
-      img: "https://correctmongolia.com/wp-content/uploads/2023/12/Bulgan.jpg" 
-    },
-    { 
-      title: "Дархан-Уул", 
-      slug: "darkhan-uul",
-      img: "https://www.escapetomongolia.com/__data/assets/image/0016/11374/Darkhan-Khairkhan-Mountain.jpg" 
-    },
-    { 
-      title: "Дорнод", 
-      slug: "dornod",
-      img: "https://live.staticflickr.com/2818/9690536148_a2792aca54.jpg" 
-    },
-    { 
-      title: "Завхан", 
-      slug: "zavkhan",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770031994900572/b-travel-in-mongolia.jpg?ex=69147330&is=691321b0&hm=ff333079c44bddafb845542d6262168c119a5daf7628f91fcfbe2468bcb0be56&=&format=webp&width=1764&height=1022" 
-    },
-    { 
-      title: "Сүхбаатар", 
-      slug: "sukhbaatar",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770033768955914/B-huvsgul_lake.jpg?ex=69147330&is=691321b0&hm=27dbc36593c28dca736435be454de7791b423749a099f19cd0b8aa63434f2517&=&format=webp&width=1600&height=1200" 
-    },
-    { 
-      title: "Сэлэнгэ", 
-      slug: "selenge",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034020876360/5cd94af5-b308-48d4-9b2c-4bd632745942-galle-terelj-national-park-scenery.jpg?ex=69147330&is=691321b0&hm=915d7a5fff2d78991707013d95468b78460c6758e16a43f6c0e4ba823b969e37&=&format=webp&width=1786&height=1022" 
-    },
-    { 
-      title: "Төв", 
-      slug: "tuv",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034268344330/b-altai_mnt.jpg?ex=69147330&is=691321b0&hm=7aab276e4296389e78bc25728f415df2abf25cc50841678732d4f450cade51a0&=&format=webp&width=1920&height=1066" 
-    },
-    { 
-      title: "Увс", 
-      slug: "uvs",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034523930664/B-tuvhun_monastery_orkhon_valley.jpg?ex=69147330&is=691321b0&hm=64b6707c7597ec3e9641a8e12daff4dfd8363e3490d85e165b2c4469d7c2d4e7&=&format=webp&width=1600&height=1200" 
-    },
-    { 
-      title: "Ховд", 
-      slug: "khovd",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034813341746/B-hustai_national_park.jpg?ex=69147330&is=691321b0&hm=f3a472abbc6e591b5f1683a5dc5e3d7932fd4b5201a0fab945ec1819b96e498e&=&format=webp&width=1600&height=1074" 
-    },
-    { 
-      title: "Хөвсгөл", 
-      slug: "khuvsgul",
-      img: "https://media.discordapp.net/attachments/1435213199866855464/1437770035237093457/B-size_updated-tsagaan-suwarga.jpg?ex=69147330&is=691321b0&hm=b9ce875e24ea441d8684708d3d6888603111b9fa65b87894920a8db5713d8c4f&=&format=webp&width=2400&height=1260" 
-    },
-=======
   const carduud = [
     { title: "Архангай", slug: "arkhangai", img: "arkhangai.jpg" },
     { title: "Баян-Өлгий", slug: "bayan-ulgii", img: "bayan-ulgii.jpg" },
-    { title: "Баянхонгор", slug: "bayankhongor", img: "bayankhongor.jpg" },
-    { title: "Булган", slug: "bulgan", img: "bulgan.jpg" },
     { title: "Говь-Алтай", slug: "govi-altai", img: "govi-altai.jpg" },
-    { title: "Говьсүмбэр", slug: "govisumber", img: "govisumber.jpg" },
     { title: "Дархан-Уул", slug: "darkhan-uul", img: "darkhan-uul.jpg" },
-    { title: "Дорноговь", slug: "dornogovi", img: "dornogovi.jpg" },
-    { title: "Дорнод", slug: "dornod", img: "dornod.jpeg" },
-    { title: "Дундговь", slug: "dundgovi", img: "dundgovi.jpg" },
-    { title: "Завхан", slug: "zavkhan", img: "zavkhan.jpg" },
-    { title: "Орхон", slug: "orkhon", img: "orkhon.jpg" },
     { title: "Өвөрхангай", slug: "uvurkhangai", img: "uvurkhangai.jpg" },
-    { title: "Өмнөговь", slug: "umnegovi", img: "umnugovi.jpg" },
     { title: "Сүхбаатар", slug: "sukhbaatar", img: "sukhbaatar.jpeg" },
     { title: "Сэлэнгэ", slug: "selenge", img: "selenge.jpg" },
-    { title: "Төв", slug: "tuv", img: "tuv.jpg" },
-    { title: "Увс", slug: "uvs", img: "uvs.jpg" },
-    { title: "Хөвсгөл", slug: "khuvsgul", img: "khusvgul.jpeg" },
-    { title: "Хэнтий", slug: "khentii", img: "khentii.jpeg" },
-    { title: "Ховд", slug: "khovd", img: "khovd.jpg" },
->>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
+    { title: "Увс", slug: "uvs", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034523930664/B-tuvhun_monastery_orkhon_valley.jpg?ex=69147330&is=691321b0&hm=64b6707c7597ec3e9641a8e12daff4dfd8363e3490d85e165b2c4469d7c2d4e7&=&format=webp&width=1600&height=1200" },
+    { title: "Хөвсгөл", slug: "khuvsgul", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770035237093457/B-size_updated-tsagaan-suwarga.jpg?ex=69147330&is=691321b0&hm=b9ce875e24ea441d8684708d3d6888603111b9fa65b87894920a8db5713d8c4f&=&format=webp&width=2400&height=1260" },
+    { title: "Хэнтий", slug: "khentii", img: "https://cdn.mongolia-guide.com/generated/places/P5GfIbeKMGqVXChbJO7pkYaDPwiCSPazkXllhQPw_1920_1000.jpeg" },
+    { title: "Ховд", slug: "khovd", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034813341746/B-hustai_national_park.jpg?ex=69147330&is=691321b0&hm=f3a472abbc6e591b5f1683a5dc5e3d7932fd4b5201a0fab945ec1819b96e498e&=&format=webp&width=1600&height=1074" }
   ];
 
   const handleAimagClick = (slug) => {
@@ -464,16 +386,31 @@ const MongoliaMap = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.headerImageWrap}>
-        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-          <img
-            className={styles.headerImage}
-<<<<<<< HEAD
-            src="https://lh6.googleusercontent.com/proxy/8HEZKWMB0jC4xEkxHXCInO2OCPs661KYrELWt5LkzoT2JjuyA0YXlqKOWWAjvIcYYitpU9jGA3zeL5wbuSo360Yjr-imzi48iC9Z5dSsTbU24dTtrKUYu5oQgWRlffd6oCk"
-            alt="Mongolian landscape"
-=======
-            src="https://images.fineartamerica.com/images-medium-large-5/yurt-the-traditional-mongolian-yurt-panoramic-images.jpg"
->>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
-          />
+        <div className={styles.carouselContainer}>
+          <div 
+            className={styles.carouselTrack} 
+            style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+          >
+            {headerImages.map((image, index) => (
+              <div key={index} className={styles.carouselSlide}>
+                <img
+                  className={styles.headerImage}
+                  src={image}
+                  alt={`Mongolian landscape ${index + 1}`}
+                />
+              </div>
+            ))}
+          </div>
+          <div className={styles.carouselDots}>
+            {headerImages.map((_, index) => (
+              <button
+                key={index}
+                className={`${styles.carouselDot} ${index === currentImageIndex ? styles.activeDot : ''}`}
+                onClick={() => setCurrentImageIndex(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
           <div style={{
             position: 'absolute',
             top: '50%',
@@ -497,79 +434,162 @@ const MongoliaMap = () => {
         </div>
       </div>
 
+      <div className={styles.chooseProvinceContainer}>
+        <h2 className={styles.chooseProvinceTitle}>Choose Your Province</h2>
+        <div className={styles.chooseProvinceSubtitle}>Click on any province to explore its unique attractions and experiences</div>
+      </div>
+      
       <div className={styles.mapContainerBox}>
-<<<<<<< HEAD
         <div className={styles.infoBox}>
           <span>Selected: </span>
           <span className={styles.aimagName}>{currentAimagName || 'Hover over a region'}</span>
         </div>
         
-        <MongoliaSVG  
-=======
         <MongoliaSVG
->>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
           onAimagHover={handleAimagHover}
           onAimagLeave={handleAimagLeave}
           hoveredAimagId={hoveredAimagId}
         />
-<<<<<<< HEAD
       </div>
 
- 
-      <div className={styles.sliderContainer}>
-        <h2 className={styles.sliderTitle}>Featured Destinations</h2>
-        <div className={styles.slider}>
-          {carduud.slice(0, 6).map((destination, index) => (
-            <div key={index} className={styles.slide} onClick={() => handleAimagClick(destination.slug)}>
-              <img 
-                src={destination.img} 
-                alt={destination.title} 
-                className={styles.slideImage}
-                loading="lazy"
-              />
-              <div className={styles.slideContent}>
-                <h3 className={styles.slideTitle}>{destination.title}</h3>
-                <p className={styles.slideDescription}>
-                  Discover the breathtaking landscapes and rich culture of {destination.title}. 
-                  Perfect for adventure seekers and culture enthusiasts alike.
-                </p>
-                <button className={styles.slideButton}>
-                  Explore {destination.title} →
-                </button>
-=======
-        <div className={styles.contentGrid}>
-          {carduud.map((c, idx) => (
-            <div
-              className={styles.gridItem}
-              key={idx}
-              onClick={() => handleAimagClick(c.slug)}
-              style={{ cursor: "pointer" }}
+      {/* Fun Facts Section - Creative Layout */}
+      <section className={styles.funFactsSection}>
+        <div className={styles.funFactsContainer}>
+          {/* Fact 1 */}
+          <div className={styles.factCard}>
+            <div 
+              className={styles.factImage}
+              style={{ 
+                backgroundImage: 'url(https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)'
+              }}
             >
-              <div className={styles.gridItemInner}>
-                <img className={styles.gridImage} src={c.img} alt={c.title} />
-                <div className={styles.gridDesc}>{c.title}</div>
->>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
+              <div className={styles.factDecoration}>01</div>
+            </div>
+            <div className={styles.factContent}>
+              <h3>Land of the Eternal Blue Sky</h3>
+              <p>Mongolia's vast landscapes are bathed in sunlight for over 250 days a year, earning it the poetic nickname "Land of the Eternal Blue Sky." The country's high elevation and continental climate create some of the clearest, most vibrant skies you'll ever witness, stretching endlessly over the rolling steppe.</p>
+              <div className={styles.factIcons}>
+                <span className={styles.iconBadge}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V4.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
+                  </svg>
+                  Climate
+                </span>
+                <span className={styles.iconBadge}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                  </svg>
+                  Geography
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Fact 2 */}
+          <div className={styles.factCard}>
+            <div 
+              className={styles.factImage}
+              style={{ 
+                backgroundImage: 'url(https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)'
+              }}
+            >
+              <div className={styles.factDecoration}>02</div>
+            </div>
+            <div className={styles.factContent}>
+              <h3>Nomadic Heritage</h3>
+              <p>About 30% of Mongolians maintain a traditional nomadic lifestyle, moving their herds across the vast steppes with the seasons. The iconic ger (yurt) remains central to this way of life, a symbol of resilience and harmony with nature that has endured for centuries.</p>
+              <div className={styles.factIcons}>
+                <span className={styles.iconBadge}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3L4 9v12h16V9l-8-6zm0 2.5l6 4.5v9H6v-9l6-4.5z"/>
+                  </svg>
+                  Culture
+                </span>
+                <span className={styles.iconBadge}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M13 7h-2v5.41l4.29 4.29 1.41-1.41L13 11.59z"/>
+                  </svg>
+                  Heritage
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Fact 3 */}
+          <div className={styles.factCard}>
+            <div 
+              className={styles.factImage}
+              style={{ 
+                backgroundImage: 'url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)'
+              }}
+            >
+              <div className={styles.factDecoration}>03</div>
+            </div>
+            <div className={styles.factContent}>
+              <h3>Vast Wilderness</h3>
+              <p>Mongolia is the most sparsely populated country in the world, with just 2 people per square kilometer. This vastness creates breathtaking, untouched landscapes where wild horses still roam free, and the night sky reveals a dazzling display of stars unseen in more developed parts of the world.</p>
+              <div className={styles.factIcons}>
+                <span className={styles.iconBadge}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                  </svg>
+                  Geography
+                </span>
+                <span className={styles.iconBadge}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                  </svg>
+                  Nature
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className={styles.rectanglesContainer}>
+        <h2 className={styles.rectanglesTitle}>Popular Regions</h2>
+        <div className={styles.rectanglesScroll}>
+          {carduud.map((region) => (
+            <div 
+              key={region.slug}
+              className={styles.destinationCard}
+              onMouseEnter={() => setHoveredAimagId(region.slug)}
+              onMouseLeave={handleAimagLeave}
+              onClick={() => handleAimagClick(region.slug)}
+            >
+              <div className={styles.destinationImageContainer}>
+                <img 
+                  src={region.img}
+                  alt={region.title}
+                  className={styles.destinationImage}
+                  loading="lazy"
+                />
+                <div className={styles.destinationOverlay}>
+                  <h3 className={styles.destinationTitle}>{region.title}</h3>
+                </div>
+              </div>
+              <div className={styles.destinationContent}>
+                <p className={styles.destinationNote}>
+                  Discover the unique landscapes and cultural heritage of {region.title}.
+                </p>
+                <button 
+                  className={styles.exploreButton}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleAimagClick(region.slug);
+                  }}
+                >
+                  Explore Region →
+                </button>
               </div>
             </div>
           ))}
         </div>
-        <button className={`${styles.sliderButton} ${styles.prev}`}>
-          ❮
-        </button>
-        <button className={`${styles.sliderButton} ${styles.next}`}>
-          ❯
-        </button>
-        <div className={styles.sliderNav}>
-          {[0, 1, 2].map((dot) => (
-            <div 
-              key={dot} 
-              className={`${styles.sliderDot} ${dot === 0 ? styles.active : ''}`}
-            />
-          ))}
-        </div>
       </div>
-
-      {/* Traveler Reviews Section */}
       <section className={styles.reviewSection}>
         <h2 className={styles.reviewTitle}>Traveler Experiences</h2>
         <div className={styles.reviewContainer}>
@@ -603,7 +623,6 @@ const MongoliaMap = () => {
                 </div>
               </div>
               <div className={styles.reviewLocation}>
-<<<<<<< HEAD
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
@@ -612,16 +631,6 @@ const MongoliaMap = () => {
               </div>
               <p className={styles.reviewComment}>{reviews[currentReview].comment}</p>
               <div className={styles.reviewDate}>{reviews[currentReview].date}</div>
-=======
-                {reviews[currentReview].location}
-              </div>
-              <p className={styles.reviewComment}>
-                "{reviews[currentReview].comment}"
-              </p>
-              <div className={styles.reviewDate}>
-                {reviews[currentReview].date}
-              </div>
->>>>>>> 64ddac7e772bda014c351e271830d4770f2415e9
             </div>
           </div>
 
@@ -637,4 +646,5 @@ const MongoliaMap = () => {
     </div>
   );
 };
+
 export default MongoliaMap;

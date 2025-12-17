@@ -34,7 +34,6 @@ export default function HomePage() {
     const slug = search.trim().toLowerCase();
     if (!slug) return;
 
-    // Case-insensitive check for "mongolia"
     if (slug === "mongolia") {
       router.push("/mongolia");
     } else {

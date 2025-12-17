@@ -51,7 +51,8 @@ const getAccentColor = (slug) => ACCENT_FALLBACKS[slug] || "#2563eb";
 function getItem(label, key, icon, children) {
   return { key, icon, children, label };
 }
-export const CafeContent = ({ borderRadiusLG, name, items = [], heroImage }) => {
+
+const CafeContent = ({ borderRadiusLG, name, items = [], heroImage }) => {
   return (
     <Content style={{ margin: "24px" }}>
       <section className="relative w-full h-72 md:h-80 rounded-3xl overflow-hidden shadow-lg mb-10">
@@ -131,7 +132,7 @@ export const CafeContent = ({ borderRadiusLG, name, items = [], heroImage }) => 
   );
 };
 
-export const RestaurantsContent = ({ borderRadiusLG, name, items = [], heroImage }) => {
+const RestaurantsContent = ({ borderRadiusLG, name, items = [], heroImage }) => {
   return (
     <Content style={{ margin: "24px" }}>
       <section className="relative w-full h-72 md:h-80 rounded-3xl overflow-hidden shadow-lg mb-10">
@@ -392,7 +393,7 @@ export default function Page() {
   );
 }
 
-export const FunContent = ({
+const FunContent = ({
   borderRadiusLG,
   name,
   aimag,
@@ -530,7 +531,7 @@ export const FunContent = ({
   );
 }
 
-export const TransportContent = ({ borderRadiusLG, name, items = [], heroImage }) => {
+const TransportContent = ({ borderRadiusLG, name, items = [], heroImage }) => {
   const renderDetails = (opt) => {
     if (!opt.details) return null;
     
@@ -735,7 +736,7 @@ export const TransportContent = ({ borderRadiusLG, name, items = [], heroImage }
   );
 };
 
-export const AccommodationContent = ({ borderRadiusLG, aimag, name, heroImage }) => {
+const AccommodationContent = ({ borderRadiusLG, aimag, name, heroImage }) => {
   return (
     <Content className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
       <section className="relative w-full h-80 md:h-[500px] rounded-3xl overflow-hidden shadow-xl mb-12 bg-gray-100">

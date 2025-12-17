@@ -160,9 +160,9 @@ export default function TravelResourcesPage() {
   const categories = [...new Set(travelResources.map((r) => r.category))];
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-gray-900">
+    <div className="relative min-h-screen bg-gradient-to-b from-[#DDE6ED] to-[#9DB2BF]">
       {/* HERO SECTION */}
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/oneinfo.jpg"
@@ -173,7 +173,7 @@ export default function TravelResourcesPage() {
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <h1 className="text-white text-5xl md:text-6xl font-bold drop-shadow-xl text-center px-4">
+            <h1 className="text-5xl font-bold text-white drop-shadow-lg relative z-10">
               {t.heroTitle}
             </h1>
           </div>
@@ -181,30 +181,30 @@ export default function TravelResourcesPage() {
       </section>
 
       {/* MAIN CONTENT */}
-      <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-20 -mt-20 z-10">
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-16 z-10">
         {/* Info Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-12 mb-16 relative z-10 mt-5">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-xl">
-            <p className="font-bold text-lg text-gray-900 dark:text-gray-100">{t.infoCards.capitalCity}</p>
-            <p className="text-gray-700 dark:text-gray-300">{t.infoCards.ulaanbaatar}</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-16 relative z-10 mt-8">
+          <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-[#9DB2BF]/30">
+            <p className="font-bold text-lg text-[#27374D] mb-2">{t.infoCards.capitalCity}</p>
+            <p className="text-[#526D82]">{t.infoCards.ulaanbaatar}</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-xl">
-            <p className="font-bold text-lg text-gray-900 dark:text-gray-100">{t.infoCards.writingSystem}</p>
-            <p className="text-gray-700 dark:text-gray-300">{t.infoCards.mongolianCyrillic}</p>
+          <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-[#9DB2BF]/30">
+            <p className="font-bold text-lg text-[#27374D] mb-2">{t.infoCards.writingSystem}</p>
+            <p className="text-[#526D82]">{t.infoCards.mongolianCyrillic}</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-xl">
-            <p className="font-bold text-lg text-gray-900 dark:text-gray-100">{t.infoCards.demographics}</p>
-            <p className="text-gray-700 dark:text-gray-300">{t.infoCards.mongolKazakh}</p>
+          <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-[#9DB2BF]/30">
+            <p className="font-bold text-lg text-[#27374D] mb-2">{t.infoCards.demographics}</p>
+            <p className="text-[#526D82]">{t.infoCards.mongolKazakh}</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-xl">
-            <p className="font-bold text-lg text-gray-900 dark:text-gray-100">{t.infoCards.religion}</p>
-            <p className="text-gray-700 dark:text-gray-300">{t.infoCards.buddhismIslam}</p>
+          <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-[#9DB2BF]/30">
+            <p className="font-bold text-lg text-[#27374D] mb-2">{t.infoCards.religion}</p>
+            <p className="text-[#526D82]">{t.infoCards.buddhismIslam}</p>
           </div>
         </div>
 
         {/* Seasons Section */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 space-y-6 mt-12">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+        <section className="bg-white rounded-2xl shadow-xl p-8 space-y-6 mt-12">
+          <h2 className="text-2xl font-semibold text-gray-900">
             {t.seasonsTitle}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -231,61 +231,73 @@ export default function TravelResourcesPage() {
         <section className="space-y-12 mt-16">
           <div className="flex flex-col lg:flex-row items-start lg:items-start gap-8">
             {/* Left: bank image */}
-            <img
-              src="bank2.jpeg"
-              alt="Bank"
-              className="w-full lg:w-1/2 h-auto object-cover rounded-xl shadow-lg"
-            />
+            <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <img
+                src="bank2.jpeg"
+                alt="Bank"
+                className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
 
             {/* Right: currency container */}
             <div className="flex-1 flex flex-col">
               {/* Section Title */}
-              <h2 className="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+              <h2 className="text-3xl font-bold text-[#27374D] mb-6">
                 {t.currencySectionTitle}
               </h2>
 
               {/* Currency Info Card */}
-              <div className="bg-yellow-50 dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 space-y-6">
-                <p className="text-gray-900 dark:text-gray-200">
-                  <strong>{t.currency.officialCurrency}</strong>
-                </p>
-                <p className="text-gray-900 dark:text-gray-200">
-                  <strong>{t.currency.taxFree.split(":")[0]}:</strong> {t.currency.taxFree.split(":")[1]}{" "}
-                  <a
-                    href="https://en.ulaanbaatar-airport.mn/tax-refund"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 underline"
-                  >
-                    {t.currency.learnMore}
-                  </a>
-                </p>
-                <p className="text-gray-900 dark:text-gray-200">
-                  <strong>{t.currency.paymentMethods.split(":")[0]}:</strong> {t.currency.paymentMethods.split(":")[1]}
-                </p>
-                <p className="text-gray-900 dark:text-gray-200">
-                  <strong>{t.currency.tippingCulture.split(":")[0]}:</strong> {t.currency.tippingCulture.split(":")[1]}
-                </p>
+              <div className="bg-gradient-to-br from-[#DDE6ED] to-white rounded-2xl shadow-xl p-6 md:p-8 space-y-5 border border-[#9DB2BF]/30">
+                <div className="p-4 bg-white/60 rounded-xl">
+                  <p className="text-[#27374D] text-lg">
+                    <strong className="text-[#27374D]">{t.currency.officialCurrency}</strong>
+                  </p>
+                </div>
+                <div className="p-4 bg-white/60 rounded-xl">
+                  <p className="text-[#27374D]">
+                    <strong>{t.currency.taxFree.split(":")[0]}:</strong> {t.currency.taxFree.split(":")[1]}{" "}
+                    <a
+                      href="https://en.ulaanbaatar-airport.mn/tax-refund"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#526D82] underline hover:text-[#27374D] font-medium transition-colors"
+                    >
+                      {t.currency.learnMore}
+                    </a>
+                  </p>
+                </div>
+                <div className="p-4 bg-white/60 rounded-xl">
+                  <p className="text-[#27374D]">
+                    <strong>{t.currency.paymentMethods.split(":")[0]}:</strong> {t.currency.paymentMethods.split(":")[1]}
+                  </p>
+                </div>
+                <div className="p-4 bg-white/60 rounded-xl">
+                  <p className="text-[#27374D]">
+                    <strong>{t.currency.tippingCulture.split(":")[0]}:</strong> {t.currency.tippingCulture.split(":")[1]}
+                  </p>
+                </div>
               </div>
 
               {/* Decorative image */}
-              <img
-                src="banks.png"
-                alt=""
-                className="w-full md:w-60 h-auto object-contain rounded-xl mt-6 self-start"
-              />
+              <div className="mt-6 self-start rounded-xl overflow-hidden shadow-lg">
+                <img
+                  src="banks.png"
+                  alt=""
+                  className="w-full md:w-60 h-auto object-contain"
+                />
+              </div>
             </div>
           </div>
         </section>
 
         {/* Category Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 z-10 relative mt-16">
+        <div className="flex flex-wrap justify-center gap-3 z-10 relative mt-16 mb-8">
           <button
             onClick={() => setActive("All")}
-            className={`px-4 py-2 rounded-full font-medium border transition-colors duration-500 ${
+            className={`px-5 py-2.5 rounded-full font-semibold border-2 transition-all duration-300 shadow-sm ${
               active === "All"
-                ? "bg-purple-500 text-white border-purple-500"
-                : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
+                ? "bg-[#27374D] text-white border-[#27374D] shadow-md scale-105"
+                : "bg-white text-[#526D82] border-[#9DB2BF] hover:bg-[#DDE6ED] hover:border-[#526D82] hover:shadow-md"
             }`}
           >
             {t.allCategory}
@@ -294,10 +306,10 @@ export default function TravelResourcesPage() {
             <button
               key={c}
               onClick={() => setActive(c)}
-              className={`px-4 py-2 rounded-full font-medium border transition-colors duration-500 ${
+              className={`px-5 py-2.5 rounded-full font-semibold border-2 transition-all duration-300 shadow-sm ${
                 active === c
-                  ? "bg-purple-500 text-white border-purple-500"
-                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  ? "bg-[#27374D] text-white border-[#27374D] shadow-md scale-105"
+                  : "bg-white text-[#526D82] border-[#9DB2BF] hover:bg-[#DDE6ED] hover:border-[#526D82] hover:shadow-md"
               }`}
             >
               {c}
@@ -305,18 +317,11 @@ export default function TravelResourcesPage() {
           ))}
         </div>
 
-        {/* Travel Resources Bento Grid */}
+        {/* Travel Resources Grid */}
         <div className="space-y-12 relative z-10 mt-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[280px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((r, i) => {
               const Icon = iconFor(r.category);
-
-              const rowSpanMap = {
-                travelInsurance: 3,
-                consularVisaPortal: 3,
-                carRentals: 3,
-              };
-              const rowSpan = rowSpanMap[r.nameKey] || 2;
 
               const imageMap = {
                 mongoliaVisaInfo: "https://cdn.greensoft.mn/uploads/site/602/block/new_b98600dc0473267c959d56f40aab96d0db9c1ac5.jpg",
@@ -340,32 +345,45 @@ export default function TravelResourcesPage() {
                   href={r.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1 overflow-hidden"
-                  style={{ gridRowEnd: `span ${rowSpan}` }}
+                  className="group relative block rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#9DB2BF]/30 transform hover:-translate-y-2"
+                  style={{
+                    animation: `fadeInUp 0.6s ease-out ${i * 50}ms forwards`,
+                    opacity: 0
+                  }}
                 >
                   {/* Image */}
-                  <div
-                    className="bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400 text-sm relative overflow-hidden"
-                    style={{
-                      height: rowSpan === 3 ? "420px" : "360px",
-                    }}
-                  >
-                    <img src={imgSrc} alt={r.name} className="w-full h-full object-cover" />
+                  <div className="relative bg-gradient-to-br from-[#DDE6ED] to-[#9DB2BF] overflow-hidden h-56">
+                    <img
+                      src={imgSrc}
+                      alt={r.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#27374D]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Category badge */}
-                    <div className="absolute top-2 left-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full px-2 py-1 text-xs flex items-center gap-1">
-                      <Icon size={14} /> {r.category}
+                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-[#27374D] rounded-xl px-4 py-2 text-xs font-semibold flex items-center gap-2 shadow-xl border border-[#9DB2BF]/30">
+                      <Icon size={16} className="text-[#526D82]" />
+                      <span>{r.category}</span>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{r.name}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{r.description}</p>
-                    <span className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm">
-                      {t.visitLink} <ExternalLink size={16} />
-                    </span>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-[#27374D] mb-3 group-hover:text-[#526D82] transition-colors duration-300 line-clamp-2">
+                      {r.name}
+                    </h3>
+                    <p className="text-[#526D82] text-sm mb-4 line-clamp-3 leading-relaxed">
+                      {r.description}
+                    </p>
+                    <div className="flex items-center justify-between pt-4 border-t border-[#DDE6ED]">
+                      <span className="inline-flex items-center gap-2 text-[#526D82] text-sm font-medium group-hover:text-[#27374D] transition-colors duration-300">
+                        {t.visitLink} <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                      </span>
+                    </div>
                   </div>
+
+                  {/* Hover Border Effect */}
+                  <div className="absolute inset-0 rounded-2xl border-2 border-[#9DB2BF] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </a>
               );
             })}

@@ -2,9 +2,9 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../styles/Map.module.css"; // CSS модулиа оруулж ирнэ
-import { AIMAG_ID_TO_NAME, AIMAG_IDS } from "./AimagData";
+import { AIMAG_ID_TO_NAME, AIMAG_IDS, SLUG_TO_AIMAG_ID } from "./AimagData";
 import { useRouter } from "next/navigation";
- 
+
 const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
   
 
@@ -38,25 +38,31 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
     >
       <style>{`
         #features path { 
-          fill: #f0f0f0; 
+          fill: #DDE6ED; 
           cursor: pointer; 
           transition: fill 0.15s ease;
-          stroke: #d1d1d1;
+          stroke: #9DB2BF;
           stroke-width: 1;
           vector-effect: non-scaling-stroke;
         }
         #features path:hover {
-          fill: #e6f0fa;
+          fill: #9DB2BF;
         }
-        ${
-          hoveredAimagId
+        #features path#MN1 {
+          fill: #526D82 !important;
+        }
+        #features path#MN1:hover {
+          fill: #27374D !important;
+        }
+                ${
+                  hoveredAimagId
             ? `#features path#${hoveredAimagId} { 
-                fill: #e6f0fa !important; 
-                stroke: #a0c0e0;
+                fill: #9DB2BF !important; 
+                stroke: #526D82;
               }`
-            : ""
-        }
-      `}</style>
+                    : ""
+                }
+            `}</style>
       <g id="features" onMouseOver={handleOver} onMouseOut={handleLeave}>
         <path
           d="M860.6 274.6l-2.4-2.8-5.8-9.4-0.4-0.5-0.4-0.4-0.6-0.2-12 0.6-5.3 1.1-13 0.5-2.5 0.7-4.8 2.4-3.4-6.3-1.7-2.5-0.8-0.9-0.9-0.8-0.8-0.6-0.9-0.5-3.1-1.3-0.5-0.3-0.5-0.4-0.3-0.6-0.3-0.8-0.1-1.1 0.1-3.3 0.9-7.6-0.2-1.1-0.4-0.5-0.6-0.5-5-2.7-12.9-10.4-17.1-3.8-5.5-2.6-1.5-0.3-0.8 0-0.8 0.1-1 0.3-4.8 2.6 0.3-5-0.3-3.8-1.2-5.3-1.2-2.5-0.3-0.6-1.5-2.9-0.7-7.2 0.4-2.9 0.7-1.8 0-2.5-0.3-2.4-0.5-1.7-1.7-4.3-5.5-10.3-1.1-2.6-0.5-1.5 0.3-1 0.7-2.1 0-0.8-0.1-1.2-1.1-3.2-0.9-5.8-0.1-2 0.1-0.2 0.1-0.2 0.5-0.4 0.2-0.4 0.1-0.3 0-0.2-0.1-0.3-2.1-3 0-0.1 8.6-3.9 1.2-0.2 3.1 0.3 2.5 1.3 0.8 0.2 0.9 0 1.2-0.4 2.6-1.3 1.7-1.5 0.6-0.5 0.6-0.3 0.6-0.1 1.5-0.1 0.5-0.3 0.3-1 0-1.5 0.1-0.7 0.3-0.8 2-4 0.7-1 0.8-0.9 5.8-4.4 0.7-1.1 0.5-0.4 1.5-1.1 0.5-0.5 1.4-1.2 4.9-2.6 0.6-0.1 1.2 0.2 0.6 0 0.4-0.2 3.4-3.5 0.6-0.4 1.2-0.3 0.6-0.3 1.7-1.8 2.4-1.4 2.4-0.9 1.3 0.2 2.6 1.3 1.4 0.4 5.2-0.8 2.7 0.7 6.9 4 0.5 0.5 0.4 0.6 0.6 1.3 0.4 0.6 4.1 4.6 4.5 3.4 0.5 0.2 1.8-0.1 0.6 0.2 1 0.1 2-0.4 3 0.7 0.9 0 1-0.3 8.5-5 2.4-0.7 2.3 0.1 2.3 0.9 7.8 3.1 1.2 1.1 1 1.5 0.9 1.7-6 13.4-0.4 1.1-6 13.5-5.9 13.4-0.1 0.7 0.4 1.5 0 0.8-0.5 1.3-7 10.9 0.1 1.1 0 0.7 0.6 8.4-0.1 0.9-4.1 2.6-0.1 0.1-1.1 0.7-2.3 1-0.6 0.8 0 0.4 0.4 2.7 0 0.2 0.9 5.4 0.3 0.2 0.1 0.5 0.7 0.9 7.2 7.7 1.7 0.9 1.7-1.1 3.1-4.1 2.8-1.8 1.7-0.6 5.2 1.2 2 0 7.2-1.6 2-0.1 0.8 0.1 3.4 1.5 2.1 0.8 0.7 0.4 6.9 6.5 1.3 0.1 1.1-1.4 0.5-0.9 0.2-0.2 0.9-1.5 0.5-0.4 1.5-1.3 6-8 0.8-0.7 1.3-0.5 4.5 0.3 0.7 0 1.9-0.9 1.6-0.3 1.7 0 0.7 0.2 1.3 0.8 0.8 0.2 5.4 0.4 2 1 1.8 2.2 3 5 1.5 1.6 5.8 2.6 2.5 0.9 0.7 0.5 0.4 0.6 0.2 0.8 0.3 3 0.2 0.7 0.3 0.5 0.3 0.2 0 0.1 0.3 0.1 0.1 0 2.6 1.1 1.1 0.3 0.6 0.4 0.2 0.6-0.2 0.4-0.6 0.9-0.2 0.6 1.1 0.4 4.4 4 0.4 0.5 0.4 0.8 0.2 0.7 0.4 0.5 0.7 0.2 0.1 0.2 0.4-0.1 0.5 0.2 1.2 0.9 2 2.4 0.8 1.2 0.7 1.5 0.2 0.8 0 2.4 0.1 0.5 0.1 0.3 0.1 0.2 0.4 0.6 0.9 1 0.4 0.5 0.2 0.3 0 0.4 0.2 0.3 0.2 0.3 0.3 0.1 0.5 0 0.3 0.1 0.1 0.3-0.1 0.4-0.2 0.3-0.1 0.3 0 0.6 0.1 0.2 0.1 0.1 0.1 0.2 0.2 0 0.1 0.2 0 0.2-0.1 0.3 0 0.3 0 0.9-0.4 1.3 0 0.7 0.1 0.4 0.4 0.7 0.1 0.3 0 0.4-0.2 0.3-0.2 0.3-0.2 0.3-0.1 0.1-0.2 0.5-0.4 0.4-0.7-0.3-1-0.1-0.2 0.6-0.2 0.3-0.5 0.7-0.2 0.2-0.7 0.4-0.4 0.2-0.8 0.8-0.1 0.1-0.3 0-0.6-0.1-1-0.9-0.6-0.1-0.7 0-2.1-0.4-1.4 0.1-2.5 0.6-1.3 0-7.2-2-0.7-0.3-0.7-0.6-0.8-1.7-0.5-0.7-0.6 0.2-0.7 0.8-0.4 0.3-0.5-0.2-0.3-0.5-0.1-0.7-0.2-0.6-0.6-0.3-0.9 0.3-0.7 0.8-0.3 0.6-0.2 0.2 0 0.1-0.4 0.8-0.6 0.1-0.1-0.1-0.1 0.7-0.3 0.1-1-0.2-1.1-0.6-1-0.4-0.4 0.2-0.8 0.5-0.5 0.2-2.2 0-1.1-0.3-1.8-0.9-1-0.3-0.9-0.1-0.9 0-0.9 0.3-0.9 0.6-1.1 1-0.4 0.1-1.5 0.1-0.5 0.2-2.2 1.7-0.9 0.1-1.4 0.4-0.7 0.3-0.6 0.4-0.3 0.5-0.2 0-0.6 0.9-0.6 0.5-0.1 0-0.1 0.1 0 1-0.4 0.2-1.5 0.2-0.1-0.1-0.1 0.1-1.1 0.1-0.7-0.1-1.2-0.8-0.2-0.2-0.3-0.8-0.5-0.7-0.1-0.1-0.3-0.6-0.4-0.4-0.3 0-1.2 0.9-0.5 0.1-0.1 0-0.5-0.3-2.3 0.6 0.5 1.3 0 0.6-0.2 0.6-1 1.4-0.3 1.1-0.1 2.3-0.7 1.2 0 0.2-1.1 0.3-9.4-0.6-3.6-0.8-0.5 0-0.2 0.1-0.6 0.7-1.8 1.5-0.4 0.2-1.7 0.2-1.2 0.4-0.6 0.5z"
@@ -260,6 +266,7 @@ const MongoliaSVG = ({ onAimagHover, onAimagLeave, hoveredAimagId }) => {
 };
 
 const MongoliaMap = () => {
+  const router = useRouter();
   const [hoveredAimagId, setHoveredAimagId] = useState(null);
   const [currentReview, setCurrentReview] = useState(0);
   const [slideDirection, setSlideDirection] = useState("");
@@ -269,7 +276,7 @@ const MongoliaMap = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const headerImages = [
-    'https://media.cnn.com/api/v1/images/stellar/prod/150907165623-beautiful-mongolia4-flaming-cliffs.jpg?q=w_1800,h_1000,x_0,y_0,c_fill',
+    'https://www.gomongolia.gov.mn/wp-content/uploads/2025/06/travel-intro.webp',
     'https://northlandcashmere.com/static/nl/home_page/the_great_landscape/inner-mongolia-hulunbuir-summer.jpg',
     'https://mongoliantravelagency.com/wp-content/uploads/2018/12/Orkhon-waterfall.jpg'
   ];
@@ -374,15 +381,11 @@ const MongoliaMap = () => {
     { title: "Дархан-Уул", slug: "darkhan-uul", img: "darkhan-uul.jpg" },
     { title: "Өвөрхангай", slug: "uvurkhangai", img: "uvurkhangai.jpg" },
     { title: "Сүхбаатар", slug: "sukhbaatar", img: "sukhbaatar.jpeg" },
-    { title: "Сэлэнгэ", slug: "selenge", img: "selenge.jpg" },
-    { title: "Увс", slug: "uvs", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034523930664/B-tuvhun_monastery_orkhon_valley.jpg?ex=69147330&is=691321b0&hm=64b6707c7597ec3e9641a8e12daff4dfd8363e3490d85e165b2c4469d7c2d4e7&=&format=webp&width=1600&height=1200" },
-    { title: "Хөвсгөл", slug: "khuvsgul", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770035237093457/B-size_updated-tsagaan-suwarga.jpg?ex=69147330&is=691321b0&hm=b9ce875e24ea441d8684708d3d6888603111b9fa65b87894920a8db5713d8c4f&=&format=webp&width=2400&height=1260" },
     { title: "Хэнтий", slug: "khentii", img: "https://cdn.mongolia-guide.com/generated/places/P5GfIbeKMGqVXChbJO7pkYaDPwiCSPazkXllhQPw_1920_1000.jpeg" },
-    { title: "Ховд", slug: "khovd", img: "https://media.discordapp.net/attachments/1435213199866855464/1437770034813341746/B-hustai_national_park.jpg?ex=69147330&is=691321b0&hm=f3a472abbc6e591b5f1683a5dc5e3d7932fd4b5201a0fab945ec1819b96e498e&=&format=webp&width=1600&height=1074" }
   ];
 
   const handleAimagClick = (slug) => {
-    window.location.href = `/aimag/${slug}`;
+    router.push(`/aimag/${slug}`);
   };
 
   return (
@@ -462,7 +465,7 @@ const MongoliaMap = () => {
             <div 
               className={styles.factImage}
               style={{ 
-                backgroundImage: 'url(https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)'
+                backgroundImage: 'url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)'
               }}
             >
               <div className={styles.factDecoration}>01</div>
@@ -472,13 +475,13 @@ const MongoliaMap = () => {
               <p>Mongolia's vast landscapes are bathed in sunlight for over 250 days a year, earning it the poetic nickname "Land of the Eternal Blue Sky." The country's high elevation and continental climate create some of the clearest, most vibrant skies you'll ever witness, stretching endlessly over the rolling steppe.</p>
               <div className={styles.factIcons}>
                 <span className={styles.iconBadge}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <svg xmlns="https://www.shutterstock.com/image-photo/mongolian-landscape-steppe-khan-khentii-600nw-2598143421.jpg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V4.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>
                   </svg>
                   Climate
                 </span>
                 <span className={styles.iconBadge}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <svg xmlns="https://terres-sauvages.ch/wp-content/uploads/2020/04/pleinenature.jpg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
                   </svg>
@@ -493,7 +496,7 @@ const MongoliaMap = () => {
             <div 
               className={styles.factImage}
               style={{ 
-                backgroundImage: 'url(https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)'
+                backgroundImage: 'url(https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)'
               }}
             >
               <div className={styles.factDecoration}>02</div>
@@ -524,7 +527,7 @@ const MongoliaMap = () => {
             <div 
               className={styles.factImage}
               style={{ 
-                backgroundImage: 'url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)'
+                backgroundImage: 'url(https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80)'
               }}
             >
               <div className={styles.factDecoration}>03</div>
@@ -555,11 +558,13 @@ const MongoliaMap = () => {
       <div className={styles.rectanglesContainer}>
         <h2 className={styles.rectanglesTitle}>Popular Regions</h2>
         <div className={styles.rectanglesScroll}>
-          {carduud.map((region) => (
+          {carduud.map((region) => {
+            const aimagId = SLUG_TO_AIMAG_ID[region.slug];
+            return (
             <div 
               key={region.slug}
               className={styles.destinationCard}
-              onMouseEnter={() => setHoveredAimagId(region.slug)}
+              onMouseEnter={() => setHoveredAimagId(aimagId)}
               onMouseLeave={handleAimagLeave}
               onClick={() => handleAimagClick(region.slug)}
             >
@@ -589,7 +594,8 @@ const MongoliaMap = () => {
                 </button>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       <section className={styles.reviewSection}>

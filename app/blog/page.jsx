@@ -142,80 +142,99 @@ export default function Blog() {
     : translatedPosts;
 
   return (
-    <div className="min-h-screen">
-      <div
-        className="h-[50vh] bg-cover bg-center flex items-center justify-center relative"
-        style={{ backgroundImage: "url('/travelbg.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-black/40"></div>
-        <h1 className="text-5xl font-bold text-white drop-shadow-lg relative z-10">
-          {t.blogHero || "Travel Blog"}
-        </h1>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 py-6 flex flex-wrap gap-3">
-        <button
-          onClick={() => setActiveTag("")}
-          className={`px-4 py-2 rounded-full font-medium border ${
-            !activeTag
-              ? "bg-purple-500 text-white border-purple-500"
-              : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700"
-          }`}
+    <div className="min-h-screen bg-[#DDE6ED]">
+      {/* Hero Section */}
+      <div className="relative h-[45vh] overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/travelbg.jpg')" }}
         >
-          {t.all || "All"}
-        </button>
-
-        {allTags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => setActiveTag(tag)}
-            className={`px-4 py-2 rounded-full font-medium border ${
-              activeTag === tag
-                ? "bg-purple-500 text-white border-purple-500"
-                : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700"
-            }`}
-          >
-            {tag}
-          </button>
-        ))}
+          <div className="absolute inset-0 bg-[#27374D]/60"></div>
+        </div>
+        <div className="relative z-10 h-full flex items-center justify-center px-6">
+          <h1 className="text-5xl font-bold text-white drop-shadow-lg relative z-10">
+            {t.blogHero || "Travel Blog"}
+          </h1>
+        </div>
       </div>
-      <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-8">
-        {filteredPosts.map((post) => (
-          <Link
-            key={post.id}
-            href={`/blog/${post.id}`}
-            className="relative block rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-transform transform hover:-translate-y-1 hover:scale-[1.02] cursor-pointer bg-white dark:bg-gray-800"
-          >
-            <div className="h-48 w-full overflow-hidden">
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              />
-            </div>
 
-            <div className="p-4">
-              <h2 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">
-                {post.title}
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                {post.excerpt}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mt-3">
-                {post.tags.map((tag, idx) => (
-                  <span
-                    key={`${tag}-${idx}`}
-                    className="text-xs px-2 py-1 rounded-full bg-purple-100 text-purple-700 dark:bg-purple-800 dark:text-purple-200"
-                  >
-                    {tag}
-                  </span>
-                ))}
+      <div className="max-w-7xl mx-auto px-6 py-10">
+        {/* Tags */}
+        <div className="mb-10">
+          <div className="flex flex-wrap justify-center gap-3">
+            <button
+              onClick={() => setActiveTag("")}
+              className={`px-5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                !activeTag
+                  ? "bg-[#27374D] text-white"
+                  : "bg-white text-[#526D82] hover:bg-[#9DB2BF] hover:text-white"
+              }`}
+            >
+              {t.all || "All"}
+            </button>
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setActiveTag(tag)}
+                className={`px-5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  activeTag === tag
+                    ? "bg-[#27374D] text-white"
+                    : "bg-white text-[#526D82] hover:bg-[#9DB2BF] hover:text-white"
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        {/* Clean Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredPosts.map((post, index) => (
+            <Link
+              key={post.id}
+              href={`/blog/${post.id}`}
+              className="group block bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              style={{
+                animation: `fadeInUp 0.6s ease-out ${index * 50}ms forwards`,
+                opacity: 0
+              }}
+            >
+              {/* Image */}
+              <div className="relative h-48 w-full overflow-hidden">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-            </div>
-            <span className="absolute inset-0 rounded-2xl ring-1 ring-purple-400/20 pointer-events-none"></span>
-          </Link>
-        ))}
+
+              {/* Content */}
+              <div className="p-5">
+                <h2 className="text-lg font-bold mb-2 text-[#27374D] line-clamp-2">
+                  {post.title}
+                </h2>
+                <p className="text-[#526D82] text-sm leading-relaxed mb-4 line-clamp-3">
+                  {post.excerpt}
+                </p>
+                
+                {/* Tags */}
+                <div className="flex items-center justify-between pt-3 border-t border-[#DDE6ED]">
+                  <div className="flex gap-2 flex-wrap">
+                    {post.tags.slice(0, 2).map((tag, idx) => (
+                      <span
+                        key={`${tag}-${idx}`}
+                        className="text-xs px-2.5 py-1 bg-[#DDE6ED] text-[#526D82] rounded"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

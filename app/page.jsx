@@ -36,7 +36,7 @@ export default function HomePage() {
 
     // Case-insensitive check for "mongolia"
     if (slug === "mongolia") {
-      router.push("/map");
+      router.push("/mongolia");
     } else {
       router.push(`/${slug}`);
     }
@@ -62,6 +62,11 @@ export default function HomePage() {
         className="absolute inset-0 w-full h-full object-cover brightness-[.92] contrast-[1.05] transition-opacity duration-1000"
       />
       <div className={`absolute inset-0 ${gradients[type]}`} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 w-full max-w-3xl px-6">
+        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed tracking-wide text-white/50" style={{ fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif' }}>
+          Discover destinations, compare experiences, and plan journeys that actually feel like yours.
+        </h1>
+      </div>
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-3 w-[90%] max-w-md p-3 bg-white/90 rounded-full shadow-lg backdrop-blur-md">
         <input
           type="text"

@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f6f9fc 0%, #eef2f7 100%);
+  background: linear-gradient(135deg, #DDE6ED 0%, #9DB2BF 100%);
   padding: 40px 16px;
 }
 
@@ -21,18 +21,18 @@
   font-size: 2.2rem;
   line-height: 1.2;
   margin: 0;
-  color: #111827;
+  color: #27374D;
 }
 .mapContainer {
   width: 1600px;
   max-width: 100%;
   height: auto;
-  border: 1px solid #ccc;
+  border: 1px solid #9DB2BF;
 }
 
 .subtitle {
   margin-top: 8px;
-  color: #6b7280;
+  color: #526D82;
 }
 
 .grid {
@@ -49,10 +49,10 @@
 
 .card {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #9DB2BF;
   border-radius: 14px;
   padding: 22px;
-  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.06);
+  box-shadow: 0 8px 18px rgba(39, 55, 77, 0.1);
 }
 
 .infoItem {
@@ -60,7 +60,7 @@
   align-items: flex-start;
   gap: 12px;
   padding: 14px 0;
-  border-bottom: 1px dashed #e5e7eb;
+  border-bottom: 1px dashed #9DB2BF;
 }
 
 .infoItem:last-child {
@@ -73,17 +73,17 @@
   display: grid;
   place-items: center;
   border-radius: 10px;
-  background: #eff6ff;
-  color: #1d4ed8;
+  background: #DDE6ED;
+  color: #27374D;
 }
 
 .infoTitle {
   font-weight: 600;
-  color: #111827;
+  color: #27374D;
 }
 
 .infoText {
-  color: #4b5563;
+  color: #526D82;
 }
 
 .form {
@@ -106,20 +106,20 @@
 .input,
 .textarea {
   width: 100%;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #9DB2BF;
   border-radius: 10px;
   padding: 12px 14px;
   font-size: 0.95rem;
   outline: none;
   background: #fff;
-  color: #111827;
+  color: #27374D;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .input:focus,
 .textarea:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  border-color: #526D82;
+  box-shadow: 0 0 0 4px rgba(82, 109, 130, 0.15);
 }
 
 .textarea {
@@ -136,8 +136,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #111827;
-  color: #fff;
+  background: #27374D;
+  color: #DDE6ED;
   border: none;
   padding: 12px 16px;
   font-weight: 600;
@@ -147,8 +147,8 @@
 }
 
 .button:hover {
-  background: #0b1220;
-  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.18);
+  background: #526D82;
+  box-shadow: 0 6px 16px rgba(39, 55, 77, 0.3);
 }
 
 .button:active {

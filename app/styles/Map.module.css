@@ -8,8 +8,8 @@
 }
 
 .chooseProvinceTitle {
-  font-size: 2rem;
-  color: #27374D;
+  font-size: 3rem;
+  color: #DDE6ED;
   margin-bottom: 0.5rem;
   font-weight: 700;
   position: relative;
@@ -24,19 +24,19 @@
   left: 0;
   width: 60px;
   height: 4px;
-  background: #526D82;
+  background: #9DB2BF;
   border-radius: 2px;
 }
 
 .chooseProvinceSubtitle {
-  color: #6c757d;
-  font-size: 1rem;
+  color: #9DB2BF;
+  font-size: 1.2rem;
   margin-top: 0.5rem;
 }
 
 /* Fun Facts Section - Creative Layout */
 .funFactsSection {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 6rem auto 4rem;
   padding: 0 2rem;
   position: relative;
@@ -45,7 +45,7 @@
 
 .funFactsContainer {
   position: relative;
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 
 .factCard {
@@ -55,8 +55,9 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.05);
+  max-width: 85%;
 }
 
 .factCard:last-child {
@@ -66,12 +67,12 @@
 /* Alternating layout for desktop */
 .factCard:nth-child(odd) {
   margin-left: 0;
-  margin-right: 10%;
+  margin-right: 8%;
   transform: rotate(-1deg);
 }
 
 .factCard:nth-child(even) {
-  margin-left: 10%;
+  margin-left: 8%;
   margin-right: 0;
   transform: rotate(1deg);
 }
@@ -82,14 +83,14 @@
 }
 
 .factContent {
-  padding: 2.5rem;
+  padding: 2rem;
   position: relative;
   z-index: 2;
   background: white;
 }
 
 .factImage {
-  height: 300px;
+  height: 220px;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -98,8 +99,8 @@
 
 .factCard h3 {
   color: #27374D;
-  font-size: 1.75rem;
-  margin: 1.5rem 0 1rem;
+  font-size: 1.5rem;
+  margin: 1rem 0 0.75rem;
   font-weight: 700;
   position: relative;
   display: inline-block;
@@ -118,15 +119,15 @@
 
 .factCard p {
   color: #526D82;
-  margin: 1.5rem 0 2rem;
-  line-height: 1.8;
-  font-size: 1.1rem;
+  margin: 1rem 0 1.5rem;
+  line-height: 1.7;
+  font-size: 1rem;
   position: relative;
 }
 
 .factDecoration {
   position: absolute;
-  font-size: 12rem;
+  font-size: 9rem;
   font-weight: 800;
   color: rgba(157, 178, 191, 0.1);
   z-index: 1;
@@ -154,7 +155,7 @@
 }
 
 .iconBadge {
-  background: linear-gradient(135deg, #F0F4F8, #E1E8F0);
+  background: linear-gradient(135deg, #DDE6ED, #9DB2BF);
   color: #27374D;
   padding: 0.6rem 1.2rem;
   border-radius: 30px;
@@ -169,13 +170,15 @@
 
 .iconBadge:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(39, 55, 77, 0.15);
+  background: linear-gradient(135deg, #9DB2BF, #526D82);
+  color: #ffffff;
 }
 
 .iconBadge svg {
   width: 16px;
   height: 16px;
-  color: #526D82;
+  color: #27374D;
 }
 
 /* Responsive adjustments */
@@ -224,12 +227,10 @@
   width: 100%;
   max-width: 1400px;
   margin: 3rem auto 1rem;
-  padding: 0 2rem;
+  padding: 2rem 1rem;
   overflow: hidden;
   position: relative;
   background-color: #DDE6ED;
-  border-radius: 16px;
-  padding: 2rem 1rem;
 }
 
 .rectanglesTitle {
@@ -367,7 +368,7 @@
   justify-content: center;
   padding: 0.6rem 1.5rem;
   background: #27374D;
-  color: white;
+  color: #DDE6ED;
   border: none;
   border-radius: 6px;
   font-weight: 500;
@@ -381,7 +382,7 @@
 .exploreButton:hover {
   background: #526D82;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(39, 55, 77, 0.2);
+  box-shadow: 0 4px 8px rgba(39, 55, 77, 0.3);
 }
 
 .exploreButton:active {
@@ -584,12 +585,12 @@
 
 
 .infoBox {
-  background: white;
+  background: #DDE6ED;
   backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  color: #333333; /* Dark gray text color */
+  color: #27374D;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -598,24 +599,20 @@
   top: 1rem;
   right: 1rem;
   z-index: 10;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid #9DB2BF;
 }
 
 .aimagName {
   font-weight: 600;
-  color: var(--pastel-blue);
-  background: linear-gradient(90deg, var(--pastel-blue), var(--pastel-lavender));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #526D82;
   transition: all 0.3s ease;
 }
 
 .reviewSection {
   width: 100%;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: linear-gradient(135deg, #DDE6ED 0%, #9DB2BF 100%);
   margin-top: 3rem;
 }
 
@@ -630,22 +627,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 3rem;
-  color: var(--text-primary);
-  position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.reviewTitle::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
-  border-radius: 2px;
+  color: #27374D;
 }
 
 .carouselButton {
@@ -655,21 +637,22 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: white;
+  background: #DDE6ED;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-md);
-  border: none;
+  box-shadow: 0 2px 8px rgba(39, 55, 77, 0.2);
+  border: 1px solid #9DB2BF;
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
-  color: #6366f1;
+  color: #27374D;
   font-size: 1.2rem;
 }
 
 .carouselButton:hover {
-  background: #f8fafc;
+  background: #9DB2BF;
+  color: #ffffff;
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -754,7 +737,7 @@
   background: white;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 800px;
   margin: 0 auto;
   position: relative;
@@ -768,7 +751,7 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+  background: linear-gradient(to bottom, #27374D, #526D82);
 }
 
 .reviewHeader {
@@ -781,7 +764,7 @@
 .reviewAuthor {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #27374D;
 }
 
 .reviewRating {
@@ -800,7 +783,7 @@
 }
 
 .reviewLocation {
-  color: #6366f1;
+  color: #526D82;
   font-weight: 500;
   margin-bottom: 1rem;
   display: flex;
@@ -809,7 +792,7 @@
 }
 
 .reviewComment {
-  color: var(--text-secondary);
+  color: #526D82;
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -824,14 +807,14 @@
   left: 0;
   top: -0.5rem;
   font-size: 4rem;
-  color: #e2e8f0;
+  color: #9DB2BF;
   font-family: Georgia, serif;
   line-height: 1;
   z-index: 0;
 }
 
 .reviewDate {
-  color: #94a3b8;
+  color: #9DB2BF;
   font-size: 0.9rem;
   text-align: right;
 }
@@ -1055,155 +1038,4 @@
   font-size: 1.1em;
 }
 
-.aimagName {
-  font-weight: bold;
-  color: #d84315;
-  /* Улаан өнгөөр тодотгох */
-  margin-left: 8px;
-}
 
-/* Review Section Styles */
-.reviewSection {
-  max-width: 1500px;
-  width: 100%;
-  margin: 40px auto;
-  padding: 0 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.reviewTitle {
-  font-size: 2rem;
-  color: #1f2937;
-  text-align: center;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
-
-.reviewCarouselContainer {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 20px 0;
-}
-
-.reviewCarousel {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-}
-
-.reviewSlide {
-  min-width: 100%;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.reviewCard {
-  background: white;
-  border-radius: 10px;
-  padding: 24px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 800px;
-  margin: 0 auto;
-  height: 100%;
-}
-
-.reviewCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.carouselButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  transition: all 0.3s ease;
-}
-
-.carouselButton:hover {
-  background: #fff;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.prevButton {
-  left: 10px;
-}
-
-.nextButton {
-  right: 10px;
-}
-
-@media (max-width: 768px) {
-  .carouselButton {
-    width: 35px;
-    height: 35px;
-    font-size: 16px;
-  }
-
-  .prevButton {
-    left: 5px;
-  }
-
-  .nextButton {
-    right: 5px;
-  }
-}
-
-.reviewHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.reviewAuthor {
-  font-weight: 600;
-  color: #111827;
-  font-size: 1.1rem;
-}
-
-.reviewRating {
-  color: #f59e0b;
-  font-size: 1rem;
-}
-
-.star {
-  color: #e5e7eb;
-}
-
-.starFilled {
-  color: #f59e0b;
-}
-
-.reviewLocation {
-  color: #6b7280;
-  font-size: 0.9rem;
-  margin-bottom: 12px;
-}
-
-.reviewComment {
-  color: #4b5563;
-  line-height: 1.6;
-  margin-bottom: 16px;
-  font-style: italic;
-}
-
-.reviewDate {
-  color: #9ca3af;
-  font-size: 0.85rem;
-  text-align: right;
-}

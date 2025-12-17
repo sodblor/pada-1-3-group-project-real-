@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Sun, Moon } from "lucide-react";
 import { messages } from "../messages";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -20,8 +19,8 @@ export default function Header() {
   const isMongolian = lang === "mn";
 
   return (
-    <header 
-      className="fixed top-0 left-0 w-full px-4 sm:px-6 lg:px-12 py-4 z-50 bg-stone-900/80 backdrop-blur-sm text-white"
+    <header
+      className="fixed top-0 left-0 w-full px-4 sm:px-6 lg:px-12 py-4 z-50 backdrop-blur-sm text-white bg-[rgba(39,55,77,0.6)]"
       role="banner"
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
@@ -41,25 +40,26 @@ export default function Header() {
             <Link 
               key={key}
               href={href}
-              className={`relative px-2 py-1 transition-colors hover:text-amber-400 ${
-                pathname === href ? 'text-amber-400 font-semibold' : 'text-white/90'
+              className={`relative px-2 py-1 transition-colors hover:text-[#9DB2BF] ${
+                pathname === href ? 'text-[#9DB2BF] font-semibold' : 'text-white/90'
               }`}
             >
               {t[key]}
               {pathname === href && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-amber-400"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#9DB2BF]"></span>
               )}
             </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-3 sm:gap-4">
-          <button 
+          <Link
+            href="/signin"
             className="px-4 py-2 rounded-full border border-white/30 hover:bg-white/10 transition-colors font-medium"
             aria-label="Sign in"
           >
             {t.signin}
-          </button>
+          </Link>
           
           <button
             onClick={toggleLang}
@@ -67,14 +67,7 @@ export default function Header() {
             aria-label={`Switch to ${isMongolian ? 'English' : 'Монгол'}`}
             title={isMongolian ? 'Switch to English' : 'Монгол хэлрүү шилжих'}
           >
-            {isMongolian ? 'EN' : 'MN'}
-          </button>
-          
-          <button 
-            className="p-2 rounded-full hover:bg-white/10 transition-colors"
-            aria-label="Toggle dark mode"
-          >
-            <Sun className="w-5 h-5" />
+            {isMongolian ? 'MN' : 'EN'}
           </button>
         </div>
       </div>
